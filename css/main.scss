@@ -5,8 +5,10 @@
 
 :root{
     --accent-color: #FF4E4E;
-    --background: #111;
-    --foreground: #1a1a1a;
+    --dark-accent-color: #b92a2a;
+    --light-accent-color: #ffe3e3;
+    --background: #efefef;
+    --foreground: #fff;
     
 }
 
@@ -14,7 +16,7 @@ body{
     margin: 0;
     font-size: 16px;
     background: var(--background);
-    color: white;
+    color: #222;
 }
 
 ::-webkit-scrollbar{
@@ -22,15 +24,17 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background: #333;
+    background: rgba($color: #000, $alpha: 0.3);
 }
 
 
 #background_art{
     position: fixed;
     pointer-events: none;
-    opacity: 0.4;
-    height: 100%;
+    height: 40vh;
+    width: 100vw;
+    z-index: -1;
+    background: linear-gradient(0deg,dodgerblue, skyblue);
 }
 
 input,button{
@@ -38,16 +42,18 @@ input,button{
     border: none;
     font-size: 1em;
     border-radius: 0.25em;
+    font-weight: bold;
 }
 button{
-    padding: 1em 2em;
+    padding: 0.5em 1em;
     background: transparent;
     transition: background 0.2s ease;
     cursor: pointer;
     display: inline-flex;
+    margin: 0 0.5em;
 }
-h2,h3,h4,h5{
-    font-weight: normal;
+input{
+    display: flex;
 }
 .show{
     opacity: 1;
@@ -62,51 +68,79 @@ h2,h3,h4,h5{
 .no-transformations{
     transform: none !important;
 }
-
+#page_container{
+    position: absolute;
+    top: 5em;
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
+.page{
+    display: grid;
+    position: absolute;
+    width: 100%;
+    padding: 0 4em;
+}
 #top_nav{
-    align-items: center;
-    position: relative;
+    top: 0;
+    position: fixed;
     display: flex;
-    flex-direction: row;
+    width: 100%;
     align-items: center;
-    padding: 2em 4em;
+    padding: 0 1em;
+    background: var(--foreground);
+    margin-bottom: 0.5em;
+    box-shadow: 0 0.5em 1em rgba($color: #000000, $alpha: 0.08);
+    z-index: 4;
     #logo{
         display: inline-flex;
         align-items: center;
         font-size: 1.2em;
-        flex: 1;
         svg{
-            width: 3em;
+            height: 2.5em;
             margin-right: 0.5em;
         }
-        h4{
-            width: 100%;
+    }
+    #tab_switcher{
+        display: flex;
+        position: relative;
+        margin-left: 1em;
+        span{
+            margin: 0 0.25em;
+            cursor: pointer;
+            padding: 1em;
+            font-weight: bold;
+            opacity: 0.7;
+            &:hover{
+                color: var(--accent-color);
+                opacity: 1;
+            }
         }
     }
-    #login{
+    .active{
+        opacity: 1 !important;
         color: var(--accent-color);
-        border: none;
+    }
+    .spacer{
+        flex: 1;
+    }
+    button{
+        color: var(--accent-color);
         svg{
             height: 1em;
             margin-right: 0.5em;
             fill: var(--accent-color);
         }
         &:hover{
-            background: var(--accent-color);
+            background: var(--light-accent-color);
             cursor: pointer;
-            color: var(--background);
-            svg{
-                fill: var(--background);
-            }
         }
     }
 }
 
 #dashboard{
-    padding: 0 3.5em;
     .first-row,.second-row{
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
     }
     .first-row{
@@ -126,15 +160,16 @@ h2,h3,h4,h5{
             flex: 1;
         }
     }
-    #status_map_container,#high_perf_interns_container,
-    #project_list_container,#intern_updates_container{
-        overflow: hidden;
-        background: var(--foreground);
-        border-radius: 0.25em;
-        margin: 0.5em;
-        box-shadow: 0.1em 0.2em 0.4em rgba($color: #000000, $alpha: 0.12);
-    }
 }
+
+.container-card{
+    overflow: hidden;
+    background: var(--foreground);
+    border-radius: 0.25em;
+    margin: 0.5em;
+    box-shadow: 0.5em 1em 1em rgba($color: #000000, $alpha: 0.08);
+}
+
 #update-container{
     max-height: 24em;
     overflow-y: auto;
@@ -142,12 +177,13 @@ h2,h3,h4,h5{
 .update{
     display: flex;
     flex-direction: column;
-    margin: 0.5em;
+    margin: 0.5em 1em;
     padding: 0.5em;
-    border-radius: 0.25em;
-    border: 1px solid rgba($color: #fff, $alpha: 0.12);
-    h4{
-        margin: 0.5em 0;
+    span{
+        margin: 0.25em 0;
+    }
+    p{
+        font-size: 0.9em;
     }
 }
 .container-header{
@@ -155,19 +191,27 @@ h2,h3,h4,h5{
     align-items: center;
     flex-direction: row;
     width: 100%;
+    padding: 1em;
     svg{
-        fill: white;
+        fill: rgba($color: #000000, $alpha: 0.48);
         height: 1.4em;
         width: 1.4em;
-        margin: 0 0.5em 0 1em
+        margin-right: 0.5em;
     }
-    h4:first-of-type{
+    span:first-of-type{
         flex: 1;
+        font-weight: bold;
     }
-    h4:nth-of-type(2){
+    span:nth-of-type(2){
         color: var(--accent-color);
+        border-radius: 0.25em;
+        margin-right: 0.25em;
         cursor: pointer;
         padding: 0.5em 1em;
+        font-weight: bold;
+        &:hover{
+            background: var(--light-accent-color);  
+        }
     }
 }
 
@@ -179,7 +223,8 @@ h2,h3,h4,h5{
     top: 0;
     left: 0;
     place-items: center;
-    background: rgba($color: #000000, $alpha: 0.24);
+    background: rgba($color: #000000, $alpha: 0.12);
+    backdrop-filter: blur(0.5em);
     z-index: 4;
     transition: opacity 0.2s ease;
     .popup{
@@ -190,7 +235,7 @@ h2,h3,h4,h5{
         background: var(--foreground);
         transform: translateY(1em);
         transition: transform 0.2s ease;
-        box-shadow: 0.2em 0.4em 0.8em rgba($color: #000000, $alpha: 0.24);
+        box-shadow: 0 2em 2em rgba($color: #000000, $alpha: 0.24);
         border-radius: 0.25em;
     }
 }
@@ -208,15 +253,15 @@ h2,h3,h4,h5{
     z-index: 10;
 }
 
-#add_intern_popup-container{
     #add_intern_popup{
-        width: 22em;
+        padding: 1em;
+        width: 24em;
         input{
             padding: 1em;
             background: var(--background);
             width: 100%;
             margin: 1em 0;
-            color: white;
+            color: #222;
             font-size: 1em;
         }
         button{
@@ -232,122 +277,101 @@ h2,h3,h4,h5{
         }
 
     }
+
+#admin_panel{
+    margin-top: 0.5em;
+    grid-template-columns: 16em auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'projects edit'
+                         'interns edit';
 }
 
-#projects_container{
-    width: calc(70% - 2em);
-    display: inline-flex;
-    flex-direction: row;
+#projects_container,#interns_container{
+    display: flex;
     flex-wrap: wrap;
-    padding: 0 4em;
-    #add_new_project{
-        width: 11em;
-        cursor: pointer;
-        margin: 0.5em;
-        justify-content: center;
-        opacity: 0.6;
-        transition: opacity 0.2s ease;
-        svg{
-            width: 2em;
-            fill: white;
-        }
-        &:hover{
-            opacity: 1;
-        }
-    }
-}
-.project-card{
-        display: flex;
-        flex-direction: row;
-        position: relative;
-        border-radius: 0.25em;
-        cursor: pointer;
-        margin: 0.5em 0;
-        h4{
-            margin: 1em 0;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-    }
-
-#interns_container{
-    width: 30%;
-    padding-left: 4em;
-    display: inline-flex;
-    flex-direction: column;
-    div:first-of-type{
-        display: flex;
-        flex-direction: row;
-        align-content: center;
+    padding: 0 1em;
+    background: var(--foreground);
+    width: 16em !important;
+    .container-header{
         h3{
             flex: 1;
         }
         svg{
-            cursor: pointer;
-            width: 4em;
-            padding: 1.5em;
-            fill: #fff;
+            padding: 0.5em;
+            height: 2em;
+            width: 2em;
+            opacity: 0.6;
+            fill: #222;
+            margin-right: 0;
             &:hover{
-                background: var(--foreground);
+                opacity: 1;
+                cursor: pointer;
             }
         }
     }
 }
+#interns,#projects{
+    width: 16em;
+    overflow-y: auto;
+    max-height: 12em;
+}
+
+#edit_data{
+    grid-area: edit;
+    background: var(--background);
+}
+#projects_container{
+    grid-area: projects;
+}
+
+#interns_container{
+    grid-area: interns; 
+}
 .intern-card{
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    padding: 1em;
-    align-items: center;
-    transition: background 0.2s ease;
-    &:hover{
-        background: rgba($color: #000000, $alpha: 0.24);
-    }
-    h4{
-        margin: 0;
-    }
-    h4:first-of-type{
+    span:first-of-type{
         flex: 1;
     }
-    h4:nth-of-type(2){
-        background: var(--accent-color);
-        border-radius: 0.25em;
-        padding: 0.5em;
+    span:nth-of-type(2){
+        color: var(--accent-color);
+        padding: 0 0.25em;
+        font-weight: bold;
+    }
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    padding: 1em;
+    align-self: flex-start;
+    &:hover{
+        background: rgba($color: #000000, $alpha: 0.08);
     }
 }
 #intern_info{
     padding: 0;
-    .left{
-        padding: 1em;
-        width: 16em;
-        div{
-            display: flex;
-            align-items: center;
-            width: 100%;
-            h4{
-                flex: 1;
-            }
-        }
-        h4{
-            padding: 1em;
-            width: 100%;
-            margin: 0;
-        }
-        h3:first-of-type{
+    h3{
+        margin: 0.5em 0;
+    }
+}
+.left{
+    width: 16em;
+    div:nth-of-type(2){
+        display: flex;
+        align-items: center;
+        width: 100%;
+        span{
             flex: 1;
-            padding: 0 1em;
-        }
-        h4:nth-of-type(2){
             word-break: break-all;
-            padding-right: 3em;
         }
         svg{
-            fill: white;
+            fill: #222;
             height: 2.5em;
             padding: 0.6em;
             overflow: visible;
-            margin: 1em;
+            margin-right: 1em;
             opacity: 0.6;
             &:hover{
                 opacity: 1;
@@ -355,48 +379,45 @@ h2,h3,h4,h5{
             }
         }
     }
-    .right{
-        width: 20em;
-        background: var(--background);
-        padding: 0.5em 1em;
-        overflow-y: auto;
-        max-height: 60vh;
-        h4{
-            padding: 0 1em;
-        }
+    span{
+        display: block;
+        padding: 1em;
+        margin: 0;
     }
+    span:first-of-type{
+        flex: 1;
+    }
+    span:nth-of-type(2){
+        word-break: break-all;
+    }
+}
+.right{
+    width: 20em;
+    background: var(--background);
+    overflow-y: auto;
+    max-height: 60vh;
+    border-radius: 0 0.25em 0.25em 0;
 }
 @media only screen and (max-width: 640px){
     ::-webkit-scrollbar{
         width: auto;
     }
-    
-    ::-webkit-scrollbar-thumb{
-        background: #333;
-    }
-    
-    button{
-        padding: 0.5em 1em;
-    }
-    #interns_container,#projects_container{
-        width: 100%;
-        padding: 0 1em;
-    }
-    #top_nav{
-        padding: 0.5em 1em; 
-    }
     #dashboard{
-        padding: 0 0.5em;
+        padding: 0;
     }
-    #status_map_container,#high_perf_interns_container,
-    #project_list_container,#intern_updates_container{
+    .container-card{
         width: 100% !important;
+        box-shadow: none !important;
     }
     .popup{
         margin-top: auto;
         width: 100% !important;
+        border-radius: 0.5em !important;
     }
     .left,.right{
         width: 100% !important;
+    }
+    .update{
+        padding: 0;
     }
 }
