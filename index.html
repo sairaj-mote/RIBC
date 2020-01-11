@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <style>
+        </style>
     </head>
     <body onload="startup()">
         <nav id="top_nav">
@@ -76,7 +78,6 @@
                 </svg>
                 Login</button>
         </nav>
-        <section id="page_container">
             <section id="dashboard" class="page">
                 <div class="first-row">
                     <div id="status_map_container" class="container-card">
@@ -90,8 +91,18 @@
                             <span>All</span>
                         </div>
                         <div class="status-map">
-                            <span>Project Name</span>
+                            <h4 id="status_map_name">Project Name</h4>
+                            <div class="map-body">
+                                <div class="progress">
+                                    <div id="project_progress" class="bar"></div>
+                                </div>
+                                <h5 id="completed_perc">0%</h5>
+                            </div>
                         </div>
+                        <footer>
+                            <button id="prevMap" onclick="showProjectStatus(-1)">Previous</button>
+                            <button id="nextMap" onclick="showProjectStatus(1)">Next</button>
+                        </footer>
                         <div>
                             
                         </div>
@@ -165,10 +176,8 @@
                     </div>
                 </section>
                 <section id="edit_data">
-
                 </section>
             </div>
-        </section>
         <h5 id="textCopied" class="hide">
             Copied
         </h5>
@@ -208,13 +217,13 @@
                     </div>
                     <span>Project name</span>
                     <span>Points</span>
-                    <p>Description</p>
+                    <span>Description</span>
                 </div>
                 <div class="right">
                     <div class="container-header">
-                        <h3>assined To</h3>
+                        <h3>Tasks</h3>
                     </div>
-                    <div id="assinged_interns_container">
+                    <div id="tasks_container">
                     </div> 
                 </div>
             </div>
@@ -269,31 +278,79 @@
             let projectsDb = [
                     {
                         name: 'project1',
-                        description: '',
-                        tasks: ['start', 'finish', 'etc'],
-                        assinedTo: ['intern1', 'intern2'],
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        tasks: [
+                            {
+                                task: 'do this',
+                                status: 'completed',
+                                points: 50,
+                                assinedTo: 'intern1'
+                            },
+                            {
+                                task: 'do this',
+                                status: 'incomplete',
+                                points: 40,
+                                assinedTo: 'intern2'
+                            }
+                        ],
                         status: 'completed'
                     },
                     {
                         name: 'project2',
-                        description: '',
-                        tasks: ['start', 'finish', 'etc'],
-                        assinedTo: ['intern2', 'intern3'],
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        tasks: [
+                            {
+                                task: 'do this',
+                                status: 'completed',
+                                points: 50,
+                                assinedTo: 'intern1'
+                            },
+                            {
+                                task: 'do this',
+                                status: 'completed',
+                                points: 60,
+                                assinedTo: 'intern2'
+                            }
+                        ],
                         status: 'completed'
                     },
                     {
                         name: 'project3',
-                        description: '',
-                        tasks: ['start', 'finish', 'etc'],
-                        assinedTo: ['intern1', 'intern2'],
-                        status: 'in-progress'
+                        description: 'nothing',
+                        tasks: [
+                            {
+                                task: 'do this',
+                                status: 'incomplete',
+                                points: 80,
+                                assinedTo: 'intern1'
+                            },
+                            {
+                                task: 'do this',
+                                status: 'incomplete',
+                                points: 40,
+                                assinedTo: 'intern2'
+                            }
+                        ],
+                        status: 'incomplete'
                     },
                     {
                         name: 'project4',
-                        description: '',
-                        tasks: ['start', 'finish', 'etc'],
-                        assinedTo: ['intern2', 'intern3'],
-                        status: 'in-progress'
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        tasks: [
+                            {
+                                task: 'do this',
+                                status: 'completed',
+                                points: 40,
+                                assinedTo: 'intern1'
+                            },
+                            {
+                                task: 'do this',
+                                status: 'completed',
+                                points: 40,
+                                assinedTo: 'intern2'
+                            }
+                        ],
+                        status: 'incomplete'
                     }
                 ] 
 
@@ -315,14 +372,23 @@
             // Method object for creating various UI elements
             const render = {
                 projectCard: function(projectName, container){ // creates cards containing project information
-                    let card = `<div class="project-card card" onclick="showProjectInfo(this)" title="Project information">
+                let func = 'onclick="showProjectInfo(this)"';
+                if(container === 'projects')
+                    func = 'onclick="editProjectInfo(this)"'
+                    let card = `<div class="project-card card" ${func} title="Project information">
                                     <span>${projectName}</span>
                                 </div>`;
                     document.getElementById(container).innerHTML+= card;
                 },
-            
+                taskCard: function(task){
+                    let card = `<span class="card">${task}</span>`;
+                    document.getElementById('tasks_container').innerHTML += card;
+                },
                 internCard: function(internName, internFLOID, internPoints, container){// creates cards containing intern information
-                    let card = `<div class="intern-card card" id="${internFLOID}" title="Intern information" onclick="showInternInfo(this)">
+                    let func = 'onclick="showInternInfo(this)"';
+                    if(container === 'interns')
+                        func = 'onclick="editInternInfo(this)"'
+                    let card = `<div class="intern-card card" id="${internFLOID}" title="Intern information" ${func}>
                                     <span>${internName}</span>
                                     <span title="Earned Points">${internPoints}</span>
                                 </div>`;
@@ -337,7 +403,7 @@
                 }
             }
 
-            let recentPage = 'admin_panel_btn';
+            let recentPage = 'dashboard_btn',i = 0, projectIndex = 0, prevProject = '' ;
 
             // function required for popups or modals to appear
             function showPopup(popup) { 
@@ -393,18 +459,102 @@
 
             // opens a popup containing various project information
             function showProjectInfo(project) { 
+                let totalPoints = 0;
+                document.getElementById('tasks_container').innerHTML=``;
                 showPopup('project_info');
                 let popup = document.getElementById('project_info');
-                popup.firstElementChild.children[1].textContent = project.children[0].textContent; // project name
-                popup.firstElementChild.children[2].textContent = `Earned ${project.children[1].textContent} Points`; // points earned by project
-                popup.firstElementChild.children[3].firstElementChild.textContent = project.id; // project 
-                document.getElementById('assinged_projects_container').innerHTML= '';
-                for( let i= 0; i< projectsDb.length;i++){
-                    if(projectsDb[i].FLOID == project.id)
-                        projectsDb[i].projects.forEach((proj) => {
-                            render.projectCard(proj, 'assinged_projects_container')
+                popup.firstElementChild.children[1].innerHTML = `<h5>Name</h5>${project.children[0].textContent}`; // project name
+                projectsDb.forEach((proj) => {
+                    if(proj.name === project.firstElementChild.textContent){
+                        proj.tasks.forEach((task) => {
+                            totalPoints += task.points;
+                            render.taskCard(task.task);
                         })
-                }  
+                        popup.firstElementChild.children[3].innerHTML = `<h5>Description</h5>${proj.description}`;
+                    }
+                popup.firstElementChild.children[2].textContent = totalPoints;
+                })
+                    
+            }
+
+            function editInternInfo(intern){
+                let thisContainer = document.getElementById('edit_data');
+                thisContainer.innerHTML = ``;
+                let pageHtml = `<h3>Edit Information</h3>
+                                <label>
+                                    <h4>Intern Name</h4>
+                                    <input id="update_intern_name" onkeyup="enableBtn('update_intern_info_btn')" type="text" value="${intern.children[0].textContent}" placeholder="Intern Name"/>
+                                </label>
+                                <label>
+                                    <h4>Intern FLO ID</h4>
+                                    <input id="update_flo_id" onkeyup="enableBtn('update_intern_info_btn')" type="text" value="${intern.id}" placeholder="Intern FLO ID"/>
+                                </label>
+                                <button id="update_intern_info_btn" disabled>Update</button>
+                                <button id="delete_intern_btn">Delete</button>`;
+                thisContainer.innerHTML += pageHtml;
+                document.getElementById('update_intern_info_btn').onclick = function(){
+                    let name = document.getElementById('update_intern_name').value,
+                        floId = document.getElementById('update_flo_id').value;
+                    for(i= 0; i< internsDb.length; i++){
+                        if(internsDb[i].FLOID == intern.id){ 
+                            if(name ==='')
+                                name = 'unknown'
+                            if(floId ==='')
+                                floId = 'unknown'
+                            internsDb[i]['name'] = name;
+                            internsDb[i]['FLOID'] = floId;
+                        }
+                        break;
+                    }
+                    renderAllElements();
+                }
+                document.getElementById('delete_intern_btn').onclick = function(){
+                    //delete this intern
+                    renderAllElements();
+                }
+            }
+            function editProjectInfo(project){
+                let thisContainer = document.getElementById('edit_data');
+                thisContainer.innerHTML = ``;
+                let pageHtml = `<h3>Edit Information</h3>
+                                <label>
+                                    <h4>Project Name</h4>
+                                    <input id="update_project_name" onkeyup="enableBtn('update_project_info_btn')" type="text" value="${project.children[0].textContent}" placeholder="Project Name"/>
+                                </label>
+                                <label>
+                                    <h4>Intern FLO ID</h4>
+                                    <input id="update_flo_id" onkeyup="enableBtn('update_project_info_btn')" type="text" value="${intern.id}" placeholder="Intern FLO ID"/>
+                                </label>
+                                <button id="update_project_info_btn" disabled>Update</button>`;
+                thisContainer.innerHTML += pageHtml;
+                document.getElementById('update_project_info_btn').onclick = function(){
+                    let name = document.getElementById('update_project_name').value,
+                        floId = document.getElementById('update_flo_id').value;
+                    for(i= 0; i< internsDb.length; i++){
+                        if(internsDb[i].FLOID == intern.id){ 
+                            if(name ==='')
+                                name = 'unknown'
+                            if(floId ==='')
+                                floId = 'unknown'
+                            internsDb[i]['name'] = name;
+                            internsDb[i]['FLOID'] = floId;
+                        }
+                        break;
+                    }
+                    renderAllElements();
+                }
+            }
+
+            function enableBtn(btn){
+                let thisBtn = document.getElementById(btn);
+                    if(thisBtn.disabled)
+                        thisBtn.disabled = false;
+            }
+
+            function disableBtn(btn){
+                let thisBtn = document.getElementById(btn);
+                    if(!thisBtn.disabled)
+                        thisBtn.disabled = true;
             }
             
             document.getElementById(recentPage).click();
@@ -460,15 +610,55 @@
 
             }
 
+            function showProjectStatus(index){
+                if((index == 1 && typeof projectsDb[projectIndex+1] !== 'undefined') ||(index == -1 && typeof projectsDb[projectIndex-1] !== 'undefined')){
+                    projectIndex += index;
+                    enableBtn('prevMap')
+                    enableBtn('nextMap')
+                }
+                
+                if(typeof projectsDb[projectIndex+1] === 'undefined'){
+                    disableBtn('nextMap')
+                }
+
+                if(typeof projectsDb[projectIndex-1] === 'undefined')
+                    disableBtn('prevMap')
+                
+                let i = progress = taskCount = comTasks = 0, inter;
+                document.getElementById('status_map_name').textContent = projectsDb[projectIndex].name;
+                projectsDb[projectIndex].tasks.forEach((task) => {
+                    taskCount++;
+                    if(task.status === 'completed')
+                        comTasks++;
+                })
+                if(taskCount)
+                    progress = (comTasks/taskCount)* 100;
+                document.getElementById('project_progress').setAttribute('style', `width: ${progress}%`)
+                let perc = document.getElementById('completed_perc');
+                i = 0;
+                inter = setInterval(() => {
+                    perc.innerText = `${i}% Complete`;
+                    if(i < progress)
+                        i++;
+                    else{
+                        clearInterval(inter)
+                    }
+                },10)     
+            }
+
             function renderAllElements(){
-                let i = 0;
+
+                showProjectStatus(0);
+
                 //creates cards for highest performing interns
                 //sort interns earned points
                 
+                //document.getElementById('high_perf_interns_container').innerHTML='';
                 for(i= 0; i< 4;i++){
                         render.internCard(internsDb[i].name, internsDb[i].FLOID, internsDb[i].points, 'high_perf_interns_container')
                 }
 
+                document.getElementById('interns').innerHTML='';
                 for(i= 0; i< internsDb.length;i++){
                         render.internCard(internsDb[i].name, internsDb[i].FLOID, internsDb[i].points, 'interns')
                 }
@@ -476,17 +666,19 @@
                 // displays recent updates given by interns
                 //sort by timestamp
 
+                //document.getElementById('update-container').innerHTML='';
                 for(i = 0; i < 2; i++){
                     render.updateCard(updatesDb[i].by, updatesDb[i].about, updatesDb[i].message,'update-container');
                 }
 
                 // displays recent projects
                 //sort by timestamp
-
+                //document.getElementById('project_list_container').innerHTML='';
                 for(i = 0; i < 4; i++){
                     render.projectCard(projectsDb[i].name, 'project_list_container');
                 }
 
+                document.getElementById('projects').innerHTML='';
                 for(i = 0; i < projectsDb.length; i++){
                     render.projectCard(projectsDb[i].name, 'projects');
                 }
