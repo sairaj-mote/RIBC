@@ -55,7 +55,15 @@ button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 0.5em;
+}
+
+button svg {
+  fill: var(--accent-color);
+  height: 1em;
 }
 
 button:hover {
@@ -67,11 +75,19 @@ button:hover svg {
   fill: var(--foreground);
 }
 
+button:focus {
+  outline: none;
+}
+
 button[disabled] {
-  color: #222222;
+  color: #222222 !important;
   opacity: 0.8;
   cursor: auto;
   background: none;
+}
+
+button[disabled] svg {
+  fill: #222 !important;
 }
 
 input {
@@ -116,7 +132,7 @@ input {
 }
 
 #top_nav {
-  position: relative;
+  position: fixed;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,13 +196,11 @@ input {
 }
 
 #top_nav button svg {
-  height: 1em;
   margin-right: 0.5em;
-  fill: var(--accent-color);
 }
 
-#top_nav button:hover svg {
-  fill: var(--foreground);
+#dashboard {
+  margin-top: 0.5em;
 }
 
 #dashboard .first-row, #dashboard .second-row {
@@ -251,8 +265,25 @@ input {
   padding: 1em 0;
 }
 
+#dashboard .first-row #status_map_container footer button:hover {
+  background: transparent;
+  color: var(--accent-color);
+}
+
+#dashboard .first-row #status_map_container footer button:hover svg {
+  fill: var(--accent-color);
+}
+
+#dashboard .first-row #status_map_container footer button:first-of-type svg {
+  margin-right: 0.5em;
+}
+
 #dashboard .first-row #status_map_container footer button:nth-of-type(2) {
   margin-left: auto;
+}
+
+#dashboard .first-row #status_map_container footer button:nth-of-type(2) svg {
+  margin-left: 0.5em;
 }
 
 #dashboard .first-row #high_perf_interns_container {
@@ -319,24 +350,23 @@ input {
       -ms-flex-direction: row;
           flex-direction: row;
   width: 100%;
-  padding: 1em;
+  padding: 0 1em;
 }
 
-.container-header svg {
+.container-header svg:first-of-type {
   fill: rgba(0, 0, 0, 0.48);
   height: 1.4em;
   width: 1.4em;
   margin-right: 0.5em;
 }
 
-.container-header span:first-of-type {
+.container-header h4 {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-weight: bold;
 }
 
-.container-header span:nth-of-type(2) {
+.container-header span {
   color: var(--accent-color);
   border-radius: 0.25em;
   margin-right: 0.25em;
@@ -345,8 +375,16 @@ input {
   font-weight: bold;
 }
 
-.container-header span:nth-of-type(2):hover {
+.container-header span:hover {
   background: var(--light-accent-color);
+}
+
+.hover {
+  fill: var(--accent-color);
+}
+
+.hover:hover {
+  fill: var(--accent-color) !important;
 }
 
 .popup-container {
@@ -386,6 +424,14 @@ input {
   border-radius: 0.25em;
 }
 
+.popup-container .popup .container-header h4 {
+  font-size: 1.2em;
+}
+
+.popup-container .popup h5 {
+  margin: 0.5em 0;
+}
+
 #textCopied {
   padding: 1em;
   border-radius: 2em;
@@ -416,12 +462,29 @@ input {
 }
 
 #admin_panel {
-  margin-top: 0.5em;
-  -ms-grid-columns: 16em auto;
-      grid-template-columns: 16em auto;
+  margin-top: 1em;
+  -ms-grid-columns: 20em auto;
+      grid-template-columns: 20em auto;
   -ms-grid-rows: auto auto;
       grid-template-rows: auto auto;
       grid-template-areas: 'projects edit' 'interns edit';
+}
+
+#edit_data_fig {
+  fill: rgba(0, 0, 0, 0.6);
+  width: 16em;
+  margin: 2em 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.center {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  height: 100%;
+  text-align: center;
 }
 
 #projects_container, #interns_container {
@@ -431,31 +494,24 @@ input {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   background: var(--foreground);
-  width: 16em !important;
-}
-
-#projects_container .container-header h3, #interns_container .container-header h3 {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 
 #projects_container .container-header svg, #interns_container .container-header svg {
   padding: 0.5em;
   height: 2em;
   width: 2em;
-  opacity: 0.6;
+  opacity: 0.9;
   fill: #222;
   margin-right: 0;
-}
-
-#projects_container .container-header svg:hover, #interns_container .container-header svg:hover {
-  opacity: 1;
   cursor: pointer;
 }
 
+#projects_container .container-header svg:hover, #interns_container .container-header svg:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
 #interns, #projects {
-  width: 16em;
+  width: 100%;
   overflow-y: auto;
   max-height: 12em;
 }
@@ -535,8 +591,8 @@ input {
   width: 16em;
 }
 
-#intern_info h3 {
-  margin: 0.5em 0;
+#intern_info .left span:nth-of-type(2) {
+  word-break: break-all;
 }
 
 #project_info {
@@ -549,6 +605,10 @@ input {
 
 #project_info .right {
   width: 24em;
+}
+
+.left {
+  padding-bottom: 1em;
 }
 
 .left div:nth-of-type(2) {
@@ -584,7 +644,7 @@ input {
 
 .left span {
   display: block;
-  padding: 1em;
+  padding: 0.5em 1em;
   margin: 0;
 }
 
@@ -592,10 +652,6 @@ input {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-
-.left span:nth-of-type(2) {
-  word-break: break-all;
 }
 
 .right {

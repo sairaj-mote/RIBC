@@ -51,7 +51,12 @@ button{
     transition: background 0.2s ease;
     cursor: pointer;
     display: inline-flex;
+    align-items: center;
     margin: 0 0.5em;
+    svg{
+        fill: var(--accent-color);
+        height: 1em;
+    }
     &:hover{
         background: var(--accent-color);
         color: var(--background);
@@ -59,11 +64,17 @@ button{
             fill: var(--foreground);
         }
     }
+    &:focus{
+        outline: none;
+    }
     &[disabled]{
-        color: #222222;
+        color: #222222 !important;
         opacity: 0.8;
         cursor: auto;
         background: none;
+        svg{
+            fill: #222 !important;
+        }
     }
 }
 input{
@@ -75,6 +86,7 @@ input{
     font-size: 1em;
     background: var(--background);
 }
+
 .show{
     display: block;
 }
@@ -101,7 +113,7 @@ input{
     padding: 0 4em;
 }
 #top_nav{
-    position: relative;
+    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
@@ -144,17 +156,13 @@ input{
     }
     button{
         svg{
-            height: 1em;
             margin-right: 0.5em;
-            fill: var(--accent-color);
-        }
-        &:hover svg{
-            fill: var(--foreground);
         }
     }
 }
 
 #dashboard{
+    margin-top: 0.5em;
     .first-row,.second-row{
         display: flex;
         flex-wrap: wrap;
@@ -190,8 +198,23 @@ input{
                 display: flex;
                 flex-direction: row;
                 padding: 1em 0;
+                button:hover{
+                    background: transparent;
+                    color: var(--accent-color);
+                    svg{
+                        fill: var(--accent-color);
+                    }
+                }
+                button:first-of-type{
+                    svg{
+                        margin-right: 0.5em;
+                    }
+                }
                 button:nth-of-type(2){
                     margin-left: auto;
+                    svg{
+                        margin-left: 0.5em;
+                    }
                 }
             }
         }
@@ -240,18 +263,17 @@ input{
     align-items: center;
     flex-direction: row;
     width: 100%;
-    padding: 1em;
-    svg{
+    padding: 0 1em;
+    svg:first-of-type{
         fill: rgba($color: #000000, $alpha: 0.48);
         height: 1.4em;
         width: 1.4em;
         margin-right: 0.5em;
     }
-    span:first-of-type{
+    h4{
         flex: 1;
-        font-weight: bold;
     }
-    span:nth-of-type(2){
+    span{
         color: var(--accent-color);
         border-radius: 0.25em;
         margin-right: 0.25em;
@@ -261,6 +283,13 @@ input{
         &:hover{
             background: var(--light-accent-color);  
         }
+    }
+}
+
+.hover{
+    fill: var(--accent-color);
+    &:hover{
+        fill: var(--accent-color) !important;
     }
 }
 
@@ -286,6 +315,14 @@ input{
         transition: transform 0.2s ease;
         box-shadow: 0 2em 2em rgba($color: #000000, $alpha: 0.24);
         border-radius: 0.25em;
+        .container-header{
+            h4{
+                font-size: 1.2em;
+            }
+        }
+        h5{
+            margin: 0.5em 0;
+        }
     }
 }
 #textCopied{
@@ -315,38 +352,49 @@ input{
     }
 
 #admin_panel{
-    margin-top: 0.5em;
-    grid-template-columns: 16em auto;
+    margin-top: 1em;
+    grid-template-columns: 20em auto;
     grid-template-rows: auto auto;
     grid-template-areas: 'projects edit'
                          'interns edit';
+}
+
+#edit_data_fig{
+    fill: rgba($color: #000000, $alpha: 0.6);
+    width: 16em;
+    margin: 2em 0;
+    align-self: flex-start;
+}
+
+.center{
+    position: relative;
+    display: grid;
+    place-content: center;
+    height: 100%;
+    text-align: center;
 }
 
 #projects_container,#interns_container{
     display: flex;
     flex-wrap: wrap;
     background: var(--foreground);
-    width: 16em !important;
     .container-header{
-        h3{
-            flex: 1;
-        }
         svg{
             padding: 0.5em;
             height: 2em;
             width: 2em;
-            opacity: 0.6;
+            opacity: 0.9;
             fill: #222;
             margin-right: 0;
+            cursor: pointer;
             &:hover{
-                opacity: 1;
-                cursor: pointer;
+                background: rgba($color: #000000, $alpha: 0.08);
             }
         }
     }
 }
 #interns,#projects{
-    width: 16em;
+    width: 100%;
     overflow-y: auto;
     max-height: 12em;
 }
@@ -398,9 +446,9 @@ input{
     padding: 0;
     .left{
         width: 16em;
-    }
-    h3{
-        margin: 0.5em 0;
+        span:nth-of-type(2){
+            word-break: break-all;
+        }
     }
 }
 #project_info{
@@ -413,6 +461,7 @@ input{
     }
 }
 .left{
+    padding-bottom: 1em;     
     div:nth-of-type(2){
         display: flex;
         align-items: center;
@@ -436,14 +485,11 @@ input{
     }
     span{
         display: block;
-        padding: 1em;
+        padding: 0.5em 1em;
         margin: 0;
     }
     span:first-of-type{
         flex: 1;
-    }
-    span:nth-of-type(2){
-        word-break: break-all;
     }
 }
 .right{
