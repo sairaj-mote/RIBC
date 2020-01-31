@@ -39,24 +39,8 @@
     </head>
     <body onload="onLoadStartUp()">
     <!--<body>-->
-        <div id="show_error">Error</div>
-        <div id="side_nav_container" class="popup-container hide">
-            <nav id="side_nav">
-                <h3>Intership Blokchain Contract</h3>
-                <div class="tabs" onclick="showPage('dashboard_btn', 'dashboard')">Dashboard</div>
-                <div class="tabs" onclick="showPage('admin_panel_btn', 'admin_panel')">Manage</div>
-                <button id="logout" class="hover svg-margin-right" onclick="logout()">
-                    <svg viewBox="0 0 16.75 22.62" style="enable-background:new 0 0 16.75 22.62;" xml:space="preserve">
-                    <path d="M14.75,6.62h-1V5.38C13.75,2.41,11.34,0,8.38,0S3,2.41,3,5.38v1.24H2c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2
-                        h12.75c1.1,0,2-0.9,2-2v-12C16.75,7.51,15.85,6.62,14.75,6.62z M5.07,5.79c0-1.83,1.48-3.31,3.31-3.31s3.31,1.48,3.31,3.31v0.83
-                        H5.07V5.79z"/>
-                    </svg>
-                    Logout</button>
-            </nav>
-        </div>
-        </nav>
         <nav id="top_nav">
-            <div id="logo" onclick="showPopup('side_nav')">
+            <div id="logo">
                 <svg viewBox="0 0 118.35 118.35">
                 <style type="text/css">
                 .outer-layer{fill:#CB1F1F;}
@@ -108,8 +92,8 @@
                 </svg>
                 <h4>RIBC</h4>
             </div>
-            <button id="dashboard_btn" class="tabs hide-on-mobile" onclick="showPage('dashboard_btn', 'dashboard')">Dashboard</button>
-			<button id="admin_panel_btn" class="tabs hide-on-mobile" onclick="showPage('admin_panel_btn', 'admin_panel')">Manage</button>
+            <button id="dashboard_btn" class="tabs hide-on-mobile" onclick="showPage(this, 'dashboard')">Dashboard</button>
+			<button id="admin_panel_btn" class="tabs hide-on-mobile" onclick="showPage(this, 'admin_panel')">Manage</button>
             <div class="spacer"></div>
             <div class="dropdown hide-on-mobile" id="intern_updates">
                 <button class="hover">
@@ -133,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <button id="logout" class="hover svg-margin-right hide-on-mobile" onclick="logout()">
+            <button id="logout" class="hover svg-margin-right" onclick="logout()">
                 <svg viewBox="0 0 16.75 22.62" style="enable-background:new 0 0 16.75 22.62;" xml:space="preserve">
                 <path d="M14.75,6.62h-1V5.38C13.75,2.41,11.34,0,8.38,0S3,2.41,3,5.38v1.24H2c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2
                     h12.75c1.1,0,2-0.9,2-2v-12C16.75,7.51,15.85,6.62,14.75,6.62z M5.07,5.79c0-1.83,1.48-3.31,3.31-3.31s3.31,1.48,3.31,3.31v0.83
@@ -160,7 +144,7 @@
                                 c-0.3,1.43-0.8,2.79-1.47,4.06C63.43,95.66,71.06,86.74,73.35,76C73.35,76,81.56,43,58.56,21z"/>
                             </svg> 
                             <h3>Best Interns</h3>
-                            <span class="hover" onclick="showAllInterns()">All</span>
+                            <span class="hover">All</span>
                         </div>
                     </div>
                     <div id="project_list_container" class="container-card">
@@ -171,13 +155,12 @@
                             </svg>
                             
                             <h3>Projects List</h3>
-                            <span class="hover" onclick="showAllProjects()">All</span>
+                            <span class="hover">All</span>
                         </div>
                     </div>
             </section>
             <div id="inner_page" class="page">
                 <header>Title</header>
-                <div></div>
             </div>
             <div id="admin_panel" class="page hide-completely">
                 <div>
@@ -303,7 +286,7 @@
                 <h3>Add new project</h3>
                     <input id="project_name_field" placeholder="Project Name" type="text"/>
                     <textarea id="project_description_field" placeholder="Project Description" type="text" rows="4"></textarea>
-                    <button onclick="hidePopup('add_project_popup')" type="submit">Cancel</button>
+                    <button onclick="hidePopup(this.parentNode)" type="submit">Cancel</button>
                     <button onclick="addProjectToList()">Add</button>
             </div>
         </div>
@@ -312,10 +295,14 @@
                 <h3>Add new intern</h3>
                     <input id="intern_name_field" placeholder="Name" type="text"/>
                     <input id="intern_flo_id_field" placeholder="FLO address" type="text" required/>
-                    <button onclick="hidePopup('add_intern_popup')" type="submit">Cancel</button>
+                    <button onclick="hidePopup(this.parentNode)" type="submit">Cancel</button>
                     <button onclick="addInternToList()">Add</button>
             </div>
         </div>
+        <nav id="bottom_nav" class="hide-on-desktop">
+            <button class="tabs" onclick="showPage(this, 'dashboard')">Dashboard</button>
+			<button class="tabs" onclick="showPage(this, 'admin_panel')">Manage</button>
+        </nav>
         <script id="init_lib">
             //All util libraries required for Standard operations (DO NOT EDIT ANY)
         
@@ -8757,12 +8744,7 @@
                             }).catch(error => reject(error));
                         })
                     },
-                    
-                    privKeyInput: function(){
-                        var privKey = prompt("Enter Private Key: ")
-                        return privKey
-                    },
-
+        
                     startUpFunctions:{
         
                         readSupernodeListFromAPI: function(){
@@ -8867,7 +8849,7 @@
                                             .catch(error => reject(error))
                                     }else{
                                         try{
-                                            var privKey = floDapps.util.privKeyInput();
+                                            var privKey = prompt("Enter Private Key: ")
                                             if(!privKey)
                                                 return reject("Empty Private Key")
                                             var floID = floCrypto.getFloIDfromPubkeyHex(floCrypto.getPubKeyHex(privKey))
@@ -8945,10 +8927,6 @@
                         throw(`Function ${fname} already defined`)
                     this.util.startUpFunctions[fname] = fn;
                 },
-
-                setCustomPrivKeyInput: function(customFn){
-                    this.util.privKeyInput = customFn
-                },
         
                 setAppObjectStores: function(appObs){
                     this.util.appObs = appObs
@@ -8993,9 +8971,9 @@
         
             function onLoadStartUp() {
         
-                //floDapps.addStartUpFunction('Sample', Promised Function)
-                //floDapps.setAppObjectStores({sampleObs1:{}, sampleObs2:{options{autoIncrement:true, keyPath:'SampleKey'}, Indexes:{sampleIndex:{}}}})
-                //floDapps.setCustomPrivKeyInput( () => { FUNCTION BODY } )
+                //addStartUpFunction('Sample', Promised Function)
+                //setAppObjectStores({sampleObs1:{}, sampleObs2:{options{autoIncrement:true, keyPath:'SampleKey'}, Indexes:{sampleIndex:{}}}})
+        
                 floDapps.launchStartUp().then(result => {
                     console.log(result)
                     console.log(`Welcome FLO_ID: ${myFloID}`)
@@ -9094,14 +9072,14 @@
                 manage: {
         
                     initAppObjects: function(){
-                        this.projectMap = floGlobals.appObjects.RIBC.projectMap || {};
-                        this.projectBranches = floGlobals.appObjects.RIBC.projectBranches || {};
-                        this.projectTaskDetails = floGlobals.appObjects.RIBC.projectTaskDetails || {};
-                        this.projectDetails = floGlobals.appObjects.RIBC.projectDetails || {};
-                        this.internList = floGlobals.appObjects.RIBC.internList || {};
-                        this.internRating = floGlobals.appObjects.RIBC.internRating || {};
-                        this.internsAssigned = floGlobals.appObjects.RIBC.internsAssigned || {};
-                        this.projectTaskStatus = floGlobals.appObjects.RIBC.projectTaskStatus || {};
+                        this.projectMap = floGlobals.appObjects.RIBC.projectMap;
+                        this.projectBranches = floGlobals.appObjects.RIBC.projectBranches;
+                        this.projectTaskDetails = floGlobals.appObjects.RIBC.projectTaskDetails;
+                        this.projectDetails = floGlobals.appObjects.RIBC.projectDetails;
+                        this.internList = floGlobals.appObjects.RIBC.internList;
+                        this.internRating = floGlobals.appObjects.RIBC.internRating;
+                        this.internsAssigned = floGlobals.appObjects.RIBC.internsAssigned;
+                        this.projectTaskStatus = floGlobals.appObjects.RIBC.projectTaskStatus;
                         this.lastCommit = JSON.stringify(floGlobals.appObjects.RIBC);
                     },
         
@@ -9747,13 +9725,12 @@
                 thisPopup.classList.add('no-transformations');    
                 window.onclick = function(event) {
                     if (event.target == thisPopup.parentNode)
-                        hidePopup(popup);
+                        hidePopup(thisPopup);
                 }
             }
 
             // hides the popup or modal 
-            function hidePopup(pop) {
-                let popup = document.getElementById(pop)
+            function hidePopup(popup) { 
                 popup.parentNode.classList.add('hide');    
                 popup.classList.remove('no-transformations');    
             }
@@ -9768,7 +9745,7 @@
                 {
                     RIBC.manage.addIntern(internFLOID, internName)
                     document.getElementById('interns').appendChild(render.internCard(internName, internFLOID, '1', 'interns'))
-                    hidePopup('add_intern_popup');
+                    hidePopup(document.getElementById('add_intern_popup'));
                 }
                 else{
                     document.getElementById('intern_flo_id_field').setAttribute('style', 'outline: solid 1px red');
@@ -9789,15 +9766,11 @@
                     return
                 }   
                     let date = new Date(),
-                        projectCode;
-                        if(typeof RIBC.getProjectList() === undefined)
-                            projectCode = `${date.getFullYear()}_project_1`;
-                        else
-                            projectCode = `${date.getFullYear()}_project_${RIBC.getProjectList().length+1}`;
+                        projectCode = `${date.getFullYear()}_project_${RIBC.getProjectList().length+1}`;
                     RIBC.manage.createProject(projectCode)
                     RIBC.manage.addProjectDetails(projectCode,{projectName: projectName, projectDescription: projectDescription})
                     document.getElementById('projects').appendChild(render.projectCard(projectName, projectCode))
-                    hidePopup('add_project_popup');
+                    hidePopup(document.getElementById('add_project_popup'));
             }
 
             // opens a popup containing various intern information
@@ -9952,19 +9925,17 @@
             
             document.getElementById(recentPage).click();
 
-            function showPage(elem, page){
+            function showPage(element, page){
                 let allPages = document.querySelectorAll('.page'),
                     allTabs = document.querySelectorAll('.tabs'),
-                    thisPage = document.getElementById(page),
-                    element = document.getElementById(elem)
+                    thisPage = document.getElementById(page);
                 allPages.forEach(function(pages){
                     pages.classList.add('hide-completely');
                 });
                 allTabs.forEach(function(tab){
                     tab.classList.remove('active');
                 });
-                if(element)
-                    element.classList.add('active');
+                element.classList.add('active');
                 thisPage.classList.remove('hide-completely');
                 /*if(!(recentPage == element)){
                     x.classList.add('fade');
@@ -9976,8 +9947,6 @@
                     });
                 }
                 recentPage = element;*/
-                if(window.innerWidth < 640)
-                    hidePopup('side_nav')
                 }
 
 
@@ -9999,15 +9968,12 @@
             }
 
             function logout(){
-                if(confirm("Do you want to logout?")){
-                floDapps.clearCredentials()
-                compactIDB.deleteDB().then((message) => {
-                    onLoadStartUp()
-                    alert('You have logged out successfully.')
-                }).catch((error) => {
-                    console.log(error)
-                })
-            }
+                floDapps.clearCredentials();
+                //if sub admin UI
+
+                //if intern UI
+
+
             }
 
             function showProjectStatus(index){
@@ -10042,6 +10008,7 @@
                 document.getElementById('best_interns_container').appendChild(frag)
                 // displays recent updates given by interns
                 //sort by timestamp
+                console.log(RIBC.getProjectMap('2020_project3'))
                 //document.getElementById('update-container').innerHTML='';
                 for(i = 0; i < updatesDb.length; i++){
                     frag.appendChild(render.updateCard(updatesDb[i].by, updatesDb[i].about, updatesDb[i].message))
