@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Intership Blockchain Contract</title>
-        <meta name="description" content="This web app can be used to manage projects and assign tasks to interns.">
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
@@ -43,60 +43,29 @@
                 <line x1="50.35" y1="0.35" x2="0.36" y2="50.35"/>
                 <line x1="0.35" y1="0.35" x2="50.35" y2="50.35"/>
             </svg>
-            </button>
-        </div>
-        <div id="confirmation" class="hide">
-            <h4></h4>
-            <div>
-                <button class="hover">Cancel</button>
-                <button class="hover">Ok</button>
-            </div>
-        </div>
-            <nav id="bottom_nav" class="hide-on-desktop">
-                <button id="bottom_dashboard_btn" class="tabs" onclick="showPage('bottom_dashboard_btn', 'dashboard')">
-                    <svg viewBox="0 0 73 73">
-                    <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
-                    <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
-                    <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
-                    </svg>
-                    Dashboard</button>
-                <button id="bottom_update_btn" class="tabs" onclick="showPage('bottom_update_btn', 'show_all', 'updates')">
-                    <svg viewBox="0 0 57.2 64">
-                        <circle style="fill: #FF4E4E" cx="47.7" cy="9.5" r="9.5"/>
-                        <path d="M52.29,52.21c-2.19-2.34-3.86-5.18-4.84-8.33V43v-5.5V21.99C40.66,21.85,35.2,16.32,35.2,9.5
-                            c0-2.35,0.66-4.55,1.79-6.42c-3.1-1.86-6.69-2.98-10.54-3.07c-11.64,0.26-21,9.79-21,21.49v16V43v0.88
-                            c-0.98,3.15-2.64,5.99-4.84,8.33C-0.74,53.65,0.29,56,2.26,56h3.19h1h13h2.36c-0.38,0.75-0.61,1.6-0.61,2.5
-                            c0,3.04,2.46,5.5,5.5,5.5s5.5-2.46,5.5-5.5c0-0.9-0.22-1.75-0.61-2.5h1.86h13h1h3.19C52.61,56,53.63,53.65,52.29,52.21z"/>
-                    </svg>Updates</button>
-                <button id="bottom_admin_btn" class="tabs admin-options hide-completely" onclick="showPage('bottom_admin_btn', 'admin_panel')">
-                    <svg viewBox="0 0 75 75.43">
-                        <circle cx="10.5" cy="10.5" r="9"/>
-                        <circle cx="33" cy="33.43" r="13.5"/>
-                        <circle cx="10.5" cy="64.93" r="9"/>
-                        <circle cx="64.5" cy="46.93" r="9"/>
-                        <line x1="23.84" y1="23.52" x2="16.7" y2="17.02"/>
-                        <line x1="45.28" y1="39.04" x2="56.04" y2="43.85"/>
-                        <line x1="15.49" y1="57.44" x2="24.68" y2="44.05"/>
-                    </svg>
-                    Manage</button>
-                <button id="bottom_setting_btn" class="tabs" onclick="showPage('bottom_setting_btn', 'settings_page')">
-                    <svg viewBox="0 0 74.1 67.24">
-                        <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
-                        c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
-                        c-7.77,3.43-7.77,14.46,0,17.88l1.53,0.67c3.9,1.72,6.23,5.76,5.77,10l-0.18,1.66c-0.92,8.44,8.63,13.96,15.49,8.94l1.35-0.99
-                        c3.44-2.52,8.11-2.52,11.54,0l1.35,0.99c6.85,5.02,16.4-0.5,15.49-8.94l-0.18-1.66c-0.46-4.23,1.87-8.28,5.77-10l1.53-0.67
-                        C74.55,39.14,74.55,28.11,66.77,24.68z M37.05,47.12c-7.46,0-13.5-6.04-13.5-13.5c0-7.46,6.04-13.5,13.5-13.5
-                        c7.46,0,13.5,6.04,13.5,13.5C50.55,41.08,44.51,47.12,37.05,47.12z"/>
-                    </svg>
-                    Settings</button>
+            </button></div>
+        <div id="side_nav_container" class="popup-container hide">
+            <nav id="side_nav">
+                <h3>Intership Blokchain Contract</h3>
+                <div class="tabs" onclick="showPage('dashboard_btn', 'dashboard')">Dashboard</div>
+                <div class="tabs" onclick="showPage('admin_panel_btn', 'admin_panel')">Manage</div>
+                <button id="logout" class="hover svg-margin-right" onclick="logout()">
+                    <svg viewBox="0 0 16.75 22.62" style="enable-background:new 0 0 16.75 22.62;" xml:space="preserve">
+                    <path d="M14.75,6.62h-1V5.38C13.75,2.41,11.34,0,8.38,0S3,2.41,3,5.38v1.24H2c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2
+                        h12.75c1.1,0,2-0.9,2-2v-12C16.75,7.51,15.85,6.62,14.75,6.62z M5.07,5.79c0-1.83,1.48-3.31,3.31-3.31s3.31,1.48,3.31,3.31v0.83
+                        H5.07V5.79z"/>
+                    </svg>                    
+                    Logout</button>
             </nav>
+        </div>
+        </nav>
         <div class="popup-container hide">
             <div id="sign_in" class="popup">
                 <header class="container-header">
                     <svg class="back-arrow hide-completely" id="back_to_main_page" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
-                    <h2>Sign In</h2>
+                    <h3>Sign In</h3>
                 </header>
                 <p>Welcome to RanchiMall Internship Blockchain Contract.</p>
                 <div class="fade-in">
@@ -119,9 +88,7 @@
                         private key</button>
                 </div>
                 <div id="priv_key_sign_in" class="hide-completely fade-in">
-                    <label class="input">
-                        <input id="priv_key_field" placeholder="Private key" type="password">
-                    </label>
+                    <input id="priv_key_field" placeholder="Private key" type="text">
                     <label>
                         <button id="sign_in_btn" disabled>Sign in</button>
                     </label>
@@ -132,7 +99,7 @@
             </div>
         </div>
         <nav id="top_nav">
-            <div id="logo">
+            <div id="logo" onclick="showPopup('side_nav')">
                 <svg viewBox="0 0 118.35 118.35">
                 <style type="text/css">
                 .outer-layer{fill:#CB1F1F;}
@@ -184,23 +151,8 @@
                 </svg>
                 <h4>RIBC</h4>
             </div>
-            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right" onclick="showPage('dashboard_btn', 'dashboard')">
-                <svg viewBox="0 0 73 73">
-                    <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
-                    <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
-                    <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
-                    </svg>Dashboard</button>
-            <button id="admin_panel_btn" class="tabs admin-options hide-on-mobile hide-completely svg-margin-right" onclick="showPage('admin_panel_btn', 'admin_panel')">
-                <svg viewBox="0 0 75 75.43">
-                    <circle cx="10.5" cy="10.5" r="9"/>
-                    <circle cx="33" cy="33.43" r="13.5"/>
-                    <circle cx="10.5" cy="64.93" r="9"/>
-                    <circle cx="64.5" cy="46.93" r="9"/>
-                    <line x1="23.84" y1="23.52" x2="16.7" y2="17.02"/>
-                    <line x1="45.28" y1="39.04" x2="56.04" y2="43.85"/>
-                    <line x1="15.49" y1="57.44" x2="24.68" y2="44.05"/>
-                </svg>
-                Manage</button>
+            <button id="dashboard_btn" class="tabs hide-on-mobile" onclick="showPage('dashboard_btn', 'dashboard')">Dashboard</button>
+			<button id="admin_panel_btn" class="tabs hide-on-mobile" onclick="showPage('admin_panel_btn', 'admin_panel')">Manage</button>
             <div class="spacer"></div>
             <div class="dropdown hide-on-mobile" id="intern_updates">
                 <button id="update_panel_btn">
@@ -216,7 +168,7 @@
                 </button>
                 <div class="dropdown-content hide" id="updates">
                     <div class="container-header">
-                        <h3>Interns' Feed</h3>
+                        <h3>Updates</h3>
                         <button onclick="showPage('', 'show_all', 'updates')">See all</button>
                     </div>
                     <div id="update_container">
@@ -224,19 +176,23 @@
                     </div>
                 </div>
             </div>
-            <button id="settings_btn" class="tabs hide-on-mobile" onclick="showPage('settings_btn', 'settings_page')">
-                <svg viewBox="0 0 74.1 67.24">
-                    <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
-                    c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
-                    c-7.77,3.43-7.77,14.46,0,17.88l1.53,0.67c3.9,1.72,6.23,5.76,5.77,10l-0.18,1.66c-0.92,8.44,8.63,13.96,15.49,8.94l1.35-0.99
-                    c3.44-2.52,8.11-2.52,11.54,0l1.35,0.99c6.85,5.02,16.4-0.5,15.49-8.94l-0.18-1.66c-0.46-4.23,1.87-8.28,5.77-10l1.53-0.67
-                    C74.55,39.14,74.55,28.11,66.77,24.68z M37.05,47.12c-7.46,0-13.5-6.04-13.5-13.5c0-7.46,6.04-13.5,13.5-13.5
-                    c7.46,0,13.5,6.04,13.5,13.5C50.55,41.08,44.51,47.12,37.05,47.12z"/>
+            <button id="logout" class="svg-margin-right hide-on-mobile" onclick="logout()">
+                <svg viewBox="0 0 16.75 22.62" style="enable-background:new 0 0 16.75 22.62;" xml:space="preserve">
+                <path d="M14.75,6.62h-1V5.38C13.75,2.41,11.34,0,8.38,0S3,2.41,3,5.38v1.24H2c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2
+                    h12.75c1.1,0,2-0.9,2-2v-12C16.75,7.51,15.85,6.62,14.75,6.62z M5.07,5.79c0-1.83,1.48-3.31,3.31-3.31s3.31,1.48,3.31,3.31v0.83
+                    H5.07V5.79z"/>
                 </svg>
-            </button>
+                Logout</button>
         </nav>
             <section id="dashboard" class="page">
                     <div id="status_map_container" class="container-card">
+                        <div>
+                            <h2 id="status_map_name" class="title"></h2>
+                        </div>
+                        <p id="project_description"></p>
+                        <div id="map_branch_container"></div>
+                        <h4>Timeline</h4>
+                        <div id="map_body"></div>
                     </div>
                     <div>
                         <div id="best_interns_container" class="container-card">
@@ -246,7 +202,7 @@
                                     c-0.59-1.18-1.04-2.43-1.32-3.74c0,0-3.98-15.99,7.16-26.65c2.13-2.36,10.52-8.33,8.58-18.01c25.19,15.99,18.93,44.66,18.93,44.66
                                     c-0.3,1.43-0.8,2.79-1.47,4.06C63.43,95.66,71.06,86.74,73.35,76C73.35,76,81.56,43,58.56,21z"/>
                                 </svg> 
-                                <h3>Intern Leaderboard</h3>
+                                <h3>Best Interns</h3>
                                 <span class="hover" onclick="showPage('', 'show_all', 'interns')">All</span>
                             </div>
                             <div id="best_interns">
@@ -265,84 +221,8 @@
                             </div>
                         </div>
                     </div>
-                    <button id="floating_btn" onclick="showPopup('post_update')">
-                        <svg viewBox="0 0 74.55 74.53">
-                            <polygon points="73.7,0.86 1.7,28.42 37.7,36.86 47.02,72.86 "/>
-                        </svg>
-                    </button>
+                    <button id="floating_btn" onclick="showPopup('post_update')">Post update</button>
             </section>
-            <div id="settings_page" class="page hide-completely container-card">
-                <section>
-                    <h3>Dark mode</h3>
-                    <div>
-                      <span class="row">
-                        Automatic<br>
-                        <span>Dark mode active : 6pm - 6am</span>
-                      </span>
-                      <label class="switch">
-                        <input aria-label="Toggle automatic dark theme" autocomplete="new-password"  type="checkbox" id="auto-mode" type="checkbox" onclick="autoMode()"/>
-                          <span class="slider round"></span>
-                      </label>
-                    </div>
-                    <div>
-                      <span class="row">Manual<br>
-                        <span>Dark mode</span>
-                      </span>
-                      <label class="switch">
-                        <input aria-label="Toggle manual dark theme" autocomplete="new-password"  type="checkbox" id="manual-mode" type="checkbox" onclick="theme()"/>
-                        <span class="slider round"></span>
-                      </label>
-                    </div>
-                  </section>
-                  <section>
-                      <h3>Account</h3>
-                      <p>This will delete all local data.</p>
-                      <button id="logout" class="svg-margin-right" onclick="logout()">
-                        <svg viewBox="0 0 73.21 55">
-                            <path d="M27.71,9.5"/>
-                            <polyline points="27.71,14 27.71,0.5 72.71,0.5 72.71,54.5 27.71,54.5 27.71,41"/>
-                            <line x1="41.85" y1="27.6" x2="0.71" y2="27.6"/>
-                            <polyline points="16.14,12.17 0.71,27.6 16.14,43.03"/>
-                        </svg>                        
-                        Sign out
-                    </button>
-                  </section>
-                  <section>
-                      <h3>About</h3>
-                      <h5>Version 8.1.8</h5>
-                              <a class="border-card" href="https://flo.cash/" target="_blank" rel="noopener noreferrer">
-                                      <h5>Powered by</h5>
-                                      <svg viewBox="0 0 108 48" style="enable-background:new 0 0 107.65 47.07;"
-                                      xml:space="preserve">
-                                      <g>
-                                      <path class="flo-logo" d="M34.2,32.4c0,0,3.75-0.18,7.41-3.86c2.96-2.98,3.65-6.66,3.99-8.52c-11.04-0.63-12.36,0.99-13.71,1.68
-                                      c-1.19,0.61-5.33,4.55-5.33,4.55s3.06-3.13,3.2-9.94c0.09-4.54-1.02-7.39-2.72-10.64C25.29,2.33,22.79,0,22.79,0l0.01,4.97
-                                      c0,0,4.35,2.84,4.35,11.84c0,6.52-4.35,11.02-4.35,11.02s-4.35-4.5-4.35-11.02c0-9.01,4.35-11.84,4.35-11.84L22.79,0
-                                      c0,0-2.48,2.33-4.23,5.67c-1.7,3.25-2.81,6.1-2.72,10.64c0.13,6.81,3.2,9.94,3.2,9.94s-4.14-3.95-5.33-4.55
-                                      c-1.35-0.69-2.67-2.31-13.71-1.68c0.34,1.86,1.03,5.54,3.99,8.52c3.66,3.68,7.41,3.86,7.41,3.86s-5.05-2.03-7.15-9.45
-                                      c0,0,5.76-0.7,9.63,1.87c2.52,1.67,4.86,4.26,6.79,6.01c0,0-2.58-0.04-6.81,1.88c-2.54,1.15-3.92,2.84-4.44,4.38
-                                      c-0.36,1.06-0.2,2.27-0.2,2.27s3.31,0.31,5.94,0c1.99-0.23,3.42-2.16,3.42-2.16s-2,0.78-3.95,0.78c-2.06,0-2.67-0.66-2.67-0.66
-                                      c0.98-3.64,8.68-5.19,8.68-5.19s-1.34,2.6-1.42,6.5c-0.1,4.79,3.57,8.52,3.57,8.45c0,0.07,3.67-3.66,3.57-8.45
-                                      c-0.08-3.9-1.42-6.5-1.42-6.5s7.71,1.55,8.68,5.19c0,0-0.61,0.66-2.67,0.66c-1.95,0-3.95-0.78-3.95-0.78s1.43,1.93,3.42,2.16
-                                      c2.63,0.31,5.94,0,5.94,0s0.16-1.21-0.2-2.27c-0.52-1.54-1.9-3.23-4.44-4.38c-4.23-1.92-6.81-1.88-6.81-1.88
-                                      c1.93-1.76,4.27-4.34,6.79-6.01c3.87-2.57,9.63-1.87,9.63-1.87C39.26,30.38,34.2,32.4,34.2,32.4z M22.8,43.06
-                                      c-0.95-1.37-1.47-2.13-1.47-4.26c0-2.4,1.12-4.61,1.47-5.14c0.35,0.52,1.47,2.74,1.47,5.14C24.27,40.92,23.75,41.69,22.8,43.06z"/>
-                                      <g>
-                                      <polygon class="flo-logo" points="73.53,36.36 73.53,20.01 70.53,20.01 70.53,36.36 70.53,39.35 84,39.35 84,36.36 		"/>
-                                      <g>
-                                          <rect x="52.75" y="20.01" class="flo-logo" width="13.47" height="2.93"/>
-                                          <polygon class="flo-logo" points="63.74,28.36 55.74,28.36 52.75,28.36 52.75,31.35 52.75,39.35 55.74,39.35 55.74,31.35 63.74,31.35 
-                                                          "/>
-                                      </g>
-                                      <path class="flo-logo" d="M97.99,20.01c-5.34,0-9.67,4.33-9.67,9.67s4.33,9.67,9.67,9.67s9.67-4.33,9.67-9.67S103.33,20.01,97.99,20.01
-                                          z M97.99,35.85c-3.41,0-6.17-2.76-6.17-6.17c0-3.41,2.76-6.17,6.17-6.17c3.41,0,6.17,2.76,6.17,6.17
-                                          C104.15,33.09,101.39,35.85,97.99,35.85z"/>
-                                      </g>
-                                      </g>
-                                      </svg>
-                                  </a>
-                  </section>
-            </div>
             <div id="show_all" class="page hide-completely container-card">
                 <header class="header">
                     <svg onclick="showPage('', 'lastPage')" viewBox="0 0 31.24 56.83">
@@ -352,20 +232,20 @@
                 </header>
                 <div></div>
             </div>
-            <div id="project_explorer" class="page hide-completely container-card list-container">
+            <div id="project_explorer" class="page hide-completely container-card">
                 <header class="header">
                     <svg onclick="showPage('', 'lastPage')" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Projects</h3>
                 </header>
-                <div id="left" class="list-container">
+                <div id="left">
     
                 </div>
-                <div id="right" class="inner-page">
+                <div id="right">
                     <div>
                         <h2>Project Name</h2>
-                        <button id="watch_project_btn" class="svg-margin-right" onclick="watchThisProject()">
+                        <button id="watch_project_btn" onclick="watchThisProject()">
                             Watch this project
                         </button>
                     </div>
@@ -378,7 +258,7 @@
             </div>
             <div id="admin_panel" class="page hide-completely">
                 <div>
-                    <div id="projects_container" class="container-card list-container">
+                    <div id="projects_container" class="container-card">
                         <div class="container-header">
                             <h3>Projects</h3>
                             <svg onclick="showPopup('add_project_popup')" class="hover" viewBox="0 0 48 48">
@@ -390,7 +270,7 @@
 
                         </div>
                     </div>
-                    <div id="interns_container" class="container-card list-container">
+                    <div id="interns_container" class="container-card">
                         <div class="container-header">
                             <h3>Interns</h3>
                             <svg onclick="showPopup('add_intern_popup')" class="hover" viewBox="0 0 48 48">
@@ -403,7 +283,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-card inner-page hide-on-mobile">
+                <div class="container-card inner-page">
                     <div id="figure1" class="center">
                     <svg id="edit_data_fig" viewBox="0 0 181.77 63.09">
                         <path d="M116.81,46.62c-3.05,0-6.1,0-9.15,0c-7.53,0-15.07,0-22.6,0c-9.54,0-19.09,0-28.63,0
@@ -452,37 +332,10 @@
                         s4-1.79,4-4V28h16c2.21,0,4-1.79,4-4C48,21.79,46.21,20,44,20z"/>
                     </svg>Add task</button>
                 <ul id="task_context" class="hide">
-                    <li id="assign_intern" class="hover" onclick="showPopup('interns_list')">
-                        <svg viewBox="0 0 72.48 47.73">
-                            <path  d="M45.36,26.68c-7.22,0-13.09-5.87-13.09-13.09S38.14,0.5,45.36,0.5c7.22,0,13.09,5.87,13.09,13.09
-                                S52.58,26.68,45.36,26.68z"/>
-                            <path d="M45.36,1c6.94,0,12.59,5.65,12.59,12.59S52.3,26.18,45.36,26.18s-12.59-5.65-12.59-12.59S38.42,1,45.36,1 M45.36,0
-                                c-7.51,0-13.59,6.09-13.59,13.59s6.09,13.59,13.59,13.59c7.51,0,13.59-6.09,13.59-13.59S52.87,0,45.36,0L45.36,0z"/>
-                            <path d="M72,47.57c-2.52-7.75-13.49-13.59-26.64-13.59s-24.12,5.84-26.64,13.59"/>
-                            <line x1="13.5" y1="11.57" x2="13.5" y2="38.57"/>
-                            <line x1="0" y1="25.07" x2="27" y2="25.07"/>
-                        </svg>
-                        Assign an intern
-                    </li>
-                    <li class="hover" onclick="addNewBranch()">
-                        <svg viewBox="0 0 66.57 34.92">
-                            <circle cx="6.54" cy="6.63" r="6.17"/>
-                            <line x1="12.71" y1="6.63" x2="53.87" y2="6.92"/>
-                            <circle cx="60.03" cy="6.54" r="6.17"/>
-                            <path d="M53.87,28.38l-13.75,0.08c-12.1,0-15.4-15.5-21.84-21.84"/>
-                            <circle cx="60.03" cy="28.38" r="6.17"/>
-                        </svg>
-                        Create new Branch
-                    </li>
-                    <li class="hover" onclick="removeThisTask()">
-                        <svg viewBox="0 0 60.35 73" >
-                        <path d="M47.19,72.5H13.15c-3.5,0-6.4-2.74-6.59-6.24L4.1,21.97c-0.05-0.99,0.73-1.82,1.72-1.82h48.7
-                            c0.99,0,1.77,0.83,1.72,1.82l-2.46,44.29C53.59,69.76,50.7,72.5,47.19,72.5z"/>
-                        <path d="M57.79,4H40.64V2.25c0-0.97-0.78-1.75-1.75-1.75H21c-0.71,0-1.29,0.58-1.29,1.29V4H2.55
-                            C1.42,4,0.5,4.93,0.5,6.06v6.23c0,1.13,0.92,2.06,2.05,2.06h55.24c1.13,0,2.05-0.92,2.05-2.06V6.06C59.85,4.93,58.92,4,57.79,4z"/>
-                        </svg>                    
-                        Delete
-                    </li>
+                    <li id="assign_intern" class="hover" onclick="showPopup('interns_list')">Assign an intern</li>
+                    <li id="unassign_intern" class="hover hide-completely" onclick="unassignIntern()">Assign an intern</li>
+                    <li class="hover" onclick="addNewBranch()">Create new Branch</li class="hover">
+                    <li class="hover" onclick="removeThisTask()">Remove this task</li class="hover">
                 </ul>
             </div>
           </div>
@@ -507,19 +360,7 @@
 
         <div class="popup-container hide">
             <div class="popup" id="interns_list">
-                <div class="container-header">
-                    <svg class="back-arrow" onclick="hidePopup('interns_list')" viewBox="0 0 31.24 56.83">
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3 class="medium-top-bottom-margin">Choose an intern</h3>
-                </div>
-                <label class="input">
-                    <svg viewBox="0 0 72.85 72.85">
-                        <circle cx="27.5" cy="27.5" r="27"/>
-                        <line x1="72.5" y1="72.5" x2="46.59" y2="46.59"/>
-                    </svg>
-                    <input id="intern_search_field" placeholder="Search for interns" type="text">
-                </label>
+                <input id="intern_search_field" placeholder="Search for interns" type="text">
                 <div id="interns_list_container">
 
                 </div>
@@ -560,12 +401,8 @@
                         Add
                     </button>
                 </div>
-                <label class="input">
                     <input id="project_name_field" placeholder="Name" type="text"/>
-                </label>
-                <label class="input">
                     <textarea id="project_description_field" placeholder="Description" type="text" rows="8"></textarea>
-                </label>
             </div>
         </div>
         <div class="hide popup-container">
@@ -582,12 +419,8 @@
                         Add
                     </button>
                 </div>
-                <label class="input">
                     <input id="intern_name_field" placeholder="Name" type="text"/>
-                </label>
-                <label class="input">
-                    <input id="intern_flo_id_field" placeholder="FLO address" type="text"/>
-                </label>
+                    <input id="intern_flo_id_field" placeholder="FLO address" type="text" required/>
             </div>
         </div>
         <div class="hide popup-container">
@@ -597,19 +430,15 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Create a new branch</h3>
+                </div>
+                    <input id="branch_start_point" placeholder="Start point" type="number"/>
+                    <input id="branch_merge_point" placeholder="Merge point" type="number"/>
                     <button id="create_branch_btn">
                         <svg class="tick-mark" viewBox="0 0 100 100">
                             <polyline points="25.5,53.5 39.5,67.5 72.5,34.5 "/>
                         </svg>
                         Create
                     </button>
-                </div>
-                <label class="input">
-                    <input id="branch_start_point" placeholder="Start point" type="number"/>
-                </label>
-                <label class="input">
-                    <input id="branch_merge_point" placeholder="Merge point" type="number"/>
-                </label>
             </div>
         </div>
         <div class="hide popup-container">
@@ -619,23 +448,14 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Post an update</h3>
-                    <button id="post_update_btn" class="svg-margin-right">
-                        <svg viewBox="0 0 74.55 74.53">
-                            <polygon points="73.7,0.86 1.7,28.42 37.7,36.86 47.02,72.86 "/>
-                        </svg>
-                        Post
-                    </button>
+                    <button id="post_update_btn">Post</button>
                 </div>
-                <label class="input">
                     <input id="update_topic" placeholder="Topic" type="text"/>
-                </label>
-                <label class="input">
                     <textarea id="update_description" placeholder="Description" type="text" rows="8"></textarea>
-                </label>
             </div>
         </div>
-        <div id="loader" class="popup-container">
-            <svg viewBox="0 0 64 64" class="loader loading-animation">
+        <div id="loader" class="popup-container hide">
+            <svg viewBox="0 0 64 64" class="loader">
                 <circle cx="32" cy="32" r="32"/>
             </svg>   
         </div>
@@ -9090,15 +8910,10 @@
                     },
                     
                     privKeyInput: function(){
-                        return new Promise((resolve, reject) => {
-                            var privKey = prompt("Enter Private Key: ")
-                            if(privKey === null)
-                                reject(null)
-                            else
-                                resolve(privKey)
-                        })
+                        var privKey = prompt("Enter Private Key: ")
+                        return privKey
                     },
-        
+
                     startUpFunctions:{
         
                         readSupernodeListFromAPI: function(){
@@ -9202,33 +9017,27 @@
                                             .then(result => resolve(result))
                                             .catch(error => reject(error))
                                     }else{
-                                        var privKey;
-                                        floDapps.util.privKeyInput().then(result => {
-                                            try{
-                                                if(!result)
-                                                    return reject("Empty Private Key")
-                                                var floID = floCrypto.getFloIDfromPubkeyHex(floCrypto.getPubKeyHex(result))
-                                                privKey = result
-                                            }catch(error){
-                                                console.error(error)
-                                                return reject("Invalid Private Key")
-                                            }
-                                        }).catch(error => {
-                                            console.log(error, "Generating Random Keys")
-                                            privKey = floCrypto.generateNewID().privKey
-                                        }).finally(_ => {
-                                            var threshold = floCrypto.randInt(10,20)
-                                            writeSharesToIDB(floCrypto.createShamirsSecretShares(privKey, threshold, threshold)).then(resultIndexes =>{
-                                                //store index keys in localStorage
-                                                localStorage.setItem(`${floGlobals.application}#privKey`, JSON.stringify(resultIndexes))
-                                                //also add a dummy privatekey to the IDB
-                                                var randomPrivKey = floCrypto.generateNewID().privKey
-                                                var randomThreshold = floCrypto.randInt(10,20)
-                                                writeSharesToIDB(floCrypto.createShamirsSecretShares(randomPrivKey, randomThreshold, randomThreshold))
-                                                //resolve private Key
-                                                resolve(privKey)
-                                            }).catch(error => reject(error))
-                                        })
+                                        try{
+                                            var privKey = floDapps.util.privKeyInput();
+                                            if(!privKey)
+                                                privKey = floCrypto.generateNewID().privKey
+                                            var floID = floCrypto.getFloIDfromPubkeyHex(floCrypto.getPubKeyHex(privKey))
+                                            console.log(floID)
+                                        }catch(error){
+                                            console.error(error)
+                                            return reject("Invalid Private Key")
+                                        }
+                                        var threshold = floCrypto.randInt(10,20)
+                                        writeSharesToIDB(floCrypto.createShamirsSecretShares(privKey, threshold, threshold)).then(resultIndexes =>{
+                                            //store index keys in localStorage
+                                            localStorage.setItem(`${floGlobals.application}#privKey`, JSON.stringify(resultIndexes))
+                                            //also add a dummy privatekey to the IDB
+                                            var randomPrivKey = floCrypto.generateNewID().privKey
+                                            var randomThreshold = floCrypto.randInt(10,20)
+                                            writeSharesToIDB(floCrypto.createShamirsSecretShares(randomPrivKey, randomThreshold, randomThreshold))
+                                            //resolve private Key
+                                            resolve(privKey)
+                                        }).catch(error => reject(error))
                                     }
                                 })
                             }
@@ -9269,6 +9078,9 @@
                     return new Promise((resolve,reject) => {
                         this.util.initIndexedDB().then(log => {
                             console.log(log)
+                            let loader = document.getElementById('loader');
+                            loader.classList.remove('hide')
+                            loader.children[0].classList.add('loading-animation')
                             this.util.callStartUpFunction.total = Object.keys(this.util.startUpFunctions).length
                             this.util.callStartUpFunction.completed = 0
                             this.util.callStartUpFunction.failed = 0
@@ -9287,7 +9099,7 @@
                         throw(`Function ${fname} already defined`)
                     this.util.startUpFunctions[fname] = fn;
                 },
-        
+
                 setCustomPrivKeyInput: function(customFn){
                     this.util.privKeyInput = customFn
                 },
@@ -9339,10 +9151,7 @@
                 //floDapps.setAppObjectStores({sampleObs1:{}, sampleObs2:{options{autoIncrement:true, keyPath:'SampleKey'}, Indexes:{sampleIndex:{}}}})
                 floDapps.setCustomPrivKeyInput(myInput)
                 floDapps.launchStartUp().then(result => {
-                    let loader = document.getElementById('loader');
-                            loader.classList.remove('hide')
-                            loader.children[0].classList.add('loading-animation')
-                    console.log(result)
+                    //console.log(result)
                     console.log(`Welcome FLO_ID: ${myFloID}`)
                     RIBC.initRIBC().then(result => {
                         console.log(result)
@@ -9842,77 +9651,7 @@
         
             }
         </script>
-        <script id="UI_functions">   
-                let mode;   
-                if(localStorage.getItem('dark') === null)
-                    localStorage.setItem('dark', 'auto')
-                const html = document.querySelector('html');
-                if(localStorage.dark === 'yes')
-                {
-                    nightlight();
-                    document.getElementById('manual-mode').checked = true;
-                    clearInterval(mode);
-                } 
-                else if(localStorage.dark === 'auto'){
-                    document.getElementById('auto-mode').checked = true;
-                    document.getElementById('manual-mode').checked = false;
-                    autoMode();
-                    mode = setInterval(() => {
-                        let d = new Date(),
-                            t = d.getHours();
-                        if(t> 6 && t < 18){
-                            daylight();
-                        }
-                        else{
-                            nightlight();
-                        }
-                    }, 60000);
-                }
-                else
-                {
-                    daylight();
-                    document.getElementById('manual-mode').checked = false;
-                    clearInterval(mode);
-                }
-                function daylight(){
-                    html.setAttribute("style", `--rgb-bw: 0,0,0;--alpha: 1;--light-text: #222;--background: #EBEBEB;--foreground:#f6f6f6;--light-color: 170,170,170;--dark-color: #ddd;`);
-                }
-                function nightlight(){
-                    html.setAttribute("style", `--rgb-bw: 255,255,255;--alpha: 0.04;--light-text: #eee;--background: #222;--foreground: #2a2a2a;--light-color: 51, 51, 51;--dark-color: #111;`);
-                }
-                function autoMode()
-                {
-                    let x = document.getElementById('auto-mode');
-                    if(x.checked){
-                        localStorage.setItem('dark', 'auto');
-                        document.getElementById('manual-mode').checked = false;
-                        let d = new Date();
-                        let t = d.getHours();
-                        if(t> 6 && t < 18){
-                            daylight();
-                        }
-                        else{
-                            nightlight();
-                        }
-                    }
-                    else{
-                        localStorage.setItem('dark', 'no');
-                        daylight();
-                        clearInterval(mode);
-                    }
-                }   
-                function theme(){
-                    let x = document.getElementById('manual-mode');
-                    if(!x.checked){
-                        daylight();
-                        localStorage.setItem('dark' ,'no');
-                    }
-                    else{
-                        nightlight();
-                        localStorage.setItem('dark' ,'yes');
-                        document.getElementById('auto-mode').checked = false;
-                    }
-                }  
+        <script id="UI_functions">        
             // Method object for creating various UI elements
             const render = {
                 projectCard: function(projectName, projectCode){ // creates cards containing project information
@@ -9949,29 +9688,19 @@
                     }
                     assignedInternsContainer.classList.add('assigned-interns')
                     description.textContent = taskDetails.taskDescription;
-                    right.append(title, assignedInternsContainer, description)
-                    card.append(left, right)
+                    right.appendChild(title)
+                    right.appendChild(assignedInternsContainer)
+                    right.appendChild(description)
+                    card.appendChild(left)
+                    card.appendChild(right)
                     return card;
                 },
                 internCard: function(internName, internFLOID, internPoints, container){// creates cards containing intern information
-                    let card = document.createElement('div'),
-                        nameCircle = document.createElement('span'),
-                        internNameSpan = document.createElement('span'),
-                        pointsBox = document.createElement('span'),
-                        points = document.createTextNode(internPoints);
-                        pointsBox.innerHTML = `<svg viewBox="0 0 69.81 69.69">
-                                            <path d="M34.18,58.59L15.33,69.01c-1.09,0.6-2.39-0.32-2.19-1.54l3.64-22.29c0.08-0.47-0.07-0.94-0.4-1.28L0.92,28.06
-                                                c-0.85-0.87-0.36-2.33,0.84-2.51l21.23-3.24c0.49-0.07,0.91-0.39,1.12-0.84l9.44-20.11c0.54-1.14,2.16-1.14,2.69,0l9.44,20.11
-                                                c0.21,0.45,0.63,0.76,1.12,0.84l21.23,3.24c1.2,0.18,1.69,1.64,0.84,2.51L53.43,43.9c-0.33,0.34-0.48,0.81-0.4,1.28l3.64,22.29
-                                                c0.2,1.23-1.1,2.14-2.19,1.54L35.62,58.59C35.17,58.34,34.63,58.34,34.18,58.59z"/>
-                                            </svg>`;
-                    pointsBox.append(points)
+                    let card = document.createElement('div');
                     setAttributes(card, {'data-intern-id': internFLOID, 'title': 'Intern Information'})
-                    card.classList.add('intern-card','card', 'hover');
-                    nameCircle.textContent = internName.charAt(0);
-                    internNameSpan.textContent = internName;
-                    points.textContent = internPoints;
-                    card.append(nameCircle, internNameSpan, pointsBox)
+                    card.classList.add('intern-card','card', 'hover')
+                    card.innerHTML = `<span>${internName}</span>
+                                    <span title="Earned Points">${internPoints}</span>`;
                     return card;
                 },
                 updateCard: function(internName, projectName, message){// creates cards containing updates provided by interns
@@ -10040,35 +9769,12 @@
                     options.classList.add('task-option')
                     assignedInternsContainer.classList.add('assigned-interns')
                     description.textContent = taskDetails.taskDescription;
-                    card.append(checkbox, title, options, assignedInternsContainer, description)
+                    card.appendChild(checkbox)
+                    card.appendChild(title)
+                    card.appendChild(options)
+                    card.appendChild(assignedInternsContainer)
+                    card.appendChild(description)
                     return card;
-                },
-                projectMapCard: function(projectCode){
-                    let card = document.createElement('div'),
-                        header = document.createElement('div'),
-                        title = document.createElement('h2'),
-                        para = document.createElement('p'),
-                        branchContainer = document.createElement('div'),
-                        timeline = document.createElement('h4')
-                        mapBody = document.createElement('div'),
-                        frag = document.createDocumentFragment(),
-                        projectDetails = RIBC.getProjectDetails(projectCode),
-                        mapItems = [];
-                    card.id = `${projectCode}_map`;
-                    currentProject = projectCode;
-                    branchContainer.id = `${projectCode}_branch_container`;
-                    title.textContent = projectDetails.projectName;
-                    para.textContent = projectDetails.projectDescription;
-                    timeline.textContent = 'Timeline';
-                    mapBody.id = `${projectCode}_map_body`
-                    RIBC.getProjectBranches(projectCode).forEach((branch) => {
-                        frag.appendChild(render.branchBtn(branch))
-                    })
-                    branchContainer.appendChild(frag);
-                    header.appendChild(title)
-                    card.append(header, para, branchContainer, timeline, mapBody)
-                    mapItems.push(card, card.id, branchContainer.id, mapBody.id)
-                    return mapItems;
                 }
             }
 
@@ -10114,7 +9820,7 @@
                 };
 
             let recentPage = 'dashboard_btn',i = currentProgress = projectIndex = 0, prevProject = '',iList,
-            frag = document.createDocumentFragment(), watchList = [];
+            frag = document.createDocumentFragment();
 
             document.getElementById('best_interns').addEventListener('click', (event) => {
                 if(event.target.closest('.intern-card'))
@@ -10134,21 +9840,20 @@
             })
 
             // function required for popups or modals to appear
-            function showPopup(popup, permission){ 
+            function showPopup(popup) { 
                 let thisPopup = document.getElementById(popup);
                 if(thisPopup.querySelector('input'))
                     thisPopup.querySelector('input').focus()
                 thisPopup.parentNode.classList.remove('hide');    
                 thisPopup.classList.add('no-transformations');    
                 window.onclick = function(event) {
-                    if (event.target == thisPopup.parentNode && permission !== 'no')
+                    if (event.target == thisPopup.parentNode)
                         hidePopup(popup);
                 }
             }
 
             // hides the popup or modal 
-            function hidePopup(pop, permission){
-                if(permission === 'no') return;
+            function hidePopup(pop) {
                 let popup = document.getElementById(pop)
                 popup.parentNode.classList.add('hide');    
                 popup.classList.remove('no-transformations'); 
@@ -10169,21 +9874,6 @@
                 setTimeout(()=>{
                     banner.classList.remove('no-transformations')
                 }, 4000)
-            }
-            let askConfirmation = function(message){
-                return new Promise((resolve, reject) => {
-                    let popup = document.getElementById('confirmation')
-                    popup.classList.remove('hide')
-                    popup.children[0].textContent = message;
-                    popup.children[1].firstElementChild.onclick = function() {
-                        popup.classList.add('hide')
-                        resolve(false)
-                    }
-                    popup.children[1].children[1].onclick = function() {
-                        popup.classList.add('hide')
-                        resolve(true);
-                    }
-                })
             }
 
             // Adds interns to the database **Only SubAdmins can add interns
@@ -10235,8 +9925,8 @@
             function showInternInfo(intern) { 
                 showPopup('intern_info');
                 let popup = document.getElementById('intern_info');
-                popup.children[0].textContent = intern.children[1].textContent; // intern name
-                popup.children[1].innerHTML = `<h5>Points</h5>${intern.children[2].textContent}`; // points earned by intern
+                popup.children[0].textContent = intern.children[0].textContent; // intern name
+                popup.children[1].innerHTML = `<h5>Points</h5>${intern.children[1].textContent}`; // points earned by intern
                 popup.children[2].firstElementChild.innerHTML = `${intern.dataset.internId}`; // intern 
             }
 
@@ -10251,10 +9941,6 @@
                 }
                 let projectDetails = RIBC.getProjectDetails(currentProject);
                 container.firstElementChild.children[0].textContent = projectDetails.projectName; // project name
-                if(JSON.parse(localStorage.getItem('watchList')).includes(currentProject)){
-                    container.firstElementChild.children[1].textContent = 'Already watching';
-                    container.firstElementChild.children[1].disabled = true;
-                }
                 container.children[1].textContent = projectDetails.projectDescription;
                 container.children[2].innerHTML = ``;
                 RIBC.getProjectBranches(currentProject).forEach((branch) => {
@@ -10267,8 +9953,7 @@
             let currentBranch = 'mainLine',
                 currentProject = '',
                 currentTask = '',
-                lastProject,
-                dashboardProject = '';
+                lastProject;
             function editProjectInfo(project){
                 if(lastProject != project){
                     let thisContainer = document.getElementById('edit_data'),
@@ -10277,12 +9962,12 @@
                         frag = document.createDocumentFragment();
                         container.innerHTML = '',
                         document.getElementById('task_list').innerHTML = '';
-                    currentProject = project.dataset.projectCode;
-                    branchList.forEach((branch) => {
-                        branch.classList.remove('active-branch')
-                    })
-                    thisContainer.firstElementChild.firstElementChild.textContent = project.children[0].textContent;
-                    document.getElementById('admin_project_description').textContent = RIBC.getProjectDetails(currentProject).projectDescription;
+                        currentProject = project.dataset.projectCode;
+                        branchList.forEach((branch) => {
+                            branch.classList.remove('active-branch')
+                        })
+                        thisContainer.firstElementChild.firstElementChild.textContent = project.children[0].textContent;
+                        document.getElementById('admin_project_description').textContent = RIBC.getProjectDetails(currentProject).projectDescription;
                     RIBC.getProjectBranches(currentProject).forEach((branch) => {
                         frag.appendChild(render.branchBtn(branch))
                     })
@@ -10299,29 +9984,25 @@
                 let content = RIBC.getProjectMap(currentProject)[currentBranch],
                     taskList = document.getElementById(taskListContainer),
                     frag = document.createDocumentFragment(),
-                    allbranches = document.getElementById(destination).querySelectorAll('.branch-btn');
+                    container = document.getElementById(destination),
+                    allbranches = container.querySelectorAll('.branch-btn');
                     taskList.innerHTML = '';
                 allbranches.forEach((branchBtn) => {
                     branchBtn.classList.remove('active-branch')
                 })
                 btn.classList.add('active-branch')
-                if(!content[1] && !taskListContainer === 'task_list'){
-                    taskList.textContent = "No tasks added yet, Please explore other projects :)"
+                if(taskListContainer === 'task_list'){
+                    showInnerPage('edit_data')
+                    content.slice(4).forEach((taskNo) => {
+                        frag.appendChild(render.taskListItem(taskNo))
+                    })
                 }
-                else{
-                    if(taskListContainer === 'task_list'){
-                        showInnerPage('edit_data')
-                        content.slice(4).forEach((taskNo) => {
-                            frag.appendChild(render.taskListItem(taskNo))
-                        })
-                    }
-                    else{
-                        content.slice(4).forEach((taskNo) => {
-                            frag.appendChild(render.taskCard(taskNo))
-                        })
-                    }
-                    taskList.appendChild(frag);
+                if(taskListContainer === 'explorer_task_list' || taskListContainer === 'map_body'){
+                    content.slice(4).forEach((taskNo) => {
+                        frag.appendChild(render.taskCard(taskNo))
+                    })
                 }
+                taskList.appendChild(frag);
             }
             document.getElementById('task_list').addEventListener('click', (event) => {
                     let contextMenu = document.getElementById('task_context');
@@ -10337,11 +10018,6 @@
                             if (event.target.closest('#context_menu') || event.target.closest('.task-option')) return;
                             contextMenu.classList.add('hide')
                             document.removeEventListener('click', y);
-                        });
-                        let z =document.addEventListener("touchstart", function(event) {
-                            if (event.target.closest('#context_menu') || event.target.closest('.task-option')) return;
-                            contextMenu.classList.add('hide')
-                            document.removeEventListener('click', z);
                         });
                         return
                     }
@@ -10363,9 +10039,7 @@
                 })
             function addTask(){
                 let title = document.createElement('input'),
-                    inputLabel = document.createElement('label'),
                     description = document.createElement('textarea'),
-                    textareaLabel = document.createElement('label'),
                     btn = document.createElement('button'),
                     parent = document.getElementById('task_list'),
                     card = document.createElement('div'),
@@ -10380,13 +10054,9 @@
                                             <line x1="0.35" y1="0.35" x2="50.35" y2="50.35"/>
                                         </svg>cancel`;
                 setAttributes(title, {'id': "title", 'placeholder': "Task title"})
-                setAttributes(description, {'id': "description", 'placeholder': "Task description", "rows": "4"})
-                inputLabel.classList.add('input')
-                textareaLabel.classList.add('input')
-                inputLabel.appendChild(title)
-                card.appendChild(inputLabel)
-                textareaLabel.appendChild(description)
-                card.appendChild(textareaLabel)
+                setAttributes(description, {'id': "description", 'placeholder': "Task description"})
+                card.appendChild(title)
+                card.appendChild(description)
                 card.appendChild(closeBtn)
                 card.appendChild(btn); 
                 parent.appendChild(card)
@@ -10417,20 +10087,14 @@
                 }
             }
             function commitToChanges(){
-                askConfirmation("Do you want to commit to changes?").then((result) => {
-                    if(result){
-                        RIBC.manage.updateObjects()
-                        showMessage('', 'Changes saved.')
-                    }
-                })
+                if(confirm("Do you want to commit to changes?"))
+                    RIBC.manage.updateObjects()
             }
             function removeThisTask(){
-                askConfirmation("Are you sure to delete this task?").then((result) => {
-                    if(result){
-                        RIBC.manage.deleteTaskInMap(currentProject, currentBranch, currentTask.id)
-                        currentTask.remove();
-                    }  
-                })
+                if(confirm("Are you sure to delete this task?")){
+                    RIBC.manage.deleteTaskInMap(currentProject, currentBranch, currentTask.id)
+                    currentTask.remove();
+                }
             }
             function enableBtn(btn){
                 let thisBtn = document.getElementById(btn);
@@ -10446,17 +10110,14 @@
             
             document.getElementById(recentPage).click();
             function showPage(elem, page, type){
-                if(elem !== ''){
-                    recentPage = elem;
-                }
-                if(elem === 'dashboard_btn')
-                    currentProject = dashboardProject;
-                let allPages = document.querySelectorAll('.page')
+                let allPages = document.querySelectorAll('.page'),
+                    navbar = document.getElementById('top_nav');
                 if(page === 'lastPage'){
                     allPages.forEach(function(pages){
                         pages.classList.add('hide-completely');
                     });
                     document.getElementById(recentPage).click();
+                    navbar.classList.remove('hide-completely')
                 }
                 else{
                     let thisPage = document.getElementById(page),
@@ -10474,13 +10135,15 @@
                     if(type === 'updates')
                     {
                         thisPage.children[1].innerHTML = '';
-                        thisPage.children[0].children[1].textContent = `Interns' Feed`
+                        thisPage.children[0].children[1].textContent = 'Updates'
                         let updates = RIBC.getInternUpdates();
                         document.getElementById('updates').classList.add('hide')
                         Object.keys(updates).forEach((entry) => {
                             frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
                         })
                         thisPage.children[1].appendChild(frag)
+                        if(window.innerWidth < 640)
+                            navbar.classList.add('hide-completely')
                     }
                     else if(type === 'interns')
                     {
@@ -10491,6 +10154,13 @@
                             frag.appendChild(render.internCard(iList[intern],intern, RIBC.getInternRating(intern),'interns'))
                         }
                         thisPage.children[1].appendChild(frag)
+                        if(window.innerWidth < 640)
+                            navbar.classList.add('hide-completely')
+                    }
+                    else if(type === 'explorer')
+                    {
+                        if(window.innerWidth < 640)
+                            navbar.classList.add('hide-completely')
                     }
                     /*if(!(recentPage == element)){
                         x.classList.add('fade');
@@ -10502,22 +10172,17 @@
                         });
                     }
                     recentPage = element;*/
+                    if(window.innerWidth < 640)
+                        hidePopup('side_nav')
                 }
             }
-            function showInnerPage(page){
-                if(window.innerWidth < 640)
-                document.querySelectorAll('.list-container').forEach((container) => {
-                    container.classList.add('hide-completely')
-                })
-                document.getElementById(page).classList.remove('hide-completely');
-            }
-
-            function showListCont(container){
-                if(window.innerWidth < 640)
-                document.querySelectorAll('.inner-page').forEach((container) => {
-                    container.classList.add('hide-completely')
-                })
-                document.getElementById(container).classList.remove('hide-completely');
+            function showInnerPage(page, type){
+                let allPages = document.querySelectorAll('.inner-page'),
+                    thisPage = document.getElementById(page)
+                allPages.forEach(function(pages){
+                    pages.classList.add('hide-completely');
+                });
+                thisPage.classList.remove('hide-completely');
             }
 
 
@@ -10539,17 +10204,15 @@
             }
 
             function logout(){
-                askConfirmation("Do you want to logout?").then((result) => {
-                    if(result){
-                        floDapps.clearCredentials()
-                        compactIDB.deleteDB().then((message) => {
-                            onLoadStartUp()
-                            showMessage('','You have logged out successfully.')
-                        }).catch((error) => {
-                            console.log(error)
-                        })
-                    }
+                if(confirm("Do you want to logout?")){
+                floDapps.clearCredentials()
+                compactIDB.deleteDB().then((message) => {
+                    onLoadStartUp()
+                    showMessage('','You have logged out successfully.')
+                }).catch((error) => {
+                    console.log(error)
                 })
+            }
             }
             let allInterns = [];
 
@@ -10557,8 +10220,8 @@
                 if(event.target.closest('.intern-card')){
                     let floid = event.target.closest('.intern-card').dataset.internId;
                     if(RIBC.manage.assignInternToTask(floid, currentProject, currentBranch, currentTask.id)){
-                        showMessage('',`${event.target.closest('.intern-card').children[1].textContent} assigned to ${RIBC.getProjectDetails(currentProject).projectName}`)
-                        currentTask.querySelector('.assigned-interns').appendChild(render.assignedInternCard(getInternDetails(floid)[0], 'yes'))
+                        showMessage('',`${event.target.closest('.intern-card').children[0].textContent} assigned to ${RIBC.getProjectDetails(currentProject).projectName}`)
+                        currentTask.querySelector('.assigned-interns').appendChild(render.assignedInternCard(getInternDetails(floid)[0]), 'yes')
                         setTimeout(() => {
                             allInterns.forEach((intern) => {
                                 intern.style.display = "";
@@ -10620,27 +10283,9 @@
             }
 
             function watchThisProject(){
-                if(!JSON.parse(localStorage.getItem('watchList')).includes(currentProject)){
-                    watchList = JSON.parse(localStorage.getItem('watchList'))
-                    watchList.push(currentProject)
-                    localStorage.setItem('watchList', JSON.stringify(watchList))
-                    showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} added to your watch list.`)
-                }
-                else
-                    showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} already added to your watch list.`)
-            }
-
-            function showProjectMap(projectCode, container){
-                let tempCard = render.projectMapCard(projectCode),
-                containerCard = document.getElementById(container);
-                containerCard.innerHTML =``;
-                containerCard.appendChild(tempCard[0])
-                document.getElementById(tempCard[2]).addEventListener('click', (event) => {
-                    if(event.target.closest('.branch-btn')){
-                        showTasksOfBranch(event.target.closest('.branch-btn'), tempCard[1], tempCard[3], '')
-                    }
-                })
-                document.getElementById(tempCard[2]).firstElementChild.click()
+                localStorage.setItem('watchingProject', currentProject)
+                showMessage('', `You are watching ${RIBC.getProjectDetails(currentProject).projectName}`)
+                showProjectInfo(currentProject, 'status_map_container', 'no');
             }
 
             function renderAllElements(){
@@ -10651,23 +10296,10 @@
                 
                 
                 iList = RIBC.getInternList();
-
-                if(floGlobals.subAdmins.includes(myFloID)){
-                    document.querySelectorAll('.admin-options').forEach((option) => {
-                        option.classList.remove('hide-completely')
-                    })
-                }
-                
-                if(!Object.keys(iList).includes(myFloID))
-                    document.getElementById('floating_btn').classList.add('hide-completely')
-
-                document.getElementById('interns').innerHTML = ``;
                 for(intern in iList){
                     frag.appendChild(render.internCard(iList[intern],intern, RIBC.getInternRating(intern),'interns'))
                 }
                 document.getElementById('interns').appendChild(frag)
-
-                document.getElementById('best_interns').innerHTML = ``;
                 let limit = 4;
                 for(intern in iList){
                     frag.appendChild(render.internCard(iList[intern],intern, RIBC.getInternRating(intern)))
@@ -10679,7 +10311,7 @@
 
 
                 // displays recent updates given by interns
-                document.getElementById('update_container').innerHTML='';
+                //document.getElementById('update-container').innerHTML='';
                 let updates = RIBC.getInternUpdates(8);
                 Object.keys(updates).forEach((entry) => {
                     frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
@@ -10697,7 +10329,6 @@
                 })
                 document.getElementById('project_list_container').appendChild(frag)
                 
-                document.getElementById('projects').innerHTML = ``;
                 let pList = RIBC.getProjectList();
                 for(i = 0; i < pList.length; i++){
                     frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
@@ -10705,8 +10336,8 @@
 
                 document.getElementById('projects').appendChild(frag)
 
-                if(localStorage.getItem('watchList') === null)
-                    localStorage.setItem('watchList', JSON.stringify(watchList))
+                if(localStorage.getItem('watchingProject') === null)
+                    localStorage.setItem('watchingProject', pList[0])
 
                 populateIntens()
 
@@ -10732,7 +10363,7 @@
                     }
                     else
                         allInterns.forEach((intern) => {
-                            if (intern.children[1].textContent.toLowerCase().indexOf(inputField.value.toLowerCase().trim()) > -1) {
+                            if (intern.children[0].textContent.toLowerCase().indexOf(inputField.value.toLowerCase().trim()) > -1) {
                                 intern.style.display = "";
                             } else {
                                 intern.style.display = "none";
@@ -10743,19 +10374,14 @@
                 document.getElementById('post_update_btn').addEventListener('click',() => {
                     let topic = document.getElementById('update_topic').value.trim(),
                         description = document.getElementById('update_description').value.trim();
-                        if(topic !== '' && description !== ''){
-                            RIBC.postInternUpdate({topic: topic,description: description})
-                            .then((result) => {
-                                showMessage('', 'update posted')
-                                hidePopup('post_update')
-                            })
-                            .catch((error) => {
-                                showMessage('error', error)
-                            })
-                        }
-                        else{
-                            showMessage('error', 'Please enter topic and description')
-                        }
+                        RIBC.postInternUpdate({topic: topic,description: description})
+                        .then((result) => {
+                            showMessage('', 'update posted')
+                            hidePopup('post_update')
+                        })
+                        .catch((error) => {
+                            showMessage('error', error)
+                        })
                 })
 
                 document.getElementById('update_panel_btn').addEventListener('click', showUpdatePanel)
@@ -10767,67 +10393,51 @@
 
                 projectExplorer.children[1].appendChild(frag)
                 projectExplorer.children[1].addEventListener('click', (event) => {
-                    if(event.target.closest('.project-card')){
+                    if(event.target.closest('.project-card'))
                         showProjectInfo(event.target.closest('.project-card'), 'right')
-                    }
                 })
-                projectExplorer.children[2].children[2].addEventListener('click', (event) => {
+                projectExplorer.children[2].children[2].addEventListener('click', () => {
                     if(event.target.closest('.branch-btn'))
                         showTasksOfBranch(event.target.closest('.branch-btn'), 'project_explorer', 'explorer_task_list')
                 })
 
-                showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map_container')
-                dashboardProject = JSON.parse(localStorage.getItem('watchList'))[0];
+                document.getElementById('map_branch_container').addEventListener('click', () => {
+                    if(event.target.closest('.branch-btn'))
+                        showTasksOfBranch(event.target.closest('.branch-btn'), 'status_map_container', 'map_body')
+                })
+                showProjectInfo(localStorage.getItem('watchingProject'), 'status_map_container', 'no');
             }
-            let myInput = function(){
-                return new Promise((resolve, reject) => {
-                    let loader = document.getElementById('loader');
-                    loader.classList.add('hide')
-                    loader.children[0].classList.remove('loading-animation')
-                    showPopup('sign_in' ,'no');
-                    let container = document.getElementById('priv_key_sign_in'),
-                        signIn = document.getElementById('sign_in'),
-                        privField = document.getElementById('priv_key_field'),
-                        btn = document.getElementById('back_to_main_page');
-                    document.getElementById('guest_btn').onclick = function(){
-                        hidePopup('sign_in')
-                        reject(null);
-                    }
-                    document.getElementById('priv_key_btn').onclick = function(){
-                        container.classList.remove('hide-completely')
-                        signIn.children[2].classList.add('hide-completely')
-                        btn.classList.remove('hide-completely')
-                    }
-                    btn.onclick = function(){
-                        container.classList.add('hide-completely')
-                        signIn.children[2].classList.remove('hide-completely')
-                        btn.classList.add('hide-completely')
-                    }
-                    privField.addEventListener('keyup', (event) =>{
-                        if(privField.value.trim() !== '')
-                            enableBtn('sign_in_btn')
-                        else    
-                            disableBtn('sign_in_btn')
-                        if(event.keyCode === 13 || event.which === 13){
-                            resolve(privField.value.trim())
-                            hidePopup('sign_in')
-                            loader.classList.remove('hide')
-                            loader.children[0].classList.add('loading-animation')
-                        }
-                    })
-                    document.getElementById('sign_in_btn').onclick = function(){
+            let myInput = new Promise((resolve, reject) => {
+                showPopup('sign_in');
+                let container = document.getElementById('priv_key_sign_in'),
+                    signIn = document.getElementById('sign_in'),
+                    privField = document.getElementById('priv_key_field'),
+                    btn = document.getElementById('back_to_main_page');
+                document.getElementById('guest_btn').onclick = function(){
+                    hidePopup('sign_in')
+                    resolve('');
+                }
+                document.getElementById('priv_key_btn').onclick = function(){
+                    container.classList.remove('hide-completely')
+                    signIn.children[3].classList.add('hide-completely')
+                    btn.classList.remove('hide-completely')
+                }
+                btn.onclick = function(){
+                    container.classList.add('hide-completely')
+                    signIn.children[3].classList.remove('hide-completely')
+                    btn.classList.add('hide-completely')
+                }
+                privField.addEventListener('keyup', (event) =>{
+                    if(privField.value.trim() !== '')
+                        enableBtn('sign_in_btn')
+                    else    
+                        disableBtn('sign_in_btn')
+                    if(event.keyCode === 13 || event.which === 13){
                         resolve(privField.value.trim())
                         hidePopup('sign_in')
-                        loader.classList.remove('hide')
-                        loader.children[0].classList.add('loading-animation')
                     }
                 })
-                let confirmationDialog = document.getElementById('confirmation');
-                confirmationDialog.addEventListener('keyup', (event) => {
-                    if(event.keycode === 13 || event.which === 13)
-                        confirmationDialog.children[1].children[1].click()
-                })  
-            }
+            })
             // functions that run when page loads
         </script>
     </body>
