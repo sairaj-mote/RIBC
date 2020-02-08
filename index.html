@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
         <script id="floGlobals">
             /* Constants for FLO blockchain operations !!Make sure to add this at begining!! */
             const floGlobals = {
@@ -45,29 +46,31 @@
             </svg>
             </button>
         </div>
-        <div id="confirmation" class="hide">
-            <h4></h4>
-            <div>
-                <button class="hover">Cancel</button>
-                <button class="hover">Ok</button>
+        <div class="popup-container hide">
+            <div id="confirmation" class="popup">
+                <h4></h4>
+                <div>
+                    <button class="hover" onclick="hidePopup('')">Cancel</button>
+                    <button class="hover">Ok</button>
+                </div>
             </div>
         </div>
             <nav id="bottom_nav" class="hide-on-desktop">
-                <button id="bottom_dashboard_btn" class="tabs" onclick="showPage('bottom_dashboard_btn', 'dashboard')">
+                <button id="bottom_dashboard_btn" class="tabs active" onclick="showPage('bottom_dashboard_btn', 'dashboard')">
                     <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
                     <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
                     </svg>
                     Dashboard</button>
-                <button id="bottom_update_btn" class="tabs" onclick="showPage('bottom_update_btn', 'show_all', 'updates')">
+                <button id="bottom_update_btn" class="tabs" onclick="showPage('bottom_update_btn', 'show_all', 'updates', 'innerPage')">
                     <svg viewBox="0 0 57.2 64">
                         <circle style="fill: #FF4E4E" cx="47.7" cy="9.5" r="9.5"/>
                         <path d="M52.29,52.21c-2.19-2.34-3.86-5.18-4.84-8.33V43v-5.5V21.99C40.66,21.85,35.2,16.32,35.2,9.5
                             c0-2.35,0.66-4.55,1.79-6.42c-3.1-1.86-6.69-2.98-10.54-3.07c-11.64,0.26-21,9.79-21,21.49v16V43v0.88
                             c-0.98,3.15-2.64,5.99-4.84,8.33C-0.74,53.65,0.29,56,2.26,56h3.19h1h13h2.36c-0.38,0.75-0.61,1.6-0.61,2.5
                             c0,3.04,2.46,5.5,5.5,5.5s5.5-2.46,5.5-5.5c0-0.9-0.22-1.75-0.61-2.5h1.86h13h1h3.19C52.61,56,53.63,53.65,52.29,52.21z"/>
-                    </svg>Updates</button>
+                    </svg>Feed</button>
                 <button id="bottom_admin_btn" class="tabs admin-options hide-completely" onclick="showPage('bottom_admin_btn', 'admin_panel')">
                     <svg viewBox="0 0 75 75.43">
                         <circle cx="10.5" cy="10.5" r="9"/>
@@ -90,7 +93,7 @@
                     </svg>
                     Settings</button>
             </nav>
-        <div class="popup-container hide">
+        <div class="popup-container hide solid-background">
             <div id="sign_in" class="popup">
                 <header class="container-header">
                     <svg class="back-arrow hide-completely" id="back_to_main_page" viewBox="0 0 31.24 56.83">
@@ -122,9 +125,7 @@
                     <label class="input">
                         <input id="priv_key_field" placeholder="Private key" type="password">
                     </label>
-                    <label>
-                        <button id="sign_in_btn" disabled>Sign in</button>
-                    </label>
+                    <button id="sign_in_btn" disabled>Sign in</button>
                 </div>
                 <p>Don't have a private key? get it <a href="https://flo-webwallet.duckdns.org/" target="_blank">here</a><br> or you can sign as guest.</p>
                 <span></span>
@@ -184,7 +185,7 @@
                 </svg>
                 <h4>RIBC</h4>
             </div>
-            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right" onclick="showPage('dashboard_btn', 'dashboard')">
+            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right active" onclick="showPage('dashboard_btn', 'dashboard')">
                 <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
@@ -202,6 +203,9 @@
                 </svg>
                 Manage</button>
             <div class="spacer"></div>
+            <button id="update_project_info_btn" class="admin-options hide-completely commit" onclick="commitToChanges()">
+                Commit
+            </button>
             <div class="dropdown hide-on-mobile" id="intern_updates">
                 <button id="update_panel_btn">
                     <svg viewBox="0 0 57.2 64">
@@ -216,8 +220,8 @@
                 </button>
                 <div class="dropdown-content hide" id="updates">
                     <div class="container-header">
-                        <h3>Interns' Feed</h3>
-                        <button onclick="showPage('', 'show_all', 'updates')">See all</button>
+                        <h3>Feed</h3>
+                        <button onclick="showPage('', 'show_all', 'updates', 'innerPage')">See all</button>
                     </div>
                     <div id="update_container">
 
@@ -237,6 +241,20 @@
         </nav>
             <section id="dashboard" class="page">
                     <div id="status_map_container" class="container-card">
+                        <div class="watching">
+                            <h4>watching</h4>
+                            <button id="prev_proj" onclick="changeProject('prev')" disabled>
+                                <svg viewBox="0 0 40.24 74.83">
+                                    <polyline points="38.83,1.41 2.83,37.41 38.83,73.41 "/>
+                                </svg>
+                                </button>
+                            <button id="next_proj" onclick="changeProject('next')">
+                                <svg viewBox="0 0 40.24 74.83">
+                                    <polyline points="1.41,73.41 37.41,37.41 1.41,1.41 "/>
+                                </svg>
+                                </button>
+                        </div>
+                        <div id="status_map"></div>
                     </div>
                     <div>
                         <div id="best_interns_container" class="container-card">
@@ -247,7 +265,7 @@
                                     c-0.3,1.43-0.8,2.79-1.47,4.06C63.43,95.66,71.06,86.74,73.35,76C73.35,76,81.56,43,58.56,21z"/>
                                 </svg> 
                                 <h3>Intern Leaderboard</h3>
-                                <span class="hover" onclick="showPage('', 'show_all', 'interns')">All</span>
+                                <span class="hover" onclick="showPage('', 'show_all', 'interns', 'innerPage')">All</span>
                             </div>
                             <div id="best_interns">
     
@@ -261,8 +279,9 @@
                                 </svg>
                                 
                                 <h3>Projects</h3>
-                                <span class="hover" onclick="showPage('', 'project_explorer', 'explorer')">All</span>
+                                <span class="hover" onclick="showPage('', 'project_explorer', 'explorer', 'innerPage')">All</span>
                             </div>
+                            <div id="project_list"></div>
                         </div>
                     </div>
                     <button id="floating_btn" onclick="showPopup('post_update')">
@@ -272,6 +291,7 @@
                     </button>
             </section>
             <div id="settings_page" class="page hide-completely container-card">
+                <h2>Settings</h2>
                 <section>
                     <h3>Dark mode</h3>
                     <div>
@@ -280,8 +300,8 @@
                         <span>Dark mode active : 6pm - 6am</span>
                       </span>
                       <label class="switch">
-                        <input aria-label="Toggle automatic dark theme" autocomplete="new-password"  type="checkbox" id="auto-mode" type="checkbox" onclick="autoMode()"/>
-                          <span class="slider round"></span>
+                            <input aria-label="Toggle automatic dark theme" autocomplete="new-password"  type="checkbox" id="auto-mode" type="checkbox" onclick="autoMode()"/>
+                            <span class="slider round"></span>
                       </label>
                     </div>
                     <div>
@@ -345,7 +365,7 @@
             </div>
             <div id="show_all" class="page hide-completely container-card">
                 <header class="header">
-                    <svg onclick="showPage('', 'lastPage')" viewBox="0 0 31.24 56.83">
+                    <svg onclick="showPage('', 'lastPage','', 'innerPage')" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3></h3>
@@ -354,7 +374,7 @@
             </div>
             <div id="project_explorer" class="page hide-completely container-card list-container">
                 <header class="header">
-                    <svg onclick="showPage('', 'lastPage')" viewBox="0 0 31.24 56.83">
+                    <svg onclick="showPage('', 'lastPage', '', 'innerPage')" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Projects</h3>
@@ -362,11 +382,11 @@
                 <div id="left" class="list-container">
     
                 </div>
-                <div id="right" class="inner-page">
+                <div id="right">
                     <div>
                         <h2>Project Name</h2>
-                        <button id="watch_project_btn" class="svg-margin-right" onclick="watchThisProject()">
-                            Watch this project
+                        <button id="watch_project_btn" class="svg-margin-right" onclick="watchThisProject(this)">
+                            Watch
                         </button>
                     </div>
                     <p class="admin_project_description"></p>
@@ -403,7 +423,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-card inner-page hide-on-mobile">
+                <div class="container-card inner-page hide-page-on-mobile">
                     <div id="figure1" class="center">
                     <svg id="edit_data_fig" viewBox="0 0 181.77 63.09">
                         <path d="M116.81,46.62c-3.05,0-6.1,0-9.15,0c-7.53,0-15.07,0-22.6,0c-9.54,0-19.09,0-28.63,0
@@ -431,11 +451,8 @@
 					</div>
             </div>
             <div id="edit_data" class="inner-page container-card hide-completely">
-                <div class="commit">
+                <div>
                     <h2>Project Name</h2>
-                    <button id="update_project_info_btn" onclick="commitToChanges()">
-                        Commit
-                    </button>
                 </div>
                 <p id="admin_project_description">
 
@@ -492,7 +509,6 @@
         <div class="popup-container hide">
             <div id="intern_info" class="popup">
                     <h3>Intern name</h3>
-                    <h4>Points</h4>
                     <div>
                         <span>FlO ID</span>
                         <svg class="hover" onclick="copyToClipboard(this.parentNode, '0')" viewBox="0 0 13 16">
@@ -501,6 +517,28 @@
                             C13,0.4,12.6,0,12,0z M8,13c0,0.6-0.4,1-1,1H3c-0.6,0-1-0.4-1-1V7c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V13z M11,9c0,0.6-0.4,1-1,1V5
                             c0-0.6-0.4-1-1-1H5V3c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V9z"/>
                         </svg>
+                    </div>
+                    <h4 class="admin-options hide-completely">Update Rating</h4>
+                    <div id="update_intern_score">
+                        <svg class="gold-fill" viewBox="0 0 69.81 69.69">
+                            <path d="M34.18,58.59L15.33,69.01c-1.09,0.6-2.39-0.32-2.19-1.54l3.64-22.29c0.08-0.47-0.07-0.94-0.4-1.28L0.92,28.06
+                            c-0.85-0.87-0.36-2.33,0.84-2.51l21.23-3.24c0.49-0.07,0.91-0.39,1.12-0.84l9.44-20.11c0.54-1.14,2.16-1.14,2.69,0l9.44,20.11
+                            c0.21,0.45,0.63,0.76,1.12,0.84l21.23,3.24c1.2,0.18,1.69,1.64,0.84,2.51L53.43,43.9c-0.33,0.34-0.48,0.81-0.4,1.28l3.64,22.29
+                            c0.2,1.23-1.1,2.14-2.19,1.54L35.62,58.59C35.17,58.34,34.63,58.34,34.18,58.59z"/>
+                        </svg>
+                        <h4>Points</h4>
+                        <button class="hover admin-options hide-completely" onclick="changeScore(1, this.parentNode)">
+                            <svg viewBox="0 0 72 72">
+                                <line x1="36" y1="0" x2="36" y2="72"/>
+                                <line x1="0" y1="36" x2="72" y2="36"/>
+                            </svg>
+                        </button>
+                        <button class="hover admin-options hide-completely" onclick="changeScore(-1, this.parentNode)">
+                            <svg viewBox="0 0 73 73">
+                                <line x1="0.5" y1="36.5" x2="72.5" y2="36.5"/>
+                                <rect x="0.5" y="0.5" width="72" height="72"/>
+                            </svg>                            
+                        </button>
                     </div>
             </div>
         </div>
@@ -634,10 +672,13 @@
                 </label>
             </div>
         </div>
-        <div id="loader" class="popup-container">
-            <svg viewBox="0 0 64 64" class="loader loading-animation">
-                <circle cx="32" cy="32" r="32"/>
-            </svg>   
+        <div id="loader" class="popup-container solid-background">
+            <div>
+                <svg viewBox="0 0 64 64" class="loader loading-animation">
+                    <circle cx="32" cy="32" r="32"/>
+                </svg>   
+                <h4>Please wait, while we load your data</h4>
+            </div>
         </div>
         <script id="init_lib">
             //All util libraries required for Standard operations (DO NOT EDIT ANY)
@@ -9339,17 +9380,13 @@
                 //floDapps.setAppObjectStores({sampleObs1:{}, sampleObs2:{options{autoIncrement:true, keyPath:'SampleKey'}, Indexes:{sampleIndex:{}}}})
                 floDapps.setCustomPrivKeyInput(myInput)
                 floDapps.launchStartUp().then(result => {
-                    let loader = document.getElementById('loader');
-                            loader.classList.remove('hide')
-                            loader.children[0].classList.add('loading-animation')
+                    loader('show')
                     console.log(result)
                     console.log(`Welcome FLO_ID: ${myFloID}`)
                     RIBC.initRIBC().then(result => {
                         console.log(result)
                         renderAllElements()
-                        let loader = document.getElementById('loader');
-                        loader.classList.add('hide')
-                        loader.children[0].classList.remove('loading-animation')
+                        loader('hide')
                     }).catch(error => console.error(error))
                 }).catch(error => console.error(error))
             }
@@ -9875,7 +9912,7 @@
                     clearInterval(mode);
                 }
                 function daylight(){
-                    html.setAttribute("style", `--rgb-bw: 0,0,0;--alpha: 1;--light-text: #222;--background: #EBEBEB;--foreground:#f6f6f6;--light-color: 170,170,170;--dark-color: #ddd;`);
+                    html.setAttribute("style", `--rgb-bw: 0,0,0;--alpha: 1;--light-text: #222;--background: #f6f6f6;--foreground:#fff;--light-color: 170,170,170;--dark-color: #ddd;`);
                 }
                 function nightlight(){
                     html.setAttribute("style", `--rgb-bw: 255,255,255;--alpha: 0.04;--light-text: #eee;--background: #222;--foreground: #2a2a2a;--light-color: 51, 51, 51;--dark-color: #111;`);
@@ -10114,24 +10151,7 @@
                 };
 
             let recentPage = 'dashboard_btn',i = currentProgress = projectIndex = 0, prevProject = '',iList,
-            frag = document.createDocumentFragment(), watchList = [];
-
-            document.getElementById('best_interns').addEventListener('click', (event) => {
-                if(event.target.closest('.intern-card'))
-                    showInternInfo(event.target.closest('.intern-card'))
-            })
-            document.getElementById('show_all').addEventListener('click', (event) => {
-                if(event.target.closest('.intern-card'))
-                    showInternInfo(event.target.closest('.intern-card'))
-            })
-            document.getElementById('interns').addEventListener('click', (event) => {
-                if(event.target.closest('.intern-card'))
-                    showInternInfo(event.target.closest('.intern-card'))
-            })
-            document.getElementById('projects').addEventListener('click', (event) => {
-                if(event.target.closest('.project-card'))
-                    editProjectInfo(event.target.closest('.project-card'))
-            })
+            frag = document.createDocumentFragment(), watchList = [], currentIntern, dashboardProject;
 
             // function required for popups or modals to appear
             function showPopup(popup, permission){ 
@@ -10142,7 +10162,7 @@
                 thisPopup.classList.add('no-transformations');    
                 window.onclick = function(event) {
                     if (event.target == thisPopup.parentNode && permission !== 'no')
-                        hidePopup(popup);
+                        hidePopup(popup, permission);
                 }
             }
 
@@ -10154,7 +10174,7 @@
                 popup.classList.remove('no-transformations'); 
                 clearAllInputs(popup)   
             }
-
+            let currentTimeout;
             function showMessage(mode, message){
                 let banner = document.getElementById('show_message')
                 if(mode === 'error')
@@ -10166,21 +10186,22 @@
                 banner.children[1].onclick = function() {
                     banner.classList.remove('no-transformations')
                 }
-                setTimeout(()=>{
+                clearTimeout(currentTimeout)
+                currentTimeout = setTimeout(()=>{
                     banner.classList.remove('no-transformations')
                 }, 4000)
             }
             let askConfirmation = function(message){
                 return new Promise((resolve, reject) => {
-                    let popup = document.getElementById('confirmation')
-                    popup.classList.remove('hide')
+                    let popup = document.getElementById('confirmation');
+                    showPopup('confirmation')
                     popup.children[0].textContent = message;
                     popup.children[1].firstElementChild.onclick = function() {
-                        popup.classList.add('hide')
+                        hidePopup('confirmation')
                         resolve(false)
                     }
                     popup.children[1].children[1].onclick = function() {
-                        popup.classList.add('hide')
+                        hidePopup('confirmation')
                         resolve(true);
                     }
                 })
@@ -10236,8 +10257,8 @@
                 showPopup('intern_info');
                 let popup = document.getElementById('intern_info');
                 popup.children[0].textContent = intern.children[1].textContent; // intern name
-                popup.children[1].innerHTML = `<h5>Points</h5>${intern.children[2].textContent}`; // points earned by intern
-                popup.children[2].firstElementChild.innerHTML = `${intern.dataset.internId}`; // intern 
+                popup.children[1].firstElementChild.textContent = currentIntern = intern.dataset.internId; // intern 
+                popup.children[3].children[1].textContent = intern.children[2].textContent; // points earned by intern
             }
 
             // opens a popup containing various project information
@@ -10252,8 +10273,10 @@
                 let projectDetails = RIBC.getProjectDetails(currentProject);
                 container.firstElementChild.children[0].textContent = projectDetails.projectName; // project name
                 if(JSON.parse(localStorage.getItem('watchList')).includes(currentProject)){
-                    container.firstElementChild.children[1].textContent = 'Already watching';
-                    container.firstElementChild.children[1].disabled = true;
+                    container.firstElementChild.children[1].textContent = 'watching';
+                }
+                else{
+                    container.firstElementChild.children[1].textContent = 'Watch';
                 }
                 container.children[1].textContent = projectDetails.projectDescription;
                 container.children[2].innerHTML = ``;
@@ -10267,8 +10290,7 @@
             let currentBranch = 'mainLine',
                 currentProject = '',
                 currentTask = '',
-                lastProject,
-                dashboardProject = '';
+                lastProject;
             function editProjectInfo(project){
                 if(lastProject != project){
                     let thisContainer = document.getElementById('edit_data'),
@@ -10421,6 +10443,7 @@
                     if(result){
                         RIBC.manage.updateObjects()
                         showMessage('', 'Changes saved.')
+                        renderAllElements()
                     }
                 })
             }
@@ -10443,46 +10466,43 @@
                     if(!thisBtn.disabled)
                         thisBtn.disabled = true;
             }
-            
-            document.getElementById(recentPage).click();
-            function showPage(elem, page, type){
-                if(elem !== ''){
+
+            function showPage(elem, page, offsprings, type){
+                let thisPage = document.getElementById(page),
+                        element = document.getElementById(elem),
+                        allTabs = document.querySelectorAll('.tabs'),
+                        allPages = document.querySelectorAll('.page')
+                if(type !== 'innerPage')
                     recentPage = elem;
-                }
-                if(elem === 'dashboard_btn')
+                if(elem === 'dashboard_btn'){
                     currentProject = dashboardProject;
-                let allPages = document.querySelectorAll('.page')
+                    if(JSON.parse(localStorage.getItem('watchList')).length)
+                        showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
+                }
                 if(page === 'lastPage'){
-                    allPages.forEach(function(pages){
+                    allPages.forEach((pages) =>{
                         pages.classList.add('hide-completely');
                     });
                     document.getElementById(recentPage).click();
                 }
                 else{
-                    let thisPage = document.getElementById(page),
-                        element = document.getElementById(elem),
-                        allTabs = document.querySelectorAll('.tabs')
-                    allPages.forEach(function(pages){
+                    allPages.forEach((pages) =>{
                         pages.classList.add('hide-completely');
                     });
-                    allTabs.forEach(function(tab){
+                    thisPage.classList.remove('hide-completely');
+                    allTabs.forEach((tab) =>{
                         tab.classList.remove('active');
                     });
                     if(element)
                         element.classList.add('active');
-                    thisPage.classList.remove('hide-completely');
-                    if(type === 'updates')
+                    if(offsprings === 'updates')
                     {
-                        thisPage.children[1].innerHTML = '';
-                        thisPage.children[0].children[1].textContent = `Interns' Feed`
-                        let updates = RIBC.getInternUpdates();
                         document.getElementById('updates').classList.add('hide')
-                        Object.keys(updates).forEach((entry) => {
-                            frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
-                        })
-                        thisPage.children[1].appendChild(frag)
+                        thisPage.children[1].innerHTML = '';
+                        thisPage.children[0].children[1].textContent = `Feed`
+                        updateFeed(thisPage.children[1])
                     }
-                    else if(type === 'interns')
+                    else if(offsprings === 'interns')
                     {
                         thisPage.children[1].innerHTML = '';
                         thisPage.children[0].children[1].textContent = 'Interns'
@@ -10492,24 +10512,15 @@
                         }
                         thisPage.children[1].appendChild(frag)
                     }
-                    /*if(!(recentPage == element)){
-                        x.classList.add('fade');
-                        x.addEventListener('animationEnd', function(){
-                        x.classList.remove('fade'); 
-                        });
-                        x.addEventListener('webkitAnimationEnd', function(){
-                        x.classList.remove('fade'); 
-                        });
-                    }
-                    recentPage = element;*/
                 }
             }
-            function showInnerPage(page){
-                if(window.innerWidth < 640)
-                document.querySelectorAll('.list-container').forEach((container) => {
-                    container.classList.add('hide-completely')
-                })
-                document.getElementById(page).classList.remove('hide-completely');
+            function showInnerPage(page, type){
+                let allPages = document.querySelectorAll('.inner-page'),
+                    thisPage = document.getElementById(page)
+                allPages.forEach(function(pages){
+                    pages.classList.add('hide-completely');
+                });
+                thisPage.classList.remove('hide-completely');
             }
 
             function showListCont(container){
@@ -10539,12 +10550,12 @@
             }
 
             function logout(){
-                askConfirmation("Do you want to logout?").then((result) => {
+                askConfirmation("Do you want to sign out?").then((result) => {
                     if(result){
                         floDapps.clearCredentials()
                         compactIDB.deleteDB().then((message) => {
                             onLoadStartUp()
-                            showMessage('','You have logged out successfully.')
+                            showMessage('','You have signed out successfully.')
                         }).catch((error) => {
                             console.log(error)
                         })
@@ -10585,6 +10596,20 @@
                 internsPopup.appendChild(frag)
             }
 
+            function changeScore(scoreUpdate, parent){
+                let score = parseInt(parent.children[1].textContent)
+                if(score === 1 && scoreUpdate === -1){
+                    parent.children[3].disabled = true;
+                    return;
+                }
+                score += scoreUpdate;
+                parent.children[1].textContent = score
+                if(score > 0){
+                    parent.children[3].disabled = false;
+                    RIBC.manage.updateInternRating(currentIntern, scoreUpdate)
+                }                  
+            }
+
             function addNewBranch(){
                 showPopup('create_branch')
                 let popup = document.getElementById('create_branch'),
@@ -10600,15 +10625,11 @@
                 }
             }
 
-            function postUpdate(){
-                let updateTopic = document.getElementById('update_topic'),
-                    updateDescription = document.getElementById('update_description');
-
-            }
-
             function showUpdatePanel(){
                 let container = document.getElementById('updates'),
-                    btn = document.getElementById('update_panel_btn');
+                    btn = document.getElementById('update_panel_btn'),
+                    updateContainer = document.getElementById('update_container');
+                updateFeed(updateContainer, 8)
                 btn.classList.toggle('opac')
                 container.classList.toggle('hide')
                 let y = document.addEventListener("click", function(event) {
@@ -10619,21 +10640,40 @@
                 });
             }
 
-            function watchThisProject(){
-                if(!JSON.parse(localStorage.getItem('watchList')).includes(currentProject)){
-                    watchList = JSON.parse(localStorage.getItem('watchList'))
+            function updateFeed(container, limit){
+                let updateContainer = container;
+                if(typeof container === "string")
+                    updateContainer = document.getElementById(container);
+                updateContainer.innerHTML='';
+                let updates = RIBC.getInternUpdates(limit);
+                Object.keys(updates).forEach((entry) => {
+                    frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
+                })
+                updateContainer.appendChild(frag)
+            }
+
+            function watchThisProject(thisBtn){
+                watchList = JSON.parse(localStorage.getItem('watchList'))
+                if(!watchList.includes(currentProject)){
                     watchList.push(currentProject)
+                    thisBtn.textContent = 'watching'
                     localStorage.setItem('watchList', JSON.stringify(watchList))
                     showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} added to your watch list.`)
                 }
-                else
-                    showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} already added to your watch list.`)
+                else{
+                    watchList.splice(watchList.indexOf(currentProject), 1)
+                    thisBtn.textContent = 'Watch'
+                    localStorage.setItem('watchList', JSON.stringify(watchList))
+                    showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} removed from your watch list.`)
+                }
             }
 
             function showProjectMap(projectCode, container){
+                if(projectCode === undefined) return;
                 let tempCard = render.projectMapCard(projectCode),
                 containerCard = document.getElementById(container);
                 containerCard.innerHTML =``;
+                currentProject = projectCode;
                 containerCard.appendChild(tempCard[0])
                 document.getElementById(tempCard[2]).addEventListener('click', (event) => {
                     if(event.target.closest('.branch-btn')){
@@ -10642,8 +10682,94 @@
                 })
                 document.getElementById(tempCard[2]).firstElementChild.click()
             }
+            function loader(mode){
+                let loader = document.getElementById('loader');
+                if(mode === 'show'){
+                    loader.classList.remove('hide')
+                    loader.firstElementChild.children[0].classList.add('loading-animation')
+                }
+                else{
+                    loader.classList.add('hide')
+                    loader.firstElementChild.children[0].classList.remove('loading-animation')
+                }
+            }
+            let myInput = function(){
+                return new Promise((resolve, reject) => {
+                    loader('hide')
+                    showPopup('sign_in' ,'no');
+                    let container = document.getElementById('priv_key_sign_in'),
+                        signIn = document.getElementById('sign_in'),
+                        privField = document.getElementById('priv_key_field'),
+                        btn = document.getElementById('back_to_main_page');
+                    document.getElementById('guest_btn').onclick = function(){
+                        hidePopup('sign_in')
+                        reject(null);
+                    }
+                    document.getElementById('priv_key_btn').onclick = function(){
+                        container.classList.remove('hide-completely')
+                        signIn.children[2].classList.add('hide-completely')
+                        btn.classList.remove('hide-completely')
+                    }
+                    btn.onclick = function(){
+                        container.classList.add('hide-completely')
+                        signIn.children[2].classList.remove('hide-completely')
+                        btn.classList.add('hide-completely')
+                    }
+                    privField.addEventListener('keyup', (event) =>{
+                        if(privField.value.trim() !== '')
+                            enableBtn('sign_in_btn')
+                        else
+                            disableBtn('sign_in_btn')
+                        if(event.keyCode === 13){
+                            if(privField.value.trim().length === 52){
+                                resolve(privField.value.trim())
+                                hidePopup('sign_in')
+                                loader('show')
+                            }
+                            else{
+                                showMessage('error', 'Please enter correct private key.')
+                            }
+                        }
+                    })
+                    document.getElementById('sign_in_btn').onclick = function(){
+                        if(privField.value.trim().length === 52){
+                            resolve(privField.value.trim())
+                            hidePopup('sign_in')
+                            loader('show')
+                        }
+                        else{
+                            showMessage('error', 'Please enter correct private key.')
+                        }
+                    }
+                })
+            }
+                // Event listeners
+
+                document.getElementById('best_interns').addEventListener('click', (event) => {
+                    if(event.target.closest('.intern-card'))
+                        showInternInfo(event.target.closest('.intern-card'))
+                })
+                document.getElementById('project_list').addEventListener('click', (event) => {
+                    if(event.target.closest('.project-card')){
+                        showPage('', 'project_explorer', 'explorer', 'innerPage')
+                        showProjectInfo(event.target.closest('.project-card'), 'right')
+                    }
+                })
+                document.getElementById('show_all').addEventListener('click', (event) => {
+                    if(event.target.closest('.intern-card'))
+                        showInternInfo(event.target.closest('.intern-card'))
+                })
+                document.getElementById('interns').addEventListener('click', (event) => {
+                    if(event.target.closest('.intern-card'))
+                        showInternInfo(event.target.closest('.intern-card'))
+                })
+                document.getElementById('projects').addEventListener('click', (event) => {
+                    if(event.target.closest('.project-card'))
+                        editProjectInfo(event.target.closest('.project-card'))
+                })
 
             function renderAllElements(){
+
                 let frag = document.createDocumentFragment();
         
                 //creates cards for highest performing interns
@@ -10677,25 +10803,12 @@
                 }
                 document.getElementById('best_interns').appendChild(frag)
 
-
-                // displays recent updates given by interns
-                document.getElementById('update_container').innerHTML='';
-                let updates = RIBC.getInternUpdates(8);
-                Object.keys(updates).forEach((entry) => {
-                    frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
-                })
-                document.getElementById('update_container').appendChild(frag)
                 // displays recent projects
-                //document.getElementById('project_list_container').innerHTML='';
+                document.getElementById('project_list').innerHTML='';
                 RIBC.getProjectList().forEach((project) => {
-                    let pc;
-                    if((RIBC.getProjectDetails(project).projectName !== undefined))
-                        pc = RIBC.getProjectDetails(project).projectName;
-                    else
-                        pc = project
-                    frag.appendChild(render.projectCard(pc, project))
+                    frag.appendChild(render.projectCard(RIBC.getProjectDetails(project).projectName, project))
                 })
-                document.getElementById('project_list_container').appendChild(frag)
+                document.getElementById('project_list').appendChild(frag)
                 
                 document.getElementById('projects').innerHTML = ``;
                 let pList = RIBC.getProjectList();
@@ -10721,7 +10834,7 @@
                 document.getElementById('intern_search_field').addEventListener('keyup', (event) => {
                     let container = document.getElementById('interns_list_container'),
                         inputField = document.getElementById('intern_search_field');
-                    if(event.keyCode === 13 || event.which === 13)
+                    if(event.keyCode === 13)
                     {
                         for(let i = 0;i < container.children.length; i++){
                             if(container.children[i].style.display != 'none'){
@@ -10758,14 +10871,16 @@
                         }
                 })
 
+                document.getElementById(recentPage).click()
+
                 document.getElementById('update_panel_btn').addEventListener('click', showUpdatePanel)
                 
                 let projectExplorer = document.getElementById('project_explorer');
                 for(i = 0; i < pList.length; i++){
                     frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
                 }
-
                 projectExplorer.children[1].appendChild(frag)
+
                 projectExplorer.children[1].addEventListener('click', (event) => {
                     if(event.target.closest('.project-card')){
                         showProjectInfo(event.target.closest('.project-card'), 'right')
@@ -10775,58 +10890,36 @@
                     if(event.target.closest('.branch-btn'))
                         showTasksOfBranch(event.target.closest('.branch-btn'), 'project_explorer', 'explorer_task_list')
                 })
-
-                showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map_container')
-                dashboardProject = JSON.parse(localStorage.getItem('watchList'))[0];
+                if(JSON.parse(localStorage.getItem('watchList')).length){
+                    showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
+                }
+                else{
+                    document.getElementById('status_map').innerHTML = '<h3>No project added to watch list.</h3>'
+                }
+                let index = 0;
+            if(JSON.parse(localStorage.getItem('watchList')).length === 0)
+                disableBtn('next_proj')
+            function changeProject(mode){
+                let list = JSON.parse(localStorage.getItem('watchList'));
+                if(mode === 'next'){
+                    index++;
+                }
+                else
+                    index--;
+                if(index === 0){
+                    disableBtn('prev_proj')
+                }
+                else    
+                    enableBtn('prev_proj')
+                if(index+1 === list.length){
+                    disableBtn('next_proj')
+                }
+                else    
+                    enableBtn('next_proj')
+                dashboardProject = list[index]
+                showProjectMap(dashboardProject, 'status_map')
             }
-            let myInput = function(){
-                return new Promise((resolve, reject) => {
-                    let loader = document.getElementById('loader');
-                    loader.classList.add('hide')
-                    loader.children[0].classList.remove('loading-animation')
-                    showPopup('sign_in' ,'no');
-                    let container = document.getElementById('priv_key_sign_in'),
-                        signIn = document.getElementById('sign_in'),
-                        privField = document.getElementById('priv_key_field'),
-                        btn = document.getElementById('back_to_main_page');
-                    document.getElementById('guest_btn').onclick = function(){
-                        hidePopup('sign_in')
-                        reject(null);
-                    }
-                    document.getElementById('priv_key_btn').onclick = function(){
-                        container.classList.remove('hide-completely')
-                        signIn.children[2].classList.add('hide-completely')
-                        btn.classList.remove('hide-completely')
-                    }
-                    btn.onclick = function(){
-                        container.classList.add('hide-completely')
-                        signIn.children[2].classList.remove('hide-completely')
-                        btn.classList.add('hide-completely')
-                    }
-                    privField.addEventListener('keyup', (event) =>{
-                        if(privField.value.trim() !== '')
-                            enableBtn('sign_in_btn')
-                        else    
-                            disableBtn('sign_in_btn')
-                        if(event.keyCode === 13 || event.which === 13){
-                            resolve(privField.value.trim())
-                            hidePopup('sign_in')
-                            loader.classList.remove('hide')
-                            loader.children[0].classList.add('loading-animation')
-                        }
-                    })
-                    document.getElementById('sign_in_btn').onclick = function(){
-                        resolve(privField.value.trim())
-                        hidePopup('sign_in')
-                        loader.classList.remove('hide')
-                        loader.children[0].classList.add('loading-animation')
-                    }
-                })
-                let confirmationDialog = document.getElementById('confirmation');
-                confirmationDialog.addEventListener('keyup', (event) => {
-                    if(event.keycode === 13 || event.which === 13)
-                        confirmationDialog.children[1].children[1].click()
-                })  
+                
             }
             // functions that run when page loads
         </script>
