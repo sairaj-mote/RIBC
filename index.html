@@ -5,7 +5,1826 @@
         <title>Intership Blockchain Contract</title>
         <meta name="description" content="This web app can be used to manage projects and assign tasks to interns.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/main.css">
+        <!--<link rel="stylesheet" href="css/main.css">-->
+        <style>* {
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+          }
+          
+          :root {
+            --accent-color: #FF4E4E;
+            --background: #222;
+            --foreground: #2a2a2a;
+            --rgb-bw: 255, 255, 255;
+            --light-text: #eee;
+            --light-color: #aaa;
+            --dark-color: #111;
+            --alpha: 0.04;
+          }
+          
+          body {
+            margin: 0;
+            font-size: 16px;
+            background: var(--background);
+            color: rgba(var(--rgb-bw), 1);
+            padding-bottom: 3rem;
+          }
+          
+          h1, h2, h3, h4, h5 {
+            font-weight: 500;
+          }
+          
+          input[type="checkbox"] {
+            display: none;
+          }
+          
+          .checkbox svg {
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+            height: 1.6rem;
+            width: 1.6rem;
+          }
+          
+          .checkbox svg .check {
+            stroke-dashoffset: 70;
+            stroke-dasharray: 70;
+            -webkit-transition: stroke-dashoffset 0.3s ease;
+            transition: stroke-dashoffset 0.3s ease;
+          }
+          
+          .checkbox input:checked + svg {
+            stroke: #00C853;
+          }
+          
+          .checkbox input:checked + svg .check {
+            stroke-dashoffset: 0;
+          }
+          
+          .switch {
+            display: flexbox;
+            width: 2em;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            position: relative;
+            height: 1.5em;
+            z-index: 1;
+            margin-right: 1em;
+            -ms-flex-item-align: center;
+                align-self: center;
+            -webkit-tap-highlight-color: transparent;
+          }
+          
+          .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 3em;
+            background-color: var(--dark-color);
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          .slider:before {
+            position: absolute;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
+            content: "";
+            height: 1.6em;
+            width: 1.6em;
+            background-color: white;
+            -webkit-transform: translateY(-1px);
+                    transform: translateY(-1px);
+            -webkit-transition: .4s;
+            transition: .4s;
+            -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+          }
+          
+          input:checked + .slider {
+            background-color: var(--accent-color);
+          }
+          
+          input:checked + .slider:before {
+            -webkit-transform: translate(1.4em, -1px);
+                    transform: translate(1.4em, -1px);
+          }
+          
+          .slider.round {
+            border-radius: 2rem;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+          
+          #settings_page {
+            padding: 1rem;
+          }
+          
+          #settings_page section {
+            width: 100%;
+            border-bottom: 1px solid rgba(var(--rgb-bw), 0.1);
+            display: -ms-grid;
+            display: grid;
+            padding-bottom: 1rem;
+          }
+          
+          #settings_page section:last-of-type {
+            border: none;
+          }
+          
+          #settings_page h3, #settings_page h4 {
+            display: flexbox;
+            width: 100%;
+            -ms-flex-item-align: center;
+                align-self: center;
+          }
+          
+          #settings_page h5 {
+            margin: 0;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
+            font-weight: normal;
+            opacity: 0.9;
+          }
+          
+          #settings_page button {
+            background: transparent;
+            border: 1px solid #D32F2F;
+            color: #D32F2F;
+            margin: 1rem 0;
+            width: -webkit-min-content;
+            width: -moz-min-content;
+            width: min-content;
+            white-space: nowrap;
+          }
+          
+          #settings_page button svg {
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+            stroke: #D32F2F;
+          }
+          
+          #settings_page button:hover {
+            background: #D32F2F;
+            color: white;
+          }
+          
+          #settings_page button:hover svg {
+            stroke: white;
+          }
+          
+          #settings_page div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            padding: 1rem 0;
+            -ms-flex-line-pack: center;
+                align-content: center;
+          }
+          
+          #settings_page .row {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+          }
+          
+          #settings_page .row span {
+            font-size: 0.8rem;
+          }
+          
+          #settings_page .border-card {
+            color: inherit;
+            text-decoration: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 0.5rem 0;
+            width: auto;
+          }
+          
+          #settings_page .border-card svg {
+            fill: var(--accent-color);
+            display: flexbox;
+            height: 2rem;
+            -ms-flex-item-align: center;
+                align-self: center;
+            margin: 0.5rem;
+          }
+          
+          .container-card {
+            position: relative;
+            background: var(--background);
+            border-radius: 0.6rem;
+            -webkit-box-shadow: 0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.24), -0.4rem -0.4rem 0.8rem rgba(255, 255, 255, var(--alpha));
+                    box-shadow: 0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.24), -0.4rem -0.4rem 0.8rem rgba(255, 255, 255, var(--alpha));
+          }
+          
+          .popup-container {
+            display: -ms-grid;
+            display: grid;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            place-items: center;
+            background: rgba(0, 0, 0, 0.24);
+            z-index: 10;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+          }
+          
+          .popup-container .popup {
+            -ms-flex-item-align: end;
+                align-self: flex-end;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            width: 100%;
+            border-radius: 0.5rem 0.5rem 0 0;
+            padding: 1rem;
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            background: var(--foreground);
+            -webkit-transform: translateY(1rem);
+                    transform: translateY(1rem);
+            -webkit-transition: -webkit-transform 0.3s ease;
+            transition: -webkit-transform 0.3s ease;
+            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+            -webkit-box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
+                    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
+          }
+          
+          .popup-container .popup h5 {
+            margin: 0.5rem 0;
+          }
+          
+          .popup-container .popup button:first-of-type {
+            margin-left: auto;
+          }
+          
+          .popup-container .popup .container-header {
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            padding: 0;
+          }
+          
+          .popup-container .popup .container-header button {
+            background: rgba(var(--rgb-bw), 0.1);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+          }
+          
+          .solid-background {
+            background: var(--background);
+          }
+          
+          a {
+            color: var(--accent-color);
+            text-decoration: none;
+            text-transform: uppercase;
+          }
+          
+          .medium-top-bottom-margin {
+            margin: 0.5rem 0;
+          }
+          
+          #sign_in {
+            border-radius: 0;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: column wrap;
+                    flex-flow: column wrap;
+            padding: 2rem;
+            overflow: hidden;
+            margin: 1rem;
+            -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+                align-self: center;
+            width: calc(100% - 2rem);
+          }
+          
+          #sign_in h2 {
+            margin: 0.5rem 0;
+            z-index: 3;
+          }
+          
+          #sign_in p:first-of-type {
+            margin-bottom: 4rem;
+            z-index: 3;
+          }
+          
+          #sign_in span {
+            position: absolute;
+            background: linear-gradient(45deg, #FBC02D, #F57F17);
+            border-radius: 50%;
+          }
+          
+          #sign_in span:first-of-type {
+            padding: 10rem;
+            top: -8rem;
+            right: -10rem;
+            z-index: 2;
+          }
+          
+          #sign_in span:nth-of-type(2) {
+            padding: 14rem;
+            top: -8rem;
+            right: -12rem;
+            z-index: 1;
+          }
+          
+          #sign_in div:first-of-type {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            margin-bottom: 4rem;
+            z-index: 3;
+          }
+          
+          #sign_in div:first-of-type button {
+            margin: initial;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            text-align: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            margin: 0.5rem;
+            width: 8rem;
+            background: var(--foreground);
+            -webkit-transition: -webkit-box-shadow 0.3s ease;
+            transition: -webkit-box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+            border: 1px solid rgba(var(--rgb-bw), 0.1);
+          }
+          
+          #sign_in div:first-of-type button svg {
+            height: 2rem;
+            width: 2rem;
+            margin: 1rem;
+          }
+          
+          #sign_in div:first-of-type button:hover {
+            -webkit-box-shadow: 0.1rem 0.2rem 2rem rgba(0, 0, 0, 0.24);
+                    box-shadow: 0.1rem 0.2rem 2rem rgba(0, 0, 0, 0.24);
+          }
+          
+          #sign_in #priv_key_sign_in {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: column wrap;
+                    flex-flow: column wrap;
+            z-index: 3;
+          }
+          
+          #sign_in #priv_key_sign_in .input {
+            background: rgba(0, 0, 0, 0.24);
+          }
+          
+          #sign_in #priv_key_sign_in button {
+            margin-left: initial;
+            margin-bottom: 2rem;
+            background: rgba(var(--rgb-bw), 0.04);
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+          }
+          
+          .task {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto 1fr;
+                grid-template-columns: auto 1fr;
+          }
+          
+          .task:last-of-type .left .line {
+            -webkit-transform: scaleY(0);
+                    transform: scaleY(0);
+          }
+          
+          .task .left {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+          }
+          
+          .task .left .circle {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            position: relative;
+            -ms-flex-item-align: start;
+                align-self: flex-start;
+            font-weight: 500;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background: var(--foreground);
+            border: solid 2px rgba(var(--rgb-bw), 0.4);
+            z-index: 1;
+          }
+          
+          .task .left .line {
+            position: absolute;
+            left: 50%;
+            height: 100%;
+            width: 2px;
+            -webkit-transform: translateX(-50%) scaleY(1);
+                    transform: translateX(-50%) scaleY(1);
+            background-color: rgba(var(--rgb-bw), 0.4);
+          }
+          
+          .task .right {
+            margin-left: 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+          }
+          
+          .task h4 {
+            margin-top: 0.4rem;
+            margin-bottom: 1rem;
+          }
+          
+          .task p {
+            padding-bottom: 2rem;
+          }
+          
+          .task .assigned-interns .assigned-intern {
+            padding: 0.4rem;
+          }
+          
+          .completed-task .left .circle {
+            border: solid 2px #00C853;
+            background: #00C853;
+          }
+          
+          .completed-task .left .line {
+            background-color: #00C853;
+          }
+          
+          #show_all {
+            margin-top: 0;
+          }
+          
+          .page {
+            gap: 1rem;
+            display: -ms-grid;
+            display: grid;
+            position: relative;
+            margin: 0;
+            -webkit-animation: fadein 0.4s ease;
+                    animation: fadein 0.4s ease;
+          }
+          
+          .fade-in {
+            -webkit-animation: fadein 0.4s ease;
+                    animation: fadein 0.4s ease;
+          }
+          
+          @-webkit-keyframes fadein {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          
+          @keyframes fadein {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          
+          .title {
+            font-weight: 500;
+          }
+          
+          #dashboard {
+            padding-bottom: 5rem;
+            -ms-grid-columns: auto;
+                grid-template-columns: auto;
+          }
+          
+          #background_art {
+            position: fixed;
+            pointer-events: none;
+            height: 100vh;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            overflow: visible;
+          }
+          
+          #confirmation {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            padding: 1rem;
+          }
+          
+          #confirmation div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+          }
+          
+          #confirmation div button:first-of-type {
+            margin-left: auto;
+          }
+          
+          .input {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            margin: 1rem 0;
+            background: rgba(var(--rgb-bw), 0.06);
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            border-radius: 0.2rem;
+            overflow: hidden;
+          }
+          
+          .input input, .input textarea {
+            color: var(--light-text);
+            padding: 1rem 0.5rem;
+            width: 100%;
+            font-size: 1rem;
+            background: transparent;
+            margin-left: 0;
+          }
+          
+          .input input:focus, .input textarea:focus {
+            outline: none;
+          }
+          
+          .input svg {
+            height: 1.2rem;
+            width: 1.2rem;
+            margin: 0 0.5rem 0 1rem;
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+          }
+          
+          .input:focus-within {
+            background: rgba(0, 0, 0, 0.1);
+          }
+          
+          input, button, textarea {
+            position: relative;
+            border: none;
+            font-size: 1rem;
+            border-radius: 0.2rem;
+          }
+          
+          button {
+            position: relative;
+            height: inherit;
+            padding: 1rem;
+            background: transparent;
+            -webkit-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            margin: 0 0.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--light-text);
+            font-size: 0.9rem;
+          }
+          
+          button svg {
+            fill: rgba(var(--rgb-bw), 1);
+            height: 1rem;
+          }
+          
+          button:focus {
+            outline: none;
+          }
+          
+          button[disabled] {
+            opacity: 0.5;
+            cursor: default;
+          }
+          
+          .show {
+            display: block;
+          }
+          
+          .hide {
+            opacity: 0;
+            pointer-events: none;
+          }
+          
+          .hide-completely {
+            display: none !important;
+          }
+          
+          .hide-on-mobile, .hide-page-on-mobile {
+            display: none;
+          }
+          
+          .hide-on-desktop {
+            display: initial;
+          }
+          
+          .no-transformations {
+            -webkit-transform: none !important;
+                    transform: none !important;
+          }
+          
+          #top_nav {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            padding: 0.5rem;
+            background: var(--background);
+            z-index: 4;
+          }
+          
+          #top_nav button {
+            border-radius: 0;
+          }
+          
+          #top_nav #logo {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+          }
+          
+          #top_nav #logo svg {
+            height: 2.5rem;
+            margin-right: 0.5rem;
+          }
+          
+          #top_nav #logo h4 {
+            margin: 0;
+          }
+          
+          #top_nav .spacer {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+          }
+          
+          .active {
+            opacity: 1 !important;
+            color: var(--accent-color);
+          }
+          
+          .active svg {
+            fill: var(--accent-color);
+          }
+          
+          .svg-margin-right svg {
+            margin-right: 0.5rem;
+          }
+          
+          .intern-card {
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+          }
+          
+          .intern-card span:first-of-type {
+            padding: 0.8rem;
+            border-radius: 50%;
+            background: #00897B;
+            margin-right: 1rem;
+            color: var(--background);
+            font-weight: 500;
+            font-size: 1.2rem;
+            line-height: 0;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            text-transform: uppercase;
+          }
+          
+          .intern-card span:first-of-type::after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+          }
+          
+          .intern-card span:nth-of-type(2) {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            text-transform: capitalize;
+          }
+          
+          .intern-card span:nth-of-type(3) {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            color: #FFC107;
+            font-weight: bold;
+            font-size: 1.2rem;
+          }
+          
+          .intern-card span:nth-of-type(3) svg {
+            fill: #FFC107 !important;
+            height: 1rem !important;
+            width: 1rem !important;
+            margin-right: 0.2rem;
+          }
+          
+          .card {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            position: relative;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 1rem;
+          }
+          
+          .dropdown {
+            position: relative;
+            /*&:hover .dropdown-content {
+                  display: flex;
+              }*/
+          }
+          
+          .dropdown-content {
+            overflow: hidden;
+            position: absolute;
+            z-index: 2;
+            margin: 1rem;
+            right: 2rem;
+            min-width: 24rem;
+            background: var(--foreground);
+            -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+                    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+            border-radius: 0.2rem;
+          }
+          
+          #intern_updates .container-header {
+            padding-right: 0;
+            border-bottom: 1px solid rgba(var(--rgb-bw), 0.1);
+          }
+          
+          #update_container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+          }
+          
+          .update {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            padding: 1rem;
+          }
+          
+          .update h4, .update h5 {
+            margin: 0.2rem 0;
+          }
+          
+          .update h4 {
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+          
+          .update h5 {
+            color: #29B6F6;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+          }
+          
+          .container-header {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            width: 100%;
+            padding: 0 1rem;
+          }
+          
+          .container-header h3 {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            font-weight: 500;
+          }
+          
+          .container-header span {
+            color: var(--accent-color);
+            border-radius: 0.2rem;
+            margin-right: 0.2rem;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+          }
+          
+          .back-arrow {
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            cursor: pointer;
+          }
+          
+          .close-svg, .tick-mark {
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+            height: 2rem;
+            width: 2rem;
+          }
+          
+          .close-svg {
+            padding: 0.6rem;
+          }
+          
+          #textCopied {
+            padding: 1rem;
+            border-radius: 2rem;
+            background: var(--sec-color);
+            position: fixed;
+            bottom: 0;
+            pointer-events: none;
+            margin: 2rem 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);
+            -webkit-transition: 0.3s opacity ease;
+            transition: 0.3s opacity ease;
+            z-index: 10;
+          }
+          
+          #intern_info {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+          }
+          
+          #intern_info div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            width: 100%;
+            margin-bottom: 1rem;
+          }
+          
+          #intern_info div span {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            word-break: break-all;
+            font-size: 0.9rem;
+          }
+          
+          #intern_info div svg {
+            fill: rgba(var(--rgb-bw), 1);
+            height: 2.5rem;
+            padding: 0.6rem;
+            overflow: visible;
+          }
+          
+          #intern_info .gold-fill {
+            fill: #FFC107;
+          }
+          
+          #intern_info #update_intern_score {
+            color: #FFC107;
+          }
+          
+          #intern_info #update_intern_score h4 {
+            margin: 0;
+            font-size: 2rem;
+          }
+          
+          #intern_info #update_intern_score button {
+            border: 1px solid rgba(var(--rgb-bw), 0.1);
+          }
+          
+          #intern_info #update_intern_score button svg {
+            stroke-width: 10;
+            fill: none;
+            stroke: var(--accent-color);
+          }
+          
+          #intern_info #update_intern_score rect {
+            stroke: transparent;
+          }
+          
+          #intern_info h3 {
+            text-transform: capitalize;
+          }
+          
+          #intern_info h4, #intern_info h5 {
+            margin-top: 0.5rem;
+          }
+          
+          #project_info {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+          }
+          
+          .branch-btn {
+            border-radius: 0;
+            padding: 0.5rem;
+            border-radius: 0.2rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+          }
+          
+          .active-branch {
+            opacity: 1;
+            color: var(--accent-color);
+            background: rgba(var(--rgb-bw), 0.04);
+          }
+          
+          .active-project {
+            background: rgba(var(--rgb-bw), 0.04);
+          }
+          
+          .opac {
+            opacity: 1 !important;
+          }
+          
+          p {
+            font-size: 0.9rem;
+            line-height: 1.4rem;
+            color: var(--light-text);
+          }
+          
+          .task-list-item {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto 1fr auto;
+                grid-template-columns: auto 1fr auto;
+                grid-template-areas: 'status title options'
+           'status interns interns'
+           'status description description';
+            padding: 1rem;
+            gap: 0.5rem;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            background: rgba(var(--rgb-bw), 0.02);
+          }
+          
+          .task-list-item .checkbox {
+            -ms-grid-row: 1;
+            -ms-grid-row-span: 3;
+            -ms-grid-column: 1;
+            grid-area: status;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            -ms-flex-item-align: start !important;
+                align-self: flex-start !important;
+          }
+          
+          .task-list-item:first-of-type {
+            margin-top: 1rem;
+            border-radius: 0.2rem 0.2rem 0 0;
+          }
+          
+          .task-list-item:last-of-type {
+            border-radius: 0 0 0.2rem 0.2rem;
+            border-bottom: none;
+            margin-bottom: 1rem;
+          }
+          
+          .task-list-item h4 {
+            -ms-grid-row: 1;
+            -ms-grid-column: 2;
+            grid-area: title;
+            font-weight: 500;
+            margin: 0;
+          }
+          
+          .task-list-item .assigned-interns {
+            -ms-grid-row: 2;
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 2;
+            grid-area: interns;
+          }
+          
+          .task-list-item .task-option {
+            -ms-grid-row: 1;
+            -ms-grid-column: 3;
+            grid-area: options;
+            cursor: pointer;
+            opacity: 1;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+          }
+          
+          .task-list-item .task-option svg {
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            overflow: visible;
+            fill: rgba(var(--rgb-bw), 0.8);
+          }
+          
+          .task-list-item p {
+            -ms-grid-row: 3;
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 2;
+            grid-area: description;
+            margin: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+          }
+          
+          .assigned-interns {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+          }
+          
+          .assigned-interns .assigned-intern {
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-size: 0.8rem;
+            margin: 0.2rem 0.5rem 0.2rem 0;
+            padding: 0.2rem 0 0.2rem 0.4rem;
+            border-radius: 0.2rem;
+            border: 1px solid rgba(var(--rgb-bw), 0.24);
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            white-space: nowrap;
+            text-transform: capitalize;
+          }
+          
+          .assigned-interns .assigned-intern button {
+            padding: 0.2rem;
+          }
+          
+          .assigned-interns .assigned-intern button svg {
+            padding: 0.2rem;
+            height: 1rem;
+            width: 1rem;
+          }
+          
+          .commit {
+            color: var(--accent-color);
+            background: rgba(var(--rgb-bw), 0.04);
+            border: 1px solid rgba(var(--rgb-bw), 0.08);
+          }
+          
+          #task_context {
+            -webkit-transition: 0.3s opacity ease;
+            transition: 0.3s opacity ease;
+            top: 0;
+            right: 0;
+            margin: 0 2rem;
+            list-style: none;
+            padding: 0.5rem 0;
+            width: -webkit-max-content;
+            width: -moz-max-content;
+            width: max-content;
+            border-radius: 0.2rem;
+            position: absolute;
+            background: var(--foreground);
+            -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.16);
+                    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.16);
+          }
+          
+          #task_context li {
+            padding: 0.8rem 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+          }
+          
+          #task_context li svg {
+            margin-right: 0.6rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+          }
+          
+          .temp-task {
+            padding: 1rem;
+            background: rgba(var(--rgb-bw), 0.02);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+          }
+          
+          .temp-task .input {
+            margin: 0.4rem 0;
+          }
+          
+          #branch_container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: row wrap;
+                    flex-flow: row wrap;
+            margin: 1rem 0;
+          }
+          
+          #notification {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+          }
+          
+          #projects_container, #interns_container {
+            margin-bottom: 1rem;
+          }
+          
+          #projects_container .container-header svg, #interns_container .container-header svg {
+            padding: 0.5rem;
+            height: 2rem;
+            width: 2rem;
+            opacity: 0.9;
+            fill: rgba(var(--rgb-bw), 1);
+            margin-right: 0;
+          }
+          
+          #bottom_nav {
+            position: fixed;
+            bottom: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            width: 100vw;
+            background: var(--background);
+            z-index: 4;
+            border-top: 1px solid rgba(var(--rgb-bw), 0.1);
+          }
+          
+          #bottom_nav button {
+            padding: 0.2rem;
+            width: 100%;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            font-size: 0.7rem;
+            font-weight: normal;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+          }
+          
+          #bottom_nav button svg {
+            margin: 0.4rem;
+          }
+          
+          #edit_data {
+            padding: 1rem;
+          }
+          
+          #show_message {
+            text-transform: capitalize;
+            -webkit-transform: translateY(-5rem);
+                    transform: translateY(-5rem);
+            -webkit-transition: -webkit-transform 0.3s ease;
+            transition: -webkit-transform 0.3s ease;
+            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 0.6rem 1rem;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 11;
+          }
+          
+          #show_message span {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+          }
+          
+          #show_message button {
+            padding: 0.5rem 1rem;
+            margin: 0;
+          }
+          
+          #show_message button svg {
+            stroke: white;
+          }
+          
+          #interns_list {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            min-width: 20rem;
+          }
+          
+          #interns_list #interns_list_container {
+            min-height: 40vh;
+            max-height: 40vh;
+            overflow-y: auto;
+          }
+          
+          #best_interns_container {
+            margin-bottom: 1rem;
+          }
+          
+          #edit_data_fig {
+            fill: rgba(var(--rgb-bw), 0.6);
+            width: 60vw;
+            margin: 2rem 0;
+          }
+          
+          #floating_btn {
+            position: fixed;
+            z-index: 3;
+            bottom: 0;
+            right: 0;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 1;
+            margin: 1rem 1rem 4rem 1rem;
+            -webkit-box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.24);
+                    box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.24);
+          }
+          
+          #floating_btn svg {
+            height: 1.4rem;
+            width: 1.4rem;
+            -webkit-transform: translate(-2px, 2px);
+                    transform: translate(-2px, 2px);
+            fill: white;
+          }
+          
+          .header {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background: var(--background);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: row;
+                    flex-flow: row;
+            border-bottom: 1px solid rgba(var(--rgb-bw), 0.1);
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            z-index: 2;
+          }
+          
+          .header svg {
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+            height: 2rem;
+            width: 2rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            margin-left: 1rem;
+          }
+          
+          .header h3 {
+            padding: 0 0.5rem;
+            display: inline-flexbox;
+          }
+          
+          .appear-on-scroll-up {
+            position: fixed !important;
+            top: 0;
+            width: 100%;
+            height: 4rem !important;
+          }
+          
+          #loader {
+            text-align: center;
+          }
+          
+          #loader h4 {
+            font-weight: normal;
+          }
+          
+          .loader {
+            height: 4rem;
+            width: 4rem;
+            stroke-width: 2;
+            overflow: visible;
+            stroke: var(--accent-color);
+            fill: none;
+            stroke-dashoffset: 180;
+            stroke-dasharray: 180;
+            will-change: stroke-dashoffset;
+          }
+          
+          .loading-animation {
+            -webkit-animation: load 3.6s linear infinite, spin 1s linear infinite;
+                    animation: load 3.6s linear infinite, spin 1s linear infinite;
+          }
+          
+          #status_map_container .watching {
+            padding-left: 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+          }
+          
+          #status_map_container .watching h4 {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            font-weight: 500;
+          }
+          
+          #status_map_container .watching button {
+            padding: 1rem;
+          }
+          
+          #status_map_container .watching svg {
+            fill: none !important;
+            fill: none;
+            stroke: rgba(var(--rgb-bw), 0.8);
+            stroke-width: 6;
+            overflow: visible;
+          }
+          
+          #status_map_container #status_map {
+            padding: 1rem;
+          }
+          
+          #status_map_container #status_map h2 {
+            margin: 0.4rem 0;
+          }
+          
+          #right {
+            padding: 0 1rem;
+          }
+          
+          #right div:first-of-type {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+          }
+          
+          #right div:first-of-type h2 {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            margin: 0.4rem 0;
+          }
+          
+          #right div:first-of-type button {
+            border: 1px solid rgba(var(--rgb-bw), 0.06);
+          }
+          
+          .center {
+            position: relative;
+            display: -ms-grid;
+            display: grid;
+            place-content: center;
+            height: 100%;
+            text-align: center;
+          }
+          
+          @-webkit-keyframes load {
+            50% {
+              stroke-dashoffset: 0;
+            }
+          }
+          
+          @keyframes load {
+            50% {
+              stroke-dashoffset: 0;
+            }
+          }
+          
+          @-webkit-keyframes spin {
+            0% {
+              -webkit-transform: rotate(0);
+                      transform: rotate(0);
+            }
+            100% {
+              -webkit-transform: rotate(359deg);
+                      transform: rotate(359deg);
+            }
+          }
+          
+          @keyframes spin {
+            0% {
+              -webkit-transform: rotate(0);
+                      transform: rotate(0);
+            }
+            100% {
+              -webkit-transform: rotate(359deg);
+                      transform: rotate(359deg);
+            }
+          }
+          
+          .update-mi svg {
+            -webkit-animation: shake 0.6s ease;
+                    animation: shake 0.6s ease;
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+          }
+          
+          @-webkit-keyframes shake {
+            0% {
+              -webkit-transform: rotate(30deg);
+                      transform: rotate(30deg);
+            }
+            20% {
+              -webkit-transform: rotate(-30deg);
+                      transform: rotate(-30deg);
+            }
+            40% {
+              -webkit-transform: rotate(20deg);
+                      transform: rotate(20deg);
+            }
+            60% {
+              -webkit-transform: rotate(-20deg);
+                      transform: rotate(-20deg);
+            }
+            80% {
+              -webkit-transform: rotate(10deg);
+                      transform: rotate(10deg);
+            }
+            100% {
+              -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+            }
+          }
+          
+          @keyframes shake {
+            0% {
+              -webkit-transform: rotate(30deg);
+                      transform: rotate(30deg);
+            }
+            20% {
+              -webkit-transform: rotate(-30deg);
+                      transform: rotate(-30deg);
+            }
+            40% {
+              -webkit-transform: rotate(20deg);
+                      transform: rotate(20deg);
+            }
+            60% {
+              -webkit-transform: rotate(-20deg);
+                      transform: rotate(-20deg);
+            }
+            80% {
+              -webkit-transform: rotate(10deg);
+                      transform: rotate(10deg);
+            }
+            100% {
+              -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+            }
+          }
+          
+          .settings-mi svg {
+            -webkit-animation: rot 0.6s ease;
+                    animation: rot 0.6s ease;
+            -webkit-transform-origin: center;
+                    transform-origin: center;
+          }
+          
+          @-webkit-keyframes rot {
+            0% {
+              -webkit-transform: rotate(0);
+                      transform: rotate(0);
+            }
+            100% {
+              -webkit-transform: rotate(60deg);
+                      transform: rotate(60deg);
+            }
+          }
+          
+          @keyframes rot {
+            0% {
+              -webkit-transform: rotate(0);
+                      transform: rotate(0);
+            }
+            100% {
+              -webkit-transform: rotate(60deg);
+                      transform: rotate(60deg);
+            }
+          }
+          
+          @media only screen and (min-width: 640px) {
+            body {
+              padding-bottom: 0;
+            }
+            ::-webkit-scrollbar {
+              width: 0.3rem;
+            }
+            ::-webkit-scrollbar-thumb {
+              background: rgba(var(--rgb-bw), 0.3);
+            }
+            ::-webkit-scrollbar-thumb:hover {
+              background: rgba(var(--rgb-bw), 0.6);
+            }
+            .hide-on-desktop {
+              display: none !important;
+            }
+            .hide-on-mobile {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+            }
+            .hide-page-on-mobile {
+              display: -ms-grid;
+              display: grid;
+            }
+            .page {
+              margin: 1rem 4vw;
+            }
+            #show_all {
+              margin-top: 1rem;
+            }
+            #top_nav {
+              padding: 1rem 2vw;
+            }
+            #sign_in {
+              width: auto;
+              height: auto;
+              border-radius: 0.4rem;
+            }
+            #floating_btn {
+              margin: 1rem;
+            }
+            #dashboard {
+              -ms-grid-columns: 3fr 1fr;
+                  grid-template-columns: 3fr 1fr;
+            }
+            #dashboard #status_map_container {
+              -ms-flex-item-align: start;
+                  align-self: flex-start;
+            }
+            #dashboard #status_map_container .watching {
+              padding-left: 2rem;
+            }
+            #dashboard #status_map_container #status_map {
+              padding: 1rem 2rem;
+            }
+            #dashboard .container-card svg:first-of-type {
+              fill: rgba(var(--rgb-bw), 1);
+              height: 1.4rem;
+              width: 1.4rem;
+              margin-right: 0.5rem;
+            }
+            #intern_info {
+              width: 24rem;
+            }
+            .hover {
+              -webkit-transition: background 0.3s ease;
+              transition: background 0.3s ease;
+              cursor: pointer;
+            }
+            .hover:hover {
+              background: rgba(var(--rgb-bw), 0.06);
+            }
+            .popup-container .popup {
+              width: auto;
+              -ms-flex-item-align: center;
+                  -ms-grid-row-align: center;
+                  align-self: center;
+              border-radius: 0.2rem;
+            }
+            #add_intern_popup, #add_project_popup, #create_branch, #post_update, #confirmation {
+              padding: 1rem;
+              width: 24rem;
+            }
+            #add_intern_popup button, #add_project_popup button, #create_branch button, #post_update button, #confirmation button {
+              margin-left: 0.5rem;
+            }
+            #add_intern_popup button:first-of-type, #add_project_popup button:first-of-type, #create_branch button:first-of-type, #post_update button:first-of-type, #confirmation button:first-of-type {
+              margin-left: auto;
+            }
+            #admin_panel {
+              -ms-grid-columns: 1fr 3fr;
+                  grid-template-columns: 1fr 3fr;
+                  grid-template-areas: '. edit';
+            }
+            #edit_data_fig {
+              width: 16rem;
+              -ms-grid-column-align: center;
+                  justify-self: center;
+            }
+            #interns, #projects {
+              overflow-y: auto;
+              max-height: 40vh;
+            }
+            #edit_data {
+              -ms-grid-row: 1;
+              -ms-grid-column: 2;
+              grid-area: edit;
+              -ms-flex-item-align: start;
+                  align-self: flex-start;
+            }
+            #edit_data input {
+              margin-top: 0.5rem;
+              margin-bottom: 2rem;
+              width: 20rem;
+            }
+            .task-list-item .task-option {
+              opacity: 0;
+            }
+            .task-list-item:hover .task-option {
+              opacity: 1;
+            }
+            #project_explorer {
+              display: -ms-grid;
+              display: grid;
+              -ms-grid-columns: 1fr 3fr;
+                  grid-template-columns: 1fr 3fr;
+                  grid-template-areas: 'header header'
+           'left right';
+            }
+            #project_explorer .header {
+              -ms-grid-row: 1;
+              -ms-grid-column: 1;
+              -ms-grid-column-span: 2;
+              grid-area: header;
+            }
+            #project_explorer #left {
+              -ms-grid-row: 2;
+              -ms-grid-column: 1;
+              grid-area: left;
+              -ms-flex-item-align: start;
+                  align-self: flex-start;
+              border-right: 1px solid rgba(var(--rgb-bw), 0.06);
+            }
+            #project_explorer #right {
+              -ms-grid-row: 2;
+              -ms-grid-column: 2;
+              grid-area: right;
+            }
+          }
+          /*# sourceMappingURL=main.css.map */</style>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 
         <script id="floGlobals">
@@ -56,14 +1875,14 @@
             </div>
         </div>
             <nav id="bottom_nav" class="hide-on-desktop">
-                <button id="bottom_dashboard_btn" class="tabs active" onclick="showPage('bottom_dashboard_btn', 'dashboard')">
+                <button id="bottom_dashboard_btn" class="tabs active nav-btn">
                     <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
                     <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
                     </svg>
                     Dashboard</button>
-                <button id="bottom_update_btn" class="tabs" onclick="showPage('bottom_update_btn', 'show_all', 'updates', 'innerPage')">
+                <button id="bottom_update_btn" class="tabs nav-btn">
                     <svg viewBox="0 0 57.2 64">
                         <circle style="fill: #FF4E4E" cx="47.7" cy="9.5" r="9.5"/>
                         <path d="M52.29,52.21c-2.19-2.34-3.86-5.18-4.84-8.33V43v-5.5V21.99C40.66,21.85,35.2,16.32,35.2,9.5
@@ -71,7 +1890,7 @@
                             c-0.98,3.15-2.64,5.99-4.84,8.33C-0.74,53.65,0.29,56,2.26,56h3.19h1h13h2.36c-0.38,0.75-0.61,1.6-0.61,2.5
                             c0,3.04,2.46,5.5,5.5,5.5s5.5-2.46,5.5-5.5c0-0.9-0.22-1.75-0.61-2.5h1.86h13h1h3.19C52.61,56,53.63,53.65,52.29,52.21z"/>
                     </svg>Feed</button>
-                <button id="bottom_admin_btn" class="tabs admin-options hide-completely" onclick="showPage('bottom_admin_btn', 'admin_panel')">
+                <button id="bottom_admin_btn" class="tabs admin-options hide-completely nav-btn">
                     <svg viewBox="0 0 75 75.43">
                         <circle cx="10.5" cy="10.5" r="9"/>
                         <circle cx="33" cy="33.43" r="13.5"/>
@@ -82,7 +1901,7 @@
                         <line x1="15.49" y1="57.44" x2="24.68" y2="44.05"/>
                     </svg>
                     Manage</button>
-                <button id="bottom_setting_btn" class="tabs" onclick="showPage('bottom_setting_btn', 'settings_page')">
+                <button id="bottom_setting_btn" class="tabs nav-btn">
                     <svg viewBox="0 0 74.1 67.24">
                         <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
                         c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
@@ -185,13 +2004,13 @@
                 </svg>
                 <h4>RIBC</h4>
             </div>
-            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right active" onclick="showPage('dashboard_btn', 'dashboard')">
+            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right active nav-btn">
                 <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
                     <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
                     </svg>Dashboard</button>
-            <button id="admin_panel_btn" class="tabs admin-options hide-on-mobile hide-completely svg-margin-right" onclick="showPage('admin_panel_btn', 'admin_panel')">
+            <button id="admin_panel_btn" class="tabs admin-options hide-on-mobile hide-completely svg-margin-right nav-btn">
                 <svg viewBox="0 0 75 75.43">
                     <circle cx="10.5" cy="10.5" r="9"/>
                     <circle cx="33" cy="33.43" r="13.5"/>
@@ -221,14 +2040,14 @@
                 <div class="dropdown-content hide" id="updates">
                     <div class="container-header">
                         <h3>Feed</h3>
-                        <button onclick="showPage('', 'show_all', 'updates', 'innerPage')">See all</button>
+                        <button id="top_update_btn" onclick="showPage('', 'show_all', 'updates', 'innerPage')">See all</button>
                     </div>
                     <div id="update_container">
 
                     </div>
                 </div>
             </div>
-            <button id="settings_btn" class="tabs hide-on-mobile" onclick="showPage('settings_btn', 'settings_page')">
+            <button id="settings_btn" class="tabs hide-on-mobile nav-btn">
                 <svg viewBox="0 0 74.1 67.24">
                     <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
                     c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
@@ -242,7 +2061,7 @@
             <section id="dashboard" class="page">
                     <div id="status_map_container" class="container-card">
                         <div class="watching">
-                            <h4>watching</h4>
+                            <h4>Watching</h4>
                             <button id="prev_proj" onclick="changeProject('prev')" disabled>
                                 <svg viewBox="0 0 40.24 74.83">
                                     <polyline points="38.83,1.41 2.83,37.41 38.83,73.41 "/>
@@ -365,7 +2184,7 @@
             </div>
             <div id="show_all" class="page hide-completely container-card">
                 <header class="header">
-                    <svg onclick="showPage('', 'lastPage','', 'innerPage')" viewBox="0 0 31.24 56.83">
+                    <svg onclick="history.back()" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3></h3>
@@ -374,7 +2193,7 @@
             </div>
             <div id="project_explorer" class="page hide-completely container-card list-container">
                 <header class="header">
-                    <svg onclick="showPage('', 'lastPage', '', 'innerPage')" viewBox="0 0 31.24 56.83">
+                    <svg onclick="history.back()" viewBox="0 0 31.24 56.83">
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Projects</h3>
@@ -10150,14 +11969,12 @@
                     let canceled = !elem.dispatchEvent(evt);
                 };
 
-            let recentPage = 'dashboard_btn',i = currentProgress = projectIndex = 0, prevProject = '',iList,
+            let i = currentProgress = projectIndex = 0, prevProject = '',iList,
             frag = document.createDocumentFragment(), watchList = [], currentIntern, dashboardProject;
 
             // function required for popups or modals to appear
             function showPopup(popup, permission){ 
                 let thisPopup = document.getElementById(popup);
-                if(thisPopup.querySelector('input'))
-                    thisPopup.querySelector('input').focus()
                 thisPopup.parentNode.classList.remove('hide');    
                 thisPopup.classList.add('no-transformations');    
                 window.onclick = function(event) {
@@ -10360,11 +12177,6 @@
                             contextMenu.classList.add('hide')
                             document.removeEventListener('click', y);
                         });
-                        let z =document.addEventListener("touchstart", function(event) {
-                            if (event.target.closest('#context_menu') || event.target.closest('.task-option')) return;
-                            contextMenu.classList.add('hide')
-                            document.removeEventListener('click', z);
-                        });
                         return
                     }
                     if(event.target.closest('input')){
@@ -10467,32 +12279,35 @@
                         thisBtn.disabled = true;
             }
 
+            let appState = {
+                page: 'dashboard',
+                btn: 'dashboard_btn',
+                offsprings: '',
+                type: ''
+            }
+
+            if(window.innerWidth < 768){
+                appState.btn = 'bottom_dashboard_btn'
+            }
+
+            window.onpopstate = (event) => showPage(event.state.btn, event.state.page, event.state.offsprings, event.state.type)
+
             function showPage(elem, page, offsprings, type){
                 let thisPage = document.getElementById(page),
                         element = document.getElementById(elem),
                         allTabs = document.querySelectorAll('.tabs'),
                         allPages = document.querySelectorAll('.page')
-                if(type !== 'innerPage')
-                    recentPage = elem;
-                if(elem === 'dashboard_btn'){
-                    currentProject = dashboardProject;
-                    if(JSON.parse(localStorage.getItem('watchList')).length)
-                        showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
-                }
+                allPages.forEach((pages) =>{
+                    pages.classList.add('hide-completely');
+                });
+                thisPage.classList.remove('hide-completely');
+                allTabs.forEach((tab) =>{
+                    tab.classList.remove('active');
+                });
                 if(page === 'lastPage'){
-                    allPages.forEach((pages) =>{
-                        pages.classList.add('hide-completely');
-                    });
-                    document.getElementById(recentPage).click();
+                    history.back()
                 }
                 else{
-                    allPages.forEach((pages) =>{
-                        pages.classList.add('hide-completely');
-                    });
-                    thisPage.classList.remove('hide-completely');
-                    allTabs.forEach((tab) =>{
-                        tab.classList.remove('active');
-                    });
                     if(element)
                         element.classList.add('active');
                     if(offsprings === 'updates')
@@ -10512,8 +12327,18 @@
                         }
                         thisPage.children[1].appendChild(frag)
                     }
+                    if(elem === 'settings_btn' || elem === 'bottom_setting_btn'){
+                        element.classList.add('settings-mi')
+                        element.addEventListener('animationend', () => {
+                            element.classList.remove('settings-mi')
+                        })
+                        element.addEventListener('webkitAnimationEnd', () => {
+                            element.classList.remove('settings-mi')
+                        })
+                    }
                 }
             }
+
             function showInnerPage(page, type){
                 let allPages = document.querySelectorAll('.inner-page'),
                     thisPage = document.getElementById(page)
@@ -10627,15 +12452,19 @@
 
             function showUpdatePanel(){
                 let container = document.getElementById('updates'),
-                    btn = document.getElementById('update_panel_btn'),
                     updateContainer = document.getElementById('update_container');
                 updateFeed(updateContainer, 8)
-                btn.classList.toggle('opac')
+                this.classList.add('update-mi')
+                this.addEventListener('animationend', () => {
+                    this.classList.remove('update-mi')
+                })
+                this.addEventListener('webkitAnimationEnd', () => {
+                    this.classList.remove('update-mi')
+                })
                 container.classList.toggle('hide')
                 let y = document.addEventListener("click", function(event) {
                     if (event.target.closest('#intern_updates')) return;
                     container.classList.add('hide')
-                    btn.classList.remove('opac')
                     document.removeEventListener('click', y);
                 });
             }
@@ -10644,7 +12473,7 @@
                 let updateContainer = container;
                 if(typeof container === "string")
                     updateContainer = document.getElementById(container);
-                updateContainer.innerHTML='';
+                updateContainer.innerHTML = ``;
                 let updates = RIBC.getInternUpdates(limit);
                 Object.keys(updates).forEach((entry) => {
                     frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
@@ -10682,6 +12511,28 @@
                 })
                 document.getElementById(tempCard[2]).firstElementChild.click()
             }
+            let index = 0;
+            function changeProject(mode){
+                let list = JSON.parse(localStorage.getItem('watchList'));
+                if(mode === 'next'){
+                    index++;
+                }
+                else
+                    index--;
+                if(index === 0){
+                    disableBtn('prev_proj')
+                }
+                else    
+                    enableBtn('prev_proj')
+                if(index+1 === list.length){
+                    disableBtn('next_proj')
+                }
+                else    
+                    enableBtn('next_proj')
+                dashboardProject = list[index]
+                showProjectMap(dashboardProject, 'status_map')
+            }
+
             function loader(mode){
                 let loader = document.getElementById('loader');
                 if(mode === 'show'){
@@ -10721,7 +12572,7 @@
                         else
                             disableBtn('sign_in_btn')
                         if(event.keyCode === 13){
-                            if(privField.value.trim().length === 52){
+                            if(privField.value.trim().length > 40){
                                 resolve(privField.value.trim())
                                 hidePopup('sign_in')
                                 loader('show')
@@ -10859,6 +12710,8 @@
                         if(topic !== '' && description !== ''){
                             RIBC.postInternUpdate({topic: topic,description: description})
                             .then((result) => {
+                                let parent = document.getElementById('update_container');
+                                parent.prepend(render.updateCard(getInternDetails(myFloID)[0].split(':')[1], topic, description))
                                 showMessage('', 'update posted')
                                 hidePopup('post_update')
                             })
@@ -10869,9 +12722,7 @@
                         else{
                             showMessage('error', 'Please enter topic and description')
                         }
-                })
-
-                document.getElementById(recentPage).click()
+                })  
 
                 document.getElementById('update_panel_btn').addEventListener('click', showUpdatePanel)
                 
@@ -10896,30 +12747,77 @@
                 else{
                     document.getElementById('status_map').innerHTML = '<h3>No project added to watch list.</h3>'
                 }
-                let index = 0;
-            if(JSON.parse(localStorage.getItem('watchList')).length === 0)
-                disableBtn('next_proj')
-            function changeProject(mode){
-                let list = JSON.parse(localStorage.getItem('watchList'));
-                if(mode === 'next'){
-                    index++;
-                }
-                else
-                    index--;
-                if(index === 0){
-                    disableBtn('prev_proj')
-                }
-                else    
-                    enableBtn('prev_proj')
-                if(index+1 === list.length){
-                    disableBtn('next_proj')
-                }
-                else    
-                    enableBtn('next_proj')
-                dashboardProject = list[index]
-                showProjectMap(dashboardProject, 'status_map')
-            }
-                
+                if(JSON.parse(localStorage.getItem('watchList')).length === 0)
+                    disableBtn('next_proj') 
+
+                history.pushState(appState, null, null)
+
+                document.getElementById('top_nav').addEventListener('click', (event) => {
+                    let trgt = event.target.closest('.nav-btn');
+                    if(trgt){
+                        appState.btn = trgt.id;
+                        if(trgt.id === 'dashboard_btn'){
+                            showPage(trgt.id, 'dashboard')
+                            appState.page = 'dashboard';
+                            currentProject = dashboardProject;
+                            if(JSON.parse(localStorage.getItem('watchList')).length)
+                                showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
+                        }
+                        else if(trgt.id === 'admin_panel_btn'){
+                            showPage(trgt.id, 'admin_panel')
+                            appState.page = 'admin_panel';
+                        }
+                        else if(trgt.id === 'settings_btn'){
+                            showPage(trgt.id, 'settings_page')
+                            appState.page = 'settings_page';
+                        }
+                        history.pushState(appState, null, null)
+                        console.log(appState)
+                    }
+                })   
+                document.getElementById('bottom_nav').addEventListener('click', (event) => {
+                    let trgt = event.target.closest('.nav-btn');
+                    if(trgt){
+                        appState.btn = trgt.id;
+                        console.log(trgt.id)
+                        if(trgt.id === 'bottom_dashboard_btn'){
+                            showPage(trgt.id, 'dashboard')
+                            appState.page = 'dashboard';
+                            appState.offsprings = '';
+                            appState.type = '';
+                            currentProject = dashboardProject;
+                            if(JSON.parse(localStorage.getItem('watchList')).length)
+                                showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
+                        }
+                        else if(trgt.id === 'bottom_admin_btn'){
+                            showPage(trgt.id, 'admin_panel')
+                            appState.page = 'admin_panel';
+                            appState.offsprings = '';
+                            appState.type = '';
+                        }
+                        else if(trgt.id === 'bottom_update_btn'){
+                            showPage(trgt.id, 'show_all', 'updates', 'innerPage')
+                            appState.page = 'show_all';
+                            appState.offsprings = 'updates';
+                            appState.type = 'innerPage';
+                            trgt.classList.add('update-mi')
+                            trgt.addEventListener('animationend', () => {
+                                trgt.classList.remove('update-mi')
+                            })
+                            trgt.addEventListener('webkitAnimationEnd', () => {
+                                trgt.classList.remove('update-mi')
+                            })
+                        }
+                        else if(trgt.id === 'bottom_setting_btn'){
+                            showPage(trgt.id, 'settings_page')
+                            appState.page = 'settings_page';
+                            appState.offsprings = '';
+                            appState.type = '';
+                        }
+                        history.pushState(appState, null, null)
+                        console.log(appState)
+                    }
+                })   
             }
             // functions that run when page loads
         </script>

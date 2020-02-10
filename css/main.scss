@@ -915,6 +915,7 @@ p{
     width: 100vw;
     background: var(--background);
     z-index: 4;
+    border-top: 1px solid rgba(var(--rgb-bw),.1);
     button{
         padding: 0.2rem;
         width: 100%;
@@ -1043,13 +1044,12 @@ p{
         padding-left: 1rem;
         display: flex;
         flex-direction: row;
-
         h4{
             flex: 1;
             font-weight: 500;
         }
         button{
-            padding: 0.4rem;
+            padding: 1rem;
         }
         svg{
             fill: none !important;
@@ -1098,6 +1098,52 @@ p{
         transform: rotate(359deg);
     }
 }
+
+//Micro-interactions
+
+.update-mi{
+    svg{
+        animation: shake 0.6s ease;
+        transform-origin: top;
+    }
+}
+
+@keyframes shake{
+    0%{
+        transform: rotate(30deg);
+    }
+    20%{
+        transform: rotate(-30deg);
+    }
+    40%{
+        transform: rotate(20deg);
+    }
+    60%{
+        transform: rotate(-20deg);
+    }
+    80%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.settings-mi{
+    svg{
+        animation: rot 0.6s ease;
+        transform-origin: center;
+    }
+}
+
+@keyframes rot{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(60deg);
+    }
+}
+
 @media only screen and (min-width: 640px){
     body{
         padding-bottom: 0;
