@@ -220,7 +220,7 @@
                 <div class="dropdown-content hide" id="updates">
                     <div class="container-header">
                         <h3>Feed</h3>
-                        <button id="top_update_btn" onclick="showPage('', 'show_all', 'updates', 'innerPage')">See all</button>
+                        <button id="top_update_btn" class="nav-btn">See all</button>
                     </div>
                     <div id="update_container">
 
@@ -239,8 +239,13 @@
             </button>
         </nav>
             <section id="dashboard" class="page">
-                    <div id="status_map_container" class="container-card hide-completely">
+                    <div id="status_map_container" class="container-card">
                         <div class="watching">
+                            <svg class="icon" viewBox="0 0 75 75">
+                            <path d="M34.86,9.99l-3.73-4.97c-1.69-2.25-3.98-3.51-6.36-3.51H10.5c-4.97,0-9,5.37-9,12v0v48c0,6.63,4.03,12,9,12h54
+                                c4.97,0,9-5.37,9-12v-36c0-6.63-4.03-12-9-12H41.23C38.84,13.5,36.55,12.24,34.86,9.99z"/>
+                            <line x1="1.5" y1="28.5" x2="73.5" y2="28.5"/>
+                            </svg>                            
                             <h4>Projects you are watching</h4>
                             <button id="prev_proj" onclick="changeProject('prev')" disabled>
                                 <svg viewBox="0 0 40.24 74.83">
@@ -257,8 +262,8 @@
                         <span class="back-art"></span>
                         <span class="back-art"></span>
                     </div>
-                    <div id="intern_view" class="container-card">
-                        <h4>Current task</h4>
+                    <div id="intern_view" class="container-card hide-completely">
+                        <h4>My task</h4>
                         <div id="assigned_task">
                             <h3></h3>
                             <p></p>
@@ -275,8 +280,8 @@
                                     c-0.59-1.18-1.04-2.43-1.32-3.74c0,0-3.98-15.99,7.16-26.65c2.13-2.36,10.52-8.33,8.58-18.01c25.19,15.99,18.93,44.66,18.93,44.66
                                     c-0.3,1.43-0.8,2.79-1.47,4.06C63.43,95.66,71.06,86.74,73.35,76C73.35,76,81.56,43,58.56,21z"/>
                                 </svg> 
-                                <h3>Intern Leaderboard</h3>
-                                <span class="hover" onclick="showPage('', 'show_all', 'interns', 'innerPage')">All</span>
+                                <h3>Leaderboard</h3>
+                                <span id="all_interns_btn" class="hover">All</span>
                             </div>
                             <div id="best_interns">
     
@@ -290,7 +295,7 @@
                                 </svg>
                                 
                                 <h3>Projects</h3>
-                                <span class="hover" onclick="showPage('', 'project_explorer', 'explorer', 'innerPage')">All</span>
+                                <span id="all_projects_btn" class="hover">All</span>
                             </div>
                             <div id="project_list"></div>
                         </div>
@@ -303,7 +308,21 @@
             </section>
             <div id="settings_page" class="page hide-completely container-card">
                 <h2>Settings</h2>
-                <section>
+                  <section>
+                      <h3>Account</h3>
+                      <h4 id="username" class="capitalise"></h4>
+                      <p>This will delete all local data.</p>
+                      <button id="logout" class="svg-margin-right" onclick="logout()">
+                        <svg viewBox="0 0 73.21 55">
+                            <path d="M27.71,9.5"/>
+                            <polyline points="27.71,14 27.71,0.5 72.71,0.5 72.71,54.5 27.71,54.5 27.71,41"/>
+                            <line x1="41.85" y1="27.6" x2="0.71" y2="27.6"/>
+                            <polyline points="16.14,12.17 0.71,27.6 16.14,43.03"/>
+                        </svg>                        
+                        Sign out
+                    </button>
+                  </section>
+                  <section>
                     <h3>Dark mode</h3>
                     <div>
                       <span class="row">
@@ -326,21 +345,8 @@
                     </div>
                   </section>
                   <section>
-                      <h3>Account</h3>
-                      <p>This will delete all local data.</p>
-                      <button id="logout" class="svg-margin-right" onclick="logout()">
-                        <svg viewBox="0 0 73.21 55">
-                            <path d="M27.71,9.5"/>
-                            <polyline points="27.71,14 27.71,0.5 72.71,0.5 72.71,54.5 27.71,54.5 27.71,41"/>
-                            <line x1="41.85" y1="27.6" x2="0.71" y2="27.6"/>
-                            <polyline points="16.14,12.17 0.71,27.6 16.14,43.03"/>
-                        </svg>                        
-                        Sign out
-                    </button>
-                  </section>
-                  <section>
                       <h3>About</h3>
-                      <h5>Version 8.1.8</h5>
+                      <h5>Version 8.2.2</h5>
                               <a class="border-card" href="https://flo.cash/" target="_blank" rel="noopener noreferrer">
                                       <h5>Powered by</h5>
                                       <svg viewBox="0 0 108 48" style="enable-background:new 0 0 107.65 47.07;"
@@ -9890,7 +9896,13 @@
         
             }
         </script>
-        <script id="UI_functions">   
+        <script id="UI_functions">  
+            window.addEventListener('offline', () =>{
+                showMessage('error', 'There seems to be a problem connecting to the internet.', 'fixed')
+            })
+            window.addEventListener('online', () =>{
+                showMessage('', 'We are back online.')
+            }) 
                 let mode;   
                 if(localStorage.getItem('dark') === null)
                     localStorage.setItem('dark', 'auto')
@@ -9986,9 +9998,9 @@
                     else
                         card.classList.add('task')
                     left.innerHTML = `<div class="circle"></div><div class="line"></div>`;
-                    left.firstElementChild.textContent = taskNo;
                     let taskDetails = RIBC.getTaskDetails(currentProject, currentBranch, taskNo)
                     title.textContent = taskDetails.taskTitle;
+                    title.classList.add('capitalise')
                     if(assignedInterns){
                         getInternDetails(assignedInterns).forEach((intern) => {
                             frag.appendChild(render.assignedInternCard(intern));
@@ -10054,6 +10066,7 @@
                 taskListItem: function(taskNo){
                     let card = document.createElement('div'),
                         title = document.createElement('h4'),
+                        numb = document.createElement('h4'),
                         options = document.createElement('span'),
                         description = document.createElement('p'),
                         assignedInterns = RIBC.getAssignedInterns(currentProject, currentBranch, taskNo),
@@ -10076,7 +10089,7 @@
                         checkbox.firstElementChild.checked = false;              
                     else
                         checkbox.firstElementChild.checked = true;
-                       
+                    numb.textContent = taskNo+'.';
                     let taskDetails = RIBC.getTaskDetails(currentProject, currentBranch, taskNo)
                     title.textContent = taskDetails.taskTitle;
                     if(assignedInterns){
@@ -10086,9 +10099,11 @@
                         assignedInternsContainer.appendChild(frag)
                     }
                     options.classList.add('task-option')
+                    title.classList.add('title', 'capitalise');
+                    numb.classList.add('task-no')
                     assignedInternsContainer.classList.add('assigned-interns')
                     description.textContent = taskDetails.taskDescription;
-                    card.append(checkbox, title, options, assignedInternsContainer, description)
+                    card.append(checkbox, numb, title, options, assignedInternsContainer, description)
                     return card;
                 },
                 projectMapCard: function(projectCode){
@@ -10184,7 +10199,7 @@
                 clearAllInputs(popup)   
             }
             let currentTimeout;
-            function showMessage(mode, message){
+            function showMessage(mode, message, behavior){
                 let banner = document.getElementById('show_message')
                 if(mode === 'error')
                     banner.style.background = '#D32F2F';
@@ -10196,6 +10211,7 @@
                     banner.classList.remove('no-transformations')
                 }
                 clearTimeout(currentTimeout)
+                if(behavior === 'fixed') return;
                 currentTimeout = setTimeout(()=>{
                     banner.classList.remove('no-transformations')
                 }, 4000)
@@ -10723,7 +10739,7 @@
 
             function sendUpdatePopup(){
                 showPopup('post_update')
-                if(Object.keys(iList).includes(myFloID))
+                if(Object.keys(iList).includes(myFloID) && !floGlobals.subAdmins.includes(myFloID))
                     document.getElementById('update_topic').value = `${currentTaskObj.projectName} / ${RIBC.getTaskDetails(currentTaskObj.project, currentTaskObj.pBranch, currentTaskObj.task).taskTitle}`;
             }
 
@@ -10844,9 +10860,10 @@
                 // Intern's view
 
                 let newPList = [],x;
-                if(Object.keys(iList).includes(myFloID)){
+                if(Object.keys(iList).includes(myFloID) && !floGlobals.subAdmins.includes(myFloID)){
                     document.getElementById('intern_view').classList.remove('hide-completely')
                     document.getElementById('floating_btn').classList.remove('hide-completely')
+                    document.getElementById('status_map_container').classList.add('hide-completely')
                     for(let i =0;i < pList.length; i++){
                         nextProject:
                         for(branch in RIBC.getProjectMap(pList[i])){
@@ -10886,7 +10903,9 @@
 
                 }
                 else{
+                    document.getElementById('floating_btn').classList.add('hide-completely')
                     document.getElementById('intern_view').classList.add('hide-completely')
+                    document.getElementById('status_map_container').classList.remove('hide-completely')
                 }
 
                 document.getElementById('interns').innerHTML = ``;
@@ -10910,15 +10929,22 @@
                 // displays recent projects
 
                 document.getElementById('project_list').innerHTML='';
-                if(Object.keys(iList).includes(myFloID)){
+                if(Object.keys(iList).includes(myFloID) && !floGlobals.subAdmins.includes(myFloID)){
                     newPList.forEach((project) => {
                         frag.appendChild(render.projectCard(RIBC.getProjectDetails(project).projectName, project))
                     }) 
+                    if(newPList.length === 0){
+                        let elem = document.createElement('h4');
+                        elem.textContent = 'No project assigned yet.'
+                        elem.classList.add('padding')
+                        frag.appendChild(elem)
+                    }
                 }
-                else
-                    RIBC.getProjectList().forEach((project) => {
+                else{
+                    pList.forEach((project) => {
                         frag.appendChild(render.projectCard(RIBC.getProjectDetails(project).projectName, project))
                     })
+                }
                 document.getElementById('project_list').appendChild(frag)
                 
                 document.getElementById('projects').innerHTML = ``;
@@ -10988,7 +11014,7 @@
                 document.getElementById('update_panel_btn').addEventListener('click', showUpdatePanel)
                 
                 let projectExplorer = document.getElementById('project_explorer');
-                if(Object.keys(iList).includes(myFloID))
+                if(Object.keys(iList).includes(myFloID)  && !floGlobals.subAdmins.includes(myFloID))
                     for(i = 0; i < newPList.length; i++){
                         frag.appendChild(render.projectCard(RIBC.getProjectDetails(newPList[i]).projectName, newPList[i]))
                     }
@@ -11014,11 +11040,32 @@
                 else{
                     document.getElementById('status_map').innerHTML = '<h3>No project added to watch list.</h3>'
                 }
-                if(JSON.parse(localStorage.getItem('watchList')).length === 0)
+                if(JSON.parse(localStorage.getItem('watchList')).length < 2)
                     disableBtn('next_proj') 
 
                 history.pushState(appState, null, null)
                 let lastState;
+
+                document.getElementById('all_interns_btn').addEventListener('click', () => {
+                        appState.btn = '';
+                        appState.page = 'show_all';
+                        appState.offsprings = 'interns';
+                        appState.type = 'innerPage';
+                        showPage('', 'show_all', 'interns', 'innerPage')
+                        if(lastState !== appState.page)
+                            history.pushState(appState, null, null)
+                        lastState = appState.page;
+                })
+                document.getElementById('all_projects_btn').addEventListener('click', () => {
+                        appState.btn = '';
+                        appState.page = 'project_explorer';
+                        appState.offsprings = 'explorer';
+                        appState.type = 'innerPage';
+                        showPage('', 'project_explorer', 'explorer', 'innerPage')
+                        if(lastState !== appState.page)
+                            history.pushState(appState, null, null)
+                        lastState = appState.page;
+                })
                 document.getElementById('top_nav').addEventListener('click', (event) => {
                     let trgt = event.target.closest('.nav-btn');
                     if(trgt){
@@ -11026,6 +11073,8 @@
                         if(trgt.id === 'dashboard_btn'){
                             showPage(trgt.id, 'dashboard')
                             appState.page = 'dashboard';
+                            appState.offsprings = '';
+                            appState.type = '';
                             currentProject = dashboardProject;
                             if(JSON.parse(localStorage.getItem('watchList')).length)
                                 showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
@@ -11033,10 +11082,22 @@
                         else if(trgt.id === 'admin_panel_btn'){
                             showPage(trgt.id, 'admin_panel')
                             appState.page = 'admin_panel';
+                            appState.offsprings = '';
+                            appState.type = '';
+                            
                         }
                         else if(trgt.id === 'settings_btn'){
                             showPage(trgt.id, 'settings_page')
                             appState.page = 'settings_page';
+                            appState.offsprings = '';
+                            appState.type = '';
+                        }
+                        else if(trgt.id === 'top_update_btn'){
+                            appState.btn = '';
+                            showPage('', 'show_all', 'updates', 'innerPage')
+                            appState.page = 'show_all';
+                            appState.offsprings = 'updates';
+                            appState.type = 'innerPage';
                         }
                         if(lastState !== appState.page)
                             history.pushState(appState, null, null)
@@ -11085,7 +11146,9 @@
                             history.pushState(appState, null, null)
                         lastState = appState.page;
                     }
-                })   
+                }) 
+                let greetings = getInternDetails(myFloID)[0] !== undefined ? `Hi, ${getInternDetails(myFloID)[0].split(':')[1]}` : 'Hi, there!'
+                document.getElementById('username').textContent = greetings;  
             }
             // functions that run when page loads
         </script>

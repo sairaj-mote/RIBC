@@ -421,24 +421,18 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 0.5rem;
 }
 
 .task .left .circle {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: relative;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  font-weight: 500;
-  height: 2rem;
-  width: 2rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background: var(--foreground);
   border: solid 2px rgba(var(--rgb-bw), 0.4);
@@ -523,6 +517,10 @@ a {
 
 .title {
   font-weight: 500;
+}
+
+.padding {
+  padding: 1rem;
 }
 
 #dashboard {
@@ -1056,9 +1054,9 @@ p {
 .task-list-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 1fr auto;
-      grid-template-columns: auto 1fr auto;
-      grid-template-areas: 'status title options' 'status interns interns' 'status description description';
+  -ms-grid-columns: auto auto 1fr auto;
+      grid-template-columns: auto auto 1fr auto;
+      grid-template-areas: 'status . title options' 'status . interns interns' 'status . description description';
   padding: 1rem;
   gap: 0.5rem;
   -webkit-box-align: center;
@@ -1089,23 +1087,26 @@ p {
 }
 
 .task-list-item h4 {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: title;
   font-weight: 500;
   margin: 0;
 }
 
+.task-list-item .title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: title;
+}
+
 .task-list-item .assigned-interns {
   -ms-grid-row: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-area: interns;
 }
 
 .task-list-item .task-option {
   -ms-grid-row: 1;
-  -ms-grid-column: 3;
+  -ms-grid-column: 4;
   grid-area: options;
   cursor: pointer;
   opacity: 1;
@@ -1123,7 +1124,7 @@ p {
 
 .task-list-item p {
   -ms-grid-row: 3;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-area: description;
   margin: 0;
@@ -1470,6 +1471,7 @@ p {
       align-self: flex-start;
   background: #B3E5FC;
   padding: 1.2rem;
+  color: black;
 }
 
 #intern_view h4 {
@@ -1478,6 +1480,10 @@ p {
   padding: 0 1rem;
   margin-bottom: 2rem;
   color: #311B92;
+}
+
+#intern_view p {
+  color: rgba(0, 0, 0, 0.9);
 }
 
 #intern_view #assigned_task {
@@ -1562,6 +1568,7 @@ p {
 
 #status_map_container #status_map h2 {
   margin: 0.4rem 0;
+  text-transform: capitalize;
 }
 
 #status_map_container #status_map .circle {
@@ -1577,6 +1584,19 @@ p {
   border: rgba(0, 0, 0, 0.4) 1px solid;
 }
 
+.icon {
+  height: 2rem !important;
+  width: 2rem !important;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  margin-right: 0.4rem;
+  overflow: visible;
+  fill: none !important;
+  stroke: #00C853;
+  stroke-width: 8;
+  background: white;
+}
+
 .watching {
   position: relative;
   padding-left: 1rem;
@@ -1588,11 +1608,14 @@ p {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #000;
   z-index: 1;
 }
 
-.watching h3, .watching h4 {
+.watching h4 {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1603,7 +1626,7 @@ p {
   padding: 1rem;
 }
 
-.watching svg {
+.watching button svg {
   fill: none !important;
   fill: none;
   stroke: rgba(var(--rgb-bw), 0.8);
@@ -1770,6 +1793,14 @@ p {
   }
 }
 
+.capitalise {
+  text-transform: capitalize;
+}
+
+#show_all {
+  margin: 0;
+}
+
 @media only screen and (min-width: 640px) {
   body {
     padding-bottom: 0;
@@ -1802,7 +1833,7 @@ p {
     margin: 1rem 4vw;
   }
   #show_all {
-    margin-top: 1rem;
+    margin: 1rem;
   }
   #top_nav {
     padding: 1rem 2vw;
@@ -1930,6 +1961,18 @@ p {
 @media only screen and (min-width: 1280px) {
   .page {
     margin: 1rem 8vw;
+  }
+}
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .task-option {
+    opacity: 1;
+  }
+}
+
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation: landscape) {
+  .task-option {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */
