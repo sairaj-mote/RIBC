@@ -529,6 +529,13 @@ a {
       grid-template-columns: auto;
 }
 
+#dashboard .container-card svg:first-of-type {
+  fill: rgba(var(--rgb-bw), 1);
+  height: 1.4rem;
+  width: 1.4rem;
+  margin-right: 0.5rem;
+}
+
 #background_art {
   position: fixed;
   pointer-events: none;
@@ -1047,7 +1054,7 @@ button[disabled] {
 
 p {
   font-size: 0.9rem;
-  line-height: 1.4rem;
+  line-height: 1.5;
   color: var(--light-text);
 }
 
@@ -1173,8 +1180,8 @@ p {
 
 .commit {
   color: var(--accent-color);
-  background: rgba(var(--rgb-bw), 0.04);
-  border: 1px solid rgba(var(--rgb-bw), 0.08);
+  border: 1px solid var(--accent-color);
+  padding: 0.6rem;
 }
 
 #task_context {
@@ -1298,13 +1305,14 @@ p {
 }
 
 #show_message {
-  text-transform: capitalize;
-  -webkit-transform: translateY(-5rem);
-          transform: translateY(-5rem);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform: translate(0, 0.4rem);
+          transform: translate(0, 0.4rem);
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
+          box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1315,16 +1323,17 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.6rem 1rem;
   color: white;
   position: fixed;
-  top: 0;
-  left: 0;
+  bottom: 0;
   right: 0;
+  width: 100%;
   z-index: 11;
 }
 
 #show_message span {
+  font-weight: 500;
+  padding: 1rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1348,8 +1357,8 @@ p {
 }
 
 #interns_list #interns_list_container {
-  min-height: 40vh;
-  max-height: 40vh;
+  min-height: 50vh;
+  max-height: 50vh;
   overflow-y: auto;
 }
 
@@ -1814,9 +1823,6 @@ p {
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(var(--rgb-bw), 0.6);
   }
-  .container-card {
-    border-radius: 0.4rem;
-  }
   .hide-on-desktop {
     display: none !important;
   }
@@ -1829,14 +1835,20 @@ p {
     display: -ms-grid;
     display: grid;
   }
-  .page {
+  .page, #show_all {
     margin: 1rem 4vw;
-  }
-  #show_all {
-    margin: 1rem;
   }
   #top_nav {
     padding: 1rem 2vw;
+  }
+  #show_message {
+    -webkit-transform: translate(0.4rem, 0);
+            transform: translate(0.4rem, 0);
+    margin: 1rem;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    border-radius: 0.2rem;
   }
   #sign_in {
     width: auto;
@@ -1859,12 +1871,6 @@ p {
   }
   #dashboard #status_map_container #status_map {
     padding: 1rem 2rem;
-  }
-  #dashboard .container-card svg:first-of-type {
-    fill: rgba(var(--rgb-bw), 1);
-    height: 1.4rem;
-    width: 1.4rem;
-    margin-right: 0.5rem;
   }
   #intern_info {
     width: 24rem;
@@ -1910,7 +1916,7 @@ p {
   }
   #interns, #projects {
     overflow-y: auto;
-    max-height: 40vh;
+    max-height: 50vh;
   }
   #edit_data {
     -ms-grid-row: 1;
@@ -1959,7 +1965,7 @@ p {
 }
 
 @media only screen and (min-width: 1280px) {
-  .page {
+  .page, #show_all {
     margin: 1rem 8vw;
   }
 }

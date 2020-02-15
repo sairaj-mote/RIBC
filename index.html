@@ -39,8 +39,11 @@
           </script>
     </head>
     <body onload="onLoadStartUp()">
-        <div id="show_message"><span>Message</span><button id="hide_banner_btn">
+        <div id="show_message" class="hide">
+            <span>Message</span>
+            <button id="hide_banner_btn">
             <svg class="close-svg" viewBox="0 0 50.71 50.71">
+                <title>Close this notification</title>
                 <line x1="50.35" y1="0.35" x2="0.36" y2="50.35"/>
                 <line x1="0.35" y1="0.35" x2="50.35" y2="50.35"/>
             </svg>
@@ -56,7 +59,7 @@
             </div>
         </div>
             <nav id="bottom_nav" class="hide-on-desktop">
-                <button id="bottom_dashboard_btn" class="tabs active nav-btn">
+                <button id="bottom_dashboard_btn" class="tabs active nav-btn" title="open dashboard page">
                     <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
@@ -71,7 +74,7 @@
                             c-0.98,3.15-2.64,5.99-4.84,8.33C-0.74,53.65,0.29,56,2.26,56h3.19h1h13h2.36c-0.38,0.75-0.61,1.6-0.61,2.5
                             c0,3.04,2.46,5.5,5.5,5.5s5.5-2.46,5.5-5.5c0-0.9-0.22-1.75-0.61-2.5h1.86h13h1h3.19C52.61,56,53.63,53.65,52.29,52.21z"/>
                     </svg>Feed</button>
-                <button id="bottom_admin_btn" class="tabs admin-options hide-completely nav-btn">
+                <button id="bottom_admin_btn" class="tabs admin-options hide-completely nav-btn" title="open admin page">
                     <svg viewBox="0 0 75 75.43">
                         <circle cx="10.5" cy="10.5" r="9"/>
                         <circle cx="33" cy="33.43" r="13.5"/>
@@ -82,7 +85,7 @@
                         <line x1="15.49" y1="57.44" x2="24.68" y2="44.05"/>
                     </svg>
                     Manage</button>
-                <button id="bottom_setting_btn" class="tabs nav-btn">
+                <button id="bottom_setting_btn" class="tabs nav-btn" title="open settings page">
                     <svg viewBox="0 0 74.1 67.24">
                         <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
                         c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
@@ -97,13 +100,14 @@
             <div id="sign_in" class="popup">
                 <header class="container-header">
                     <svg class="back-arrow hide-completely" id="back_to_main_page" viewBox="0 0 31.24 56.83">
+                        <title>Go back</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h2>Sign In</h2>
                 </header>
                 <p>Welcome to RanchiMall Internship Blockchain Contract.</p>
                 <div class="fade-in">
-                    <button id="guest_btn" class="hover">
+                    <button id="guest_btn" class="hover" title="sign in as a guest">
                         <svg viewBox="0 0 71.51 63.15">
                             <circle cx="35.76" cy="18" r="17.5"/>
                             <path d="M35.76,1c9.37,0,17,7.63,17,17s-7.63,17-17,17s-17-7.63-17-17S26.38,1,35.76,1 M35.76,0c-9.94,0-18,8.06-18,18
@@ -112,7 +116,7 @@
                         </svg>
                         as guest
                     </button>
-                    <button id="priv_key_btn" class="hover">
+                    <button id="priv_key_btn" class="hover" title="sign in with private key">
                         <svg viewBox="0 0 73 28">
                         <path d="M59,0.5c-5.88,0-10.86,3.76-12.72,9H5c-2.47,0-4.5,2.02-4.5,4.5c0,2.47,2.03,4.5,4.5,4.5h4.5V23
                             c0,2.47,2.03,4.5,4.5,4.5c2.48,0,4.5-2.03,4.5-4.5v-4.5h4v0.62c0,2.47,2.03,4.5,4.5,4.5c2.48,0,4.5-2.03,4.5-4.5V18.5h14.78
@@ -134,6 +138,7 @@
         <nav id="top_nav">
             <div id="logo">
                 <svg viewBox="0 0 118.35 118.35">
+                    <title>RanchiMall logo</title>
                 <style type="text/css">
                 .outer-layer{fill:#CB1F1F;}
                 .inner-layer{fill:#FF4E4E;}
@@ -184,13 +189,13 @@
                 </svg>
                 <h4>RIBC</h4>
             </div>
-            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right active nav-btn">
+            <button id="dashboard_btn" class="tabs hide-on-mobile svg-margin-right active nav-btn" title="open dashboard page">
                 <svg viewBox="0 0 73 73">
                     <path d="M34.5,72.5h-32c-1.1,0-2-0.9-2-2v-68c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v68C36.5,71.6,35.6,72.5,34.5,72.5z"/>
                     <path d="M70.5,36.5h-23c-1.1,0-2-0.9-2-2v-32c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v32C72.5,35.6,71.6,36.5,70.5,36.5z"/>
                     <path d="M70.5,72.5h-23c-1.1,0-2-0.9-2-2v-23c0-1.1,0.9-2,2-2h23c1.1,0,2,0.9,2,2v23C72.5,71.6,71.6,72.5,70.5,72.5z"/>
                     </svg>Dashboard</button>
-            <button id="admin_panel_btn" class="tabs admin-options hide-on-mobile hide-completely svg-margin-right nav-btn">
+            <button id="admin_panel_btn" class="tabs admin-options hide-on-mobile hide-completely svg-margin-right nav-btn" title="open admin panel">
                 <svg viewBox="0 0 75 75.43">
                     <circle cx="10.5" cy="10.5" r="9"/>
                     <circle cx="33" cy="33.43" r="13.5"/>
@@ -202,11 +207,11 @@
                 </svg>
                 Manage</button>
             <div class="spacer"></div>
-            <button id="update_project_info_btn" class="admin-options hide-completely commit" onclick="commitToChanges()">
+            <button id="update_project_info_btn" class="admin-options hide-completely commit" onclick="commitToChanges()" title="commit to changes">
                 Commit
             </button>
             <div class="dropdown hide-on-mobile" id="intern_updates">
-                <button id="update_panel_btn">
+                <button id="update_panel_btn" title="show updates">
                     <svg viewBox="0 0 57.2 64">
                     <g>
                         <circle style="fill: #FF4E4E" cx="47.7" cy="9.5" r="9.5"/>
@@ -220,14 +225,14 @@
                 <div class="dropdown-content hide" id="updates">
                     <div class="container-header">
                         <h3>Feed</h3>
-                        <button id="top_update_btn" class="nav-btn">See all</button>
+                        <button id="top_update_btn" class="nav-btn" title="show all the updates">See all</button>
                     </div>
                     <div id="update_container">
 
                     </div>
                 </div>
             </div>
-            <button id="settings_btn" class="tabs hide-on-mobile nav-btn">
+            <button id="settings_btn" class="tabs hide-on-mobile nav-btn" title="open settings page">
                 <svg viewBox="0 0 74.1 67.24">
                     <path d="M66.77,24.68l-1.53-0.67c-3.9-1.72-6.23-5.76-5.77-10l0.18-1.66c0.92-8.44-8.63-13.96-15.49-8.94L42.82,4.4
                     c-3.44,2.52-8.11,2.52-11.54,0l-1.35-0.99c-6.85-5.02-16.4,0.5-15.49,8.94l0.18,1.66c0.46,4.23-1.87,8.28-5.77,10l-1.53,0.67
@@ -247,12 +252,12 @@
                             <line x1="1.5" y1="28.5" x2="73.5" y2="28.5"/>
                             </svg>                            
                             <h4>Projects you are watching</h4>
-                            <button id="prev_proj" onclick="changeProject('prev')" disabled>
+                            <button id="prev_proj" onclick="changeProject(-1)" title="show next project" disabled>
                                 <svg viewBox="0 0 40.24 74.83">
                                     <polyline points="38.83,1.41 2.83,37.41 38.83,73.41 "/>
                                 </svg>
                                 </button>
-                            <button id="next_proj" onclick="changeProject('next')">
+                            <button id="next_proj" onclick="changeProject(1)" title="show previous project">
                                 <svg viewBox="0 0 40.24 74.83">
                                     <polyline points="1.41,73.41 37.41,37.41 1.41,1.41 "/>
                                 </svg>
@@ -300,7 +305,7 @@
                             <div id="project_list"></div>
                         </div>
                     </div>
-                    <button id="floating_btn" class="hide-completely" onclick="sendUpdatePopup()">
+                    <button id="floating_btn" class="hide-completely" title="open update sending panel" onclick="sendUpdatePopup()">
                         <svg viewBox="0 0 74.55 74.53">
                             <polygon points="73.7,0.86 1.7,28.42 37.7,36.86 47.02,72.86 "/>
                         </svg>
@@ -312,7 +317,7 @@
                       <h3>Account</h3>
                       <h4 id="username" class="capitalise"></h4>
                       <p>This will delete all local data.</p>
-                      <button id="logout" class="svg-margin-right" onclick="logout()">
+                      <button id="logout" class="svg-margin-right" title="sign out of the app" onclick="logout()">
                         <svg viewBox="0 0 73.21 55">
                             <path d="M27.71,9.5"/>
                             <polyline points="27.71,14 27.71,0.5 72.71,0.5 72.71,54.5 27.71,54.5 27.71,41"/>
@@ -346,7 +351,7 @@
                   </section>
                   <section>
                       <h3>About</h3>
-                      <h5>Version 8.2.2</h5>
+                      <h5>Version 8.2.3</h5>
                               <a class="border-card" href="https://flo.cash/" target="_blank" rel="noopener noreferrer">
                                       <h5>Powered by</h5>
                                       <svg viewBox="0 0 108 48" style="enable-background:new 0 0 107.65 47.07;"
@@ -383,6 +388,7 @@
             <div id="show_all" class="page hide-completely container-card">
                 <header class="header">
                     <svg onclick="history.back()" viewBox="0 0 31.24 56.83">
+                        <title>Go back to previous page</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3></h3>
@@ -392,6 +398,7 @@
             <div id="project_explorer" class="page hide-completely container-card list-container">
                 <header class="header">
                     <svg onclick="history.back()" viewBox="0 0 31.24 56.83">
+                        <title>Go back to previous page</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Projects</h3>
@@ -402,7 +409,7 @@
                 <div id="right">
                     <div>
                         <h2>Project Name</h2>
-                        <button id="watch_project_btn" class="svg-margin-right" onclick="watchThisProject(this)">
+                        <button id="watch_project_btn" class="svg-margin-right" title="add this project to your watch list" onclick="watchThisProject(this)">
                             Watch
                         </button>
                     </div>
@@ -419,6 +426,7 @@
                         <div class="container-header">
                             <h3>Projects</h3>
                             <svg onclick="showPopup('add_project_popup')" class="hover" viewBox="0 0 48 48">
+                                <title>show project adding panel</title>
                                 <path d="M44,20H28V4c0-2.21-1.79-4-4-4s-4,1.79-4,4v16H4c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4h16v16c0,2.21,1.79,4,4,4
                                 s4-1.79,4-4V28h16c2.21,0,4-1.79,4-4C48,21.79,46.21,20,44,20z"/>
                             </svg>
@@ -431,6 +439,7 @@
                         <div class="container-header">
                             <h3>Interns</h3>
                             <svg onclick="showPopup('add_intern_popup')" class="hover" viewBox="0 0 48 48">
+                                <title>show new intern adding panel</title>
                                 <path d="M44,20H28V4c0-2.21-1.79-4-4-4s-4,1.79-4,4v16H4c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4h16v16c0,2.21,1.79,4,4,4
                                 s4-1.79,4-4V28h16c2.21,0,4-1.79,4-4C48,21.79,46.21,20,44,20z"/>
                             </svg>
@@ -443,6 +452,7 @@
                 <div class="container-card inner-page hide-page-on-mobile">
                     <div id="figure1" class="center">
                     <svg id="edit_data_fig" viewBox="0 0 181.77 63.09">
+                        <title>admin panel illustration</title>
                         <path d="M116.81,46.62c-3.05,0-6.1,0-9.15,0c-7.53,0-15.07,0-22.6,0c-9.54,0-19.09,0-28.63,0
                             c-9.21,0-18.42,0-27.63,0c-6.41,0-12.81,0-19.22,0c-1.39,0-2.77,0.01-4.16,0c-0.79,0-1.54-0.13-2.1-0.78
                             c-0.66-0.76-0.56-1.71-0.56-2.64c0-8.14,0-16.27,0-24.41c0-3.8,0-7.6,0-11.39c0-1.9-0.33-4.48,2.35-4.62c2.44-0.13,4.93,0,7.38,0
@@ -480,7 +490,7 @@
                 <div id="task_list">
 
                 </div>
-                <button id="add_task" class="svg-margin-right">
+                <button id="add_task" class="svg-margin-right" title="show element to add new task">
                     <svg viewBox="0 0 48 48">
                         <path d="M44,20H28V4c0-2.21-1.79-4-4-4s-4,1.79-4,4v16H4c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4h16v16c0,2.21,1.79,4,4,4
                         s4-1.79,4-4V28h16c2.21,0,4-1.79,4-4C48,21.79,46.21,20,44,20z"/>
@@ -488,6 +498,7 @@
                 <ul id="task_context" class="hide">
                     <li id="assign_intern" class="hover" onclick="showPopup('interns_list')">
                         <svg viewBox="0 0 72.48 47.73">
+                            <title>Open intern assignment popup</title>
                             <path  d="M45.36,26.68c-7.22,0-13.09-5.87-13.09-13.09S38.14,0.5,45.36,0.5c7.22,0,13.09,5.87,13.09,13.09
                                 S52.58,26.68,45.36,26.68z"/>
                             <path d="M45.36,1c6.94,0,12.59,5.65,12.59,12.59S52.3,26.18,45.36,26.18s-12.59-5.65-12.59-12.59S38.42,1,45.36,1 M45.36,0
@@ -500,6 +511,7 @@
                     </li>
                     <li class="hover" onclick="addNewBranch()">
                         <svg viewBox="0 0 66.57 34.92">
+                            <title>show new branch creation popup</title>
                             <circle cx="6.54" cy="6.63" r="6.17"/>
                             <line x1="12.71" y1="6.63" x2="53.87" y2="6.92"/>
                             <circle cx="60.03" cy="6.54" r="6.17"/>
@@ -510,6 +522,7 @@
                     </li>
                     <li class="hover" onclick="removeThisTask()">
                         <svg viewBox="0 0 60.35 73" >
+                            <title>remove this task</title>
                         <path d="M47.19,72.5H13.15c-3.5,0-6.4-2.74-6.59-6.24L4.1,21.97c-0.05-0.99,0.73-1.82,1.72-1.82h48.7
                             c0.99,0,1.77,0.83,1.72,1.82l-2.46,44.29C53.59,69.76,50.7,72.5,47.19,72.5z"/>
                         <path d="M57.79,4H40.64V2.25c0-0.97-0.78-1.75-1.75-1.75H21c-0.71,0-1.29,0.58-1.29,1.29V4H2.55
@@ -544,13 +557,13 @@
                             c0.2,1.23-1.1,2.14-2.19,1.54L35.62,58.59C35.17,58.34,34.63,58.34,34.18,58.59z"/>
                         </svg>
                         <h4>Points</h4>
-                        <button class="hover admin-options hide-completely" onclick="changeScore(1, this.parentNode)">
+                        <button class="hover admin-options hide-completely" title="increase intern score" onclick="changeScore(1, this.parentNode)">
                             <svg viewBox="0 0 72 72">
                                 <line x1="36" y1="0" x2="36" y2="72"/>
                                 <line x1="0" y1="36" x2="72" y2="36"/>
                             </svg>
                         </button>
-                        <button class="hover admin-options hide-completely" onclick="changeScore(-1, this.parentNode)">
+                        <button class="hover admin-options hide-completely" title="decrease intern score" onclick="changeScore(-1, this.parentNode)">
                             <svg viewBox="0 0 73 73">
                                 <line x1="0.5" y1="36.5" x2="72.5" y2="36.5"/>
                                 <rect x="0.5" y="0.5" width="72" height="72"/>
@@ -564,12 +577,14 @@
             <div class="popup" id="interns_list">
                 <div class="container-header">
                     <svg class="back-arrow" onclick="hidePopup('interns_list')" viewBox="0 0 31.24 56.83">
+                        <title>Close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3 class="medium-top-bottom-margin">Choose an intern</h3>
                 </div>
                 <label class="input">
                     <svg viewBox="0 0 72.85 72.85">
+                        <title>close this popup</title>
                         <circle cx="27.5" cy="27.5" r="27"/>
                         <line x1="72.5" y1="72.5" x2="46.59" y2="46.59"/>
                     </svg>
@@ -605,6 +620,7 @@
             <div id="add_project_popup" class="popup">
                 <div class="container-header">
                     <svg class="back-arrow" onclick="hidePopup('add_project_popup')" viewBox="0 0 31.24 56.83">
+                        <title>close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Add new project</h3>
@@ -627,6 +643,7 @@
             <div id="add_intern_popup" class="popup">
                 <div class="container-header">
                     <svg class="back-arrow" onclick="hidePopup('add_intern_popup')" viewBox="0 0 31.24 56.83">
+                        <title>close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Add new intern</h3>
@@ -649,6 +666,7 @@
             <div id="create_branch" class="popup">
                 <div class="container-header">
                     <svg class="back-arrow" onclick="hidePopup('create_branch')" viewBox="0 0 31.24 56.83">
+                        <title>close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Create a new branch</h3>
@@ -671,10 +689,11 @@
             <div id="post_update" class="popup">
                 <div class="container-header">
                     <svg class="back-arrow" onclick="hidePopup('post_update')" viewBox="0 0 31.24 56.83">
+                        <title>close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Post an update</h3>
-                    <button id="post_update_btn" class="svg-margin-right">
+                    <button id="post_update_btn" class="svg-margin-right" title="post this update">
                         <svg viewBox="0 0 74.55 74.53">
                             <polygon points="73.7,0.86 1.7,28.42 37.7,36.86 47.02,72.86 "/>
                         </svg>
@@ -9896,7 +9915,9 @@
         
             }
         </script>
-        <script id="UI_functions">  
+        <script id="UI_functions"> 
+            if(!navigator.onLine) 
+                showMessage('error', 'There seems to be a problem connecting to the internet.', 'fixed')
             window.addEventListener('offline', () =>{
                 showMessage('error', 'There seems to be a problem connecting to the internet.', 'fixed')
             })
@@ -9973,6 +9994,7 @@
                         document.getElementById('auto-mode').checked = false;
                     }
                 }  
+
             // Method object for creating various UI elements
             const render = {
                 projectCard: function(projectName, projectCode){ // creates cards containing project information
@@ -10176,7 +10198,7 @@
                     let canceled = !elem.dispatchEvent(evt);
                 };
 
-            let i = currentProgress = projectIndex = 0, prevProject = '',iList = [],newIList = [],
+            let i = currentProgress = projectIndex = 0, prevProject = '',iList = [],newIList = [],lastState,
             frag = document.createDocumentFragment(), watchList = [], currentIntern, dashboardProject,currentTaskObj = {};
 
             // function required for popups or modals to appear
@@ -10206,13 +10228,16 @@
                 else
                     banner.style.background = '#00C853';
                 banner.classList.add('no-transformations')
-                banner.children[0].textContent = message;
+                banner.classList.remove('hide')
+                banner.children[0].textContent = message.charAt(0).toUpperCase() + message.slice(1);
                 banner.children[1].onclick = function() {
+                    banner.classList.add('hide')
                     banner.classList.remove('no-transformations')
                 }
                 clearTimeout(currentTimeout)
                 if(behavior === 'fixed') return;
                 currentTimeout = setTimeout(()=>{
+                    banner.classList.add('hide')
                     banner.classList.remove('no-transformations')
                 }, 4000)
             }
@@ -10237,7 +10262,7 @@
                 let internName = document.getElementById('intern_name_field').value.trim(),
                     internFLOID = document.getElementById('intern_flo_id_field').value.trim();
                 if(!internName){
-                    showMessage('error', `please enter intern's name`)
+                    showMessage('error', `Please enter intern's name`)
                     return;
                 }
                 if(internFLOID && RIBC.manage.addIntern(internFLOID, internName))
@@ -10248,7 +10273,7 @@
                 }
                 else{
                     document.getElementById('intern_flo_id_field').setAttribute('style', 'outline: solid 1px red');
-                    showMessage('error', `please enter intern's FLO ID`)
+                    showMessage('error', `Please enter intern's FLO ID`)
                     setTimeout(()=> {
                         document.getElementById('intern_flo_id_field').setAttribute('style', 'oultine: none');
                     },1000)
@@ -10606,7 +10631,7 @@
                         },1000)
                     }
                     else    
-                        showMessage('error', 'Intern already assigned')
+                        showMessage('error', 'intern already assigned')
                     hidePopup('interns_list')
                 }
             })
@@ -10648,7 +10673,7 @@
                 startPoint.value = parseInt(currentTask.id);
                 document.getElementById('create_branch_btn').onclick = () =>{
                     branchName = RIBC.manage.addBranch(currentProject, currentBranch, startPoint, parseInt(mergePoint.value));
-                    showMessage('',`branch added ${branchName}`)
+                    showMessage('',`Branch added ${branchName}`)
                     document.getElementById('branch_container').appendChild(render.branchBtn(branchName))
                     hidePopup('create_branch')
                 }
@@ -10716,13 +10741,10 @@
                 document.getElementById(tempCard[2]).firstElementChild.click()
             }
             let index = 0;
-            function changeProject(mode){
+            function changeProject(change){
                 let list = JSON.parse(localStorage.getItem('watchList'));
-                if(mode === 'next'){
-                    index++;
-                }
-                else
-                    index--;
+                index += change;
+                index = Math.min(Math.max(index,0), list.length-1);
                 if(index === 0){
                     disableBtn('prev_proj')
                 }
@@ -10776,12 +10798,12 @@
                         signIn.children[2].classList.remove('hide-completely')
                         btn.classList.add('hide-completely')
                     }
-                    privField.addEventListener('keypress', (event) =>{
+                    privField.addEventListener('keyup', (event) => {
                         if(privField.value.trim() !== '')
                             enableBtn('sign_in_btn')
                         else
                             disableBtn('sign_in_btn')
-                        if(event.keyCode === 13 || event.key === 13){
+                            if(event.keyCode === 13 || event.key === 13){
                             if(privField.value.trim().length > 40){
                                 resolve(privField.value.trim())
                                 hidePopup('sign_in')
@@ -10812,8 +10834,16 @@
                 })
                 document.getElementById('project_list').addEventListener('click', (event) => {
                     if(event.target.closest('.project-card')){
+                        appState.btn = '';
+                        appState.page = 'project_explorer';
+                        appState.offsprings = 'explorer';
+                        appState.type = 'innerPage';
                         showPage('', 'project_explorer', 'explorer', 'innerPage')
+                        if(lastState !== appState.page)
+                            history.pushState(appState, null, null)
+                        lastState = appState.page;
                         showProjectInfo(event.target.closest('.project-card'), 'right')
+
                     }
                 })
                 document.getElementById('show_all').addEventListener('click', (event) => {
@@ -10845,17 +10875,6 @@
                 newIList.sort(function(a, b) {
                     return a[2] - b[2];
                 });
-
-                if(floGlobals.subAdmins.includes(myFloID)){
-                    document.querySelectorAll('.admin-options').forEach((option) => {
-                        option.classList.remove('hide-completely')
-                    })
-                }
-                else{
-                    document.querySelectorAll('.admin-options').forEach((option) => {
-                        option.classList.add('hide-completely')
-                    })
-                }
 
                 // Intern's view
 
@@ -10906,14 +10925,35 @@
                     document.getElementById('floating_btn').classList.add('hide-completely')
                     document.getElementById('intern_view').classList.add('hide-completely')
                     document.getElementById('status_map_container').classList.remove('hide-completely')
+                    document.getElementById('project_list_container').firstElementChild.children[1].textContent = 'Projects'
                 }
 
-                document.getElementById('interns').innerHTML = ``;
+                // admin view
 
-                for(intern in iList){
-                    frag.appendChild(render.internCard(iList[intern],intern, RIBC.getInternRating(intern),'interns'))
+                if(floGlobals.subAdmins.includes(myFloID)){
+                    document.querySelectorAll('.admin-options').forEach((option) => {
+                        option.classList.remove('hide-completely')
+                    })
+
+                    //show interns
+                    document.getElementById('interns').innerHTML = ``;
+                    for(intern in iList){
+                        frag.appendChild(render.internCard(iList[intern],intern, RIBC.getInternRating(intern),'interns'))
+                    }
+                    document.getElementById('interns').appendChild(frag)
+
+                    //show project
+                    document.getElementById('projects').innerHTML = ``;
+                    for(i = 0; i < pList.length; i++){
+                        frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
+                    }
+                    document.getElementById('projects').appendChild(frag)
                 }
-                document.getElementById('interns').appendChild(frag)
+                else{
+                    document.querySelectorAll('.admin-options').forEach((option) => {
+                        option.classList.add('hide-completely')
+                    })
+                }
 
                 document.getElementById('best_interns').innerHTML = ``;
                 let limit = 4;
@@ -10946,13 +10986,6 @@
                     })
                 }
                 document.getElementById('project_list').appendChild(frag)
-                
-                document.getElementById('projects').innerHTML = ``;
-                for(i = 0; i < pList.length; i++){
-                    frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
-                }
-
-                document.getElementById('projects').appendChild(frag)
 
                 if(localStorage.getItem('watchList') === null)
                     localStorage.setItem('watchList', JSON.stringify(watchList))
@@ -10999,7 +11032,7 @@
                             .then((result) => {
                                 let parent = document.getElementById('update_container');
                                 parent.prepend(render.updateCard(getInternDetails(myFloID)[0].split(':')[1], topic, description))
-                                showMessage('', 'update posted')
+                                showMessage('', 'Update posted')
                                 hidePopup('post_update')
                             })
                             .catch((error) => {
@@ -11044,8 +11077,7 @@
                     disableBtn('next_proj') 
 
                 history.pushState(appState, null, null)
-                let lastState;
-
+                
                 document.getElementById('all_interns_btn').addEventListener('click', () => {
                         appState.btn = '';
                         appState.page = 'show_all';
@@ -11070,11 +11102,11 @@
                     let trgt = event.target.closest('.nav-btn');
                     if(trgt){
                         appState.btn = trgt.id;
+                        appState.offsprings = '';
+                        appState.type = '';
                         if(trgt.id === 'dashboard_btn'){
                             showPage(trgt.id, 'dashboard')
                             appState.page = 'dashboard';
-                            appState.offsprings = '';
-                            appState.type = '';
                             currentProject = dashboardProject;
                             if(JSON.parse(localStorage.getItem('watchList')).length)
                                 showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
@@ -11082,15 +11114,11 @@
                         else if(trgt.id === 'admin_panel_btn'){
                             showPage(trgt.id, 'admin_panel')
                             appState.page = 'admin_panel';
-                            appState.offsprings = '';
-                            appState.type = '';
                             
                         }
                         else if(trgt.id === 'settings_btn'){
                             showPage(trgt.id, 'settings_page')
                             appState.page = 'settings_page';
-                            appState.offsprings = '';
-                            appState.type = '';
                         }
                         else if(trgt.id === 'top_update_btn'){
                             appState.btn = '';
@@ -11108,11 +11136,11 @@
                     let trgt = event.target.closest('.nav-btn');
                     if(trgt){
                         appState.btn = trgt.id;
+                        appState.offsprings = '';
+                        appState.type = '';
                         if(trgt.id === 'bottom_dashboard_btn'){
                             showPage(trgt.id, 'dashboard')
                             appState.page = 'dashboard';
-                            appState.offsprings = '';
-                            appState.type = '';
                             currentProject = dashboardProject;
                             if(JSON.parse(localStorage.getItem('watchList')).length)
                                 showProjectMap(JSON.parse(localStorage.getItem('watchList'))[0], 'status_map')
@@ -11120,8 +11148,6 @@
                         else if(trgt.id === 'bottom_admin_btn'){
                             showPage(trgt.id, 'admin_panel')
                             appState.page = 'admin_panel';
-                            appState.offsprings = '';
-                            appState.type = '';
                         }
                         else if(trgt.id === 'bottom_update_btn'){
                             showPage(trgt.id, 'show_all', 'updates', 'innerPage')
@@ -11139,15 +11165,13 @@
                         else if(trgt.id === 'bottom_setting_btn'){
                             showPage(trgt.id, 'settings_page')
                             appState.page = 'settings_page';
-                            appState.offsprings = '';
-                            appState.type = '';
                         }
                         if(lastState !== appState.page)
                             history.pushState(appState, null, null)
                         lastState = appState.page;
                     }
                 }) 
-                let greetings = getInternDetails(myFloID)[0] !== undefined ? `Hi, ${getInternDetails(myFloID)[0].split(':')[1]}` : 'Hi, there!'
+                let greetings = getInternDetails(myFloID)[0] !== undefined ? `Hi, ${getInternDetails(myFloID)[0].split(':')[1]}.` : 'Hi, there!'
                 document.getElementById('username').textContent = greetings;  
             }
             // functions that run when page loads
