@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>RIBC</title>
-        <meta name="description" content="Web app for managing interns">
+        <meta name="description" content="Web app for managing interns and projects">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link rel="stylesheet" href="css/main.css">-->
         <style>* {
@@ -730,6 +730,7 @@
           
           .chatInput textarea {
             resize: none;
+            line-height: 1.6;
           }
           
           .chatInput button {
@@ -950,8 +951,8 @@
             right: 2rem;
             min-width: 24rem;
             background: var(--foreground);
-            -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
-                    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+            -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.16), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+                    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.16), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
             border-radius: 0.2rem;
           }
           
@@ -962,6 +963,9 @@
           
           #intern_updates .container-header button {
             padding: 1rem 0;
+            border-bottom: 0.2rem solid transparent;
+            border-radius: 0;
+            opacity: 0.7;
           }
           
           #intern_updates .container-header button:first-of-type {
@@ -970,6 +974,11 @@
           
           #intern_updates .container-header button:last-of-type {
             margin-right: 1rem;
+          }
+          
+          #intern_updates .container-header .active {
+            color: rgba(var(--rgb-bw), 1);
+            border-bottom: 0.2rem solid var(--accent-color);
           }
           
           #update_container, #requests_container {
@@ -1554,7 +1563,6 @@
                 -ms-flex-align: center;
                     align-items: center;
             z-index: 2;
-            border-radius: 0.4rem 0.4rem 0 0;
           }
           
           .header svg {
@@ -1865,6 +1873,27 @@
             }
           }
           
+          .slide-left {
+            -webkit-animation: slide-left 0.4s ease;
+                    animation: slide-left 0.4s ease;
+          }
+          
+          @-webkit-keyframes slide-left {
+            100% {
+              -webkit-transform: translateX(-100%);
+                      transform: translateX(-100%);
+              opacity: 0;
+            }
+          }
+          
+          @keyframes slide-left {
+            100% {
+              -webkit-transform: translateX(-100%);
+                      transform: translateX(-100%);
+              opacity: 0;
+            }
+          }
+          
           .update-mi svg {
             -webkit-animation: shake 0.6s ease;
                     animation: shake 0.6s ease;
@@ -1994,6 +2023,9 @@
             #top_nav {
               padding: 1rem 2vw;
             }
+            #settings_page {
+              padding: 1rem 2rem;
+            }
             .logo {
               -webkit-box-pack: left;
                   -ms-flex-pack: left;
@@ -2112,6 +2144,7 @@
            'left right';
             }
             #project_explorer .header {
+              border-radius: 0.4rem 0.4rem 0 0;
               -ms-grid-row: 1;
               -ms-grid-column: 1;
               -ms-grid-column-span: 2;
@@ -2127,6 +2160,12 @@
               -ms-flex-item-align: start;
                   align-self: flex-start;
               border-right: 1px solid rgba(var(--rgb-bw), 0.06);
+            }
+            #project_explorer #left h4 {
+              margin-top: 0;
+              margin-bottom: 0.5rem;
+              color: #29B6F6;
+              font-size: 0.9rem;
             }
             #project_explorer #right {
               -ms-grid-row: 2;
@@ -2252,7 +2291,7 @@
                     </svg>
                     <h2>Sign In</h2>
                 </header>
-                <p>Welcome to TEDxKanke.</p>
+                <p>Welcome to RIBC.</p>
                 <div class="fade-in">
                     <button id="guest_btn" class="hover" title="sign in as a guest">
                         <svg viewBox="0 0 71.51 63.15">
@@ -2283,7 +2322,7 @@
             </div>
         </div>
         <nav id="top_nav">
-        <div id="logo">
+        <div id="logo" class="logo svg-margin-right">
                 <svg viewBox="0 0 118.35 118.35">
                     <title>RanchiMall logo</title>
                 <style type="text/css">
@@ -2361,14 +2400,10 @@
             </button>
             <div class="dropdown hide-on-mobile" id="intern_updates">
                 <button id="update_panel_btn" title="show updates">
-                    <svg viewBox="0 0 57.2 64">
-                    <g>
-                        <circle style="fill: #FF4E4E" cx="47.7" cy="9.5" r="9.5"/>
-                        <path d="M52.29,52.21c-2.19-2.34-3.86-5.18-4.84-8.33V43v-5.5V21.99C40.66,21.85,35.2,16.32,35.2,9.5
-                            c0-2.35,0.66-4.55,1.79-6.42c-3.1-1.86-6.69-2.98-10.54-3.07c-11.64,0.26-21,9.79-21,21.49v16V43v0.88
-                            c-0.98,3.15-2.64,5.99-4.84,8.33C-0.74,53.65,0.29,56,2.26,56h3.19h1h13h2.36c-0.38,0.75-0.61,1.6-0.61,2.5
-                            c0,3.04,2.46,5.5,5.5,5.5s5.5-2.46,5.5-5.5c0-0.9-0.22-1.75-0.61-2.5h1.86h13h1h3.19C52.61,56,53.63,53.65,52.29,52.21z"/>
-                    </g>
+                    <svg viewBox="0 0 72 81">
+                    <path d="M66.68,61.26C64.45,59.63,63,56.98,63,54V27.61c0-14.74-11.55-27.22-26.28-27.6C21.48-0.39,9,11.85,9,27v27
+                        c0,2.98-1.45,5.63-3.68,7.26C2.08,63.63,0,67.26,0,71.27v0.68C0,71.98,0.02,72,0.05,72H9h18c0,4.97,4.03,9,9,9c4.97,0,9-4.03,9-9h18
+                        h8.95c0.03,0,0.05-0.02,0.05-0.05v-0.68C72,67.26,69.92,63.63,66.68,61.26z"/>
                     </svg>
                 </button>
                 <div class="dropdown-content hide" id="updates">
@@ -2404,16 +2439,16 @@
                             <line x1="1.5" y1="28.5" x2="73.5" y2="28.5"/>
                             </svg>                            
                             <h4>Projects you are watching</h4>
-                            <button id="prev_proj" onclick="changeProject(-1)" title="show next project" disabled>
+                            <button id="prev_proj" onclick="changeProject(-1)" class="watch-list-button" title="show next project" disabled>
                                 <svg viewBox="0 0 40.24 74.83">
                                     <polyline points="38.83,1.41 2.83,37.41 38.83,73.41 "/>
                                 </svg>
                                 </button>
-                            <button id="next_proj" onclick="changeProject(1)" title="show previous project">
+                            <button id="next_proj" onclick="changeProject(1)"  class="watch-list-button" title="show previous project">
                                 <svg viewBox="0 0 40.24 74.83">
                                     <polyline points="1.41,73.41 37.41,37.41 1.41,1.41 "/>
                                 </svg>
-                                </button>
+                            </button>
                         </div>
                         <div id="status_map"></div>
                         <span class="back-art"></span>
@@ -2468,7 +2503,6 @@
                   <section>
                       <h3>Account</h3>
                       <h4 id="username" class="capitalise"></h4>
-                      <p>This will delete all local data.</p>
                       <button id="logout" class="svg-margin-right" title="sign out of the app" onclick="logout()">
                         <svg viewBox="0 0 73.21 55">
                             <path d="M27.71,9.5"/>
@@ -2503,7 +2537,7 @@
                   </section>
                   <section>
                       <h3>About</h3>
-                      <h5>Version 1.0.0</h5>
+                      <h5>Version 8.2.5</h5>
                               <a class="border-card" href="https://flo.cash/" target="_blank" rel="noopener noreferrer">
                                       <h5>Powered by</h5>
                                       <svg viewBox="0 0 108 48" style="enable-background:new 0 0 107.65 47.07;"
@@ -2547,7 +2581,7 @@
                 </header>
                 <div></div>
             </div>
-            <div id="project_explorer" class="page hide-completely container-card list-container">
+            <div id="project_explorer" class="page hide-completely container-card">
                 <header class="header">
                     <svg onclick="history.back()" viewBox="0 0 31.24 56.83">
                         <title>Go back to previous page</title>
@@ -2556,19 +2590,22 @@
                     <h3>Projects</h3>
                 </header>
                 <div id="left" class="list-container">
-    
+                    <h4 class="padding intern-option hide-completely">My projects</h4>
+                    <div></div>
+                    <h4 class="padding intern-option hide-completely">Other projects</h4>
+                    <div></div>
                 </div>
-                <div id="right">
+                <div id="right" class="hide-page-on-mobile content-page">
                     <div>
-                        <h2>Project Name</h2>
-                        <button id="watch_project_btn" class="svg-margin-right" title="add this project to your watch list" onclick="watchThisProject(this)">
+                        <h2></h2>
+                        <button id="watch_project_btn" title="add this project to your watch list" onclick="watchThisProject(this)">
                             Watch
                         </button>
                     </div>
                     <p class="admin_project_description"></p>
                     <div id="explorer_branch_container">
                     </div>
-                    <h4>Tasks</h4>
+                    <h4></h4>
                     <div id="explorer_task_list"></div>
                 </div>
             </div>
@@ -2850,8 +2887,9 @@
                 <label class="input top-margin">
                     <input id="update_topic" placeholder="Topic" type="text"/>
                 </label>
-                <label class="input chatInput">
-                    <textarea id="update_description" placeholder="Description" type="text" rows="1"></textarea>
+                <h5 class="no-bottom-margin">Update</h5>
+                <label class="input chatInput top-margin">
+                    <textarea id="update_description" placeholder="Type the update" type="text" rows="1"></textarea>
                     <button id="post_update_btn" title="post this update">
                         <svg viewBox="0 0 74.55 74.53">
                             <polygon points="73.7,0.86 1.7,28.42 37.7,36.86 47.02,72.86 "/>
@@ -2864,8 +2902,8 @@
             <div>
                 <svg viewBox="0 0 64 64" class="loader loading-animation">
                     <circle cx="32" cy="32" r="32"/>
-                </svg>  
-                <div class="logo">
+                </svg>   
+                <div class="logo svg-margin-right">
                     <svg viewBox="0 0 118.35 118.35">
                         <title>RanchiMall logo</title>
                     <style type="text/css">
@@ -2917,7 +2955,7 @@
                     </g>
                     </svg>
                     <h4>RIBC</h4>
-                </div> 
+                </div>
                 A FLO Blockchain App by RanchiMall
             </div>
         </div>
@@ -12271,7 +12309,7 @@
                     title.textContent = taskDetails.taskTitle;
                     title.classList.add('capitalise')
                     firstCont.append(title)
-                    if(assignedInterns){
+                    if(assignedInterns || typeOfUser === 'general'){
                         getInternDetails(assignedInterns).forEach((intern) => {
                             frag.appendChild(render.assignedInternCard(intern));
                         })
@@ -12283,14 +12321,15 @@
                     function checkObject(obj){
                         return (obj.projectCode === currentProject && obj.branch === currentBranch && obj.taskNo == taskNo)
                     }
-                    if(localStorage.getItem('requests') !== null && JSON.parse(localStorage.getItem('requests')).find(checkObject) === undefined){
-                        enableBtn(applyBtn)
-                        applyBtn.textContent = 'Apply';
-                    }
-                    else{
-                        applyBtn.textContent = 'Applied';
-                        disableBtn(applyBtn)
-                    }
+                    if(localStorage.getItem('requests') !== null)
+                        if(JSON.parse(localStorage.getItem('requests')).find(checkObject) === undefined){
+                            enableBtn(applyBtn)
+                            applyBtn.textContent = 'Apply';
+                        }
+                        else{
+                            applyBtn.textContent = 'Applied';
+                            disableBtn(applyBtn)
+                        }
                     assignedInternsContainer.classList.add('assigned-interns')
                     description.textContent = taskDetails.taskDescription;
                     right.append(firstCont, assignedInternsContainer, description)
@@ -12420,7 +12459,6 @@
                     return mapItems;
                 },
                 requestCard: function(floId, projectCode, branch, taskNo){
-                    console.log(floId, projectCode, branch, taskNo)
                     let card = document.createElement('div'),name;
                     card.classList.add('request-card')
                     name = floId;
@@ -12429,6 +12467,7 @@
                     card.innerHTML = `<p>
                                         <b class="capitalise">${name}</b> applied for 
                                         <b class="capitalise">${RIBC.getTaskDetails(projectCode, branch, taskNo).taskTitle}</b> from 
+                                        <b class="capitalise">${branch}</b> of
                                         <b class="capitalise">${RIBC.getProjectDetails(projectCode).projectName}</b>
                                     </p>
                                     <button class="hover reject-app">
@@ -12490,7 +12529,8 @@
                 };
 
             let i = currentProgress = projectIndex = 0, prevProject = '',iList = [],newIList = [],lastState,
-            frag = document.createDocumentFragment(), watchList = [], currentIntern, dashboardProject,currentTaskObj = {};
+            frag = document.createDocumentFragment(), watchList = [], currentIntern, dashboardProject,currentTaskObj = {},
+            typeOfUser = 'general';
 
             // function required for popups or modals to appear
             function showPopup(popup, permission){ 
@@ -12615,6 +12655,12 @@
                 }
                 else{
                     allProjects[index].classList.add('active-project')
+                }
+                if(window.innerWidth < 640){
+                    document.querySelectorAll('.list-container').forEach((item) => {
+                        item.classList.add('hide-page-on-mobile')
+                    })
+                    container.classList.remove('hide-page-on-mobile')
                 }
                 let projectDetails = RIBC.getProjectDetails(currentProject);
                 container.firstElementChild.children[0].textContent = projectDetails.projectName; // project name
@@ -12881,11 +12927,12 @@
             }
 
             function showListCont(container){
-                if(window.innerWidth < 640)
-                document.querySelectorAll('.inner-page').forEach((container) => {
-                    container.classList.add('hide-completely')
+                if(window.innerWidth < 640){
+                document.querySelectorAll('.content-page').forEach((container) => {
+                    container.classList.add('hide-page-on-mobile')
                 })
-                document.getElementById(container).classList.remove('hide-completely');
+                document.getElementById(container).classList.remove('hide-completely', 'hide-page-on-mobile');
+                }
             }
 
 
@@ -12910,12 +12957,12 @@
                 askConfirmation("Do you want to sign out?").then((result) => {
                     if(result){
                         floDapps.clearCredentials()
-                        compactIDB.deleteDB().then((message) => {
-                            onLoadStartUp()
-                            showMessage('','You have signed out successfully.')
-                        }).catch((error) => {
-                            console.log(error)
-                        })
+                        showMessage('','You have signed out successfully.')
+                        onLoadStartUp()
+                        if(window.innerWidth > 768)
+                            showPage('dashboard_btn', 'dashboard');
+                        else 
+                            showPage('bottom_dashboard_btn', 'dashboard');   
                     }
                 })
             }
@@ -13007,8 +13054,8 @@
                     updateContainer = document.getElementById(container);
                 updateContainer.innerHTML = ``;
                 let updates = RIBC.getInternUpdates(limit);
-                Object.keys(updates).forEach((entry) => {
-                    frag.appendChild(render.updateCard(getInternDetails(updates[entry].floID)[0].split(':')[1], updates[entry].update.topic, updates[entry].update.description))
+                updates.forEach((entry) => {
+                    frag.appendChild(render.updateCard(getInternDetails(entry.floID)[0].split(':')[1], entry.update.topic, entry.update.description))
                 })
                 updateContainer.appendChild(frag)
             }
@@ -13024,9 +13071,13 @@
                 else{
                     watchList.splice(watchList.indexOf(currentProject), 1)
                     thisBtn.textContent = 'Watch'
+                    if(watchList.length === 0){
+                        document.getElementById('status_map').innerHTML = '<h3>No project added to watch list.</h3>'
+                    }
                     localStorage.setItem('watchList', JSON.stringify(watchList))
                     showMessage('', `${RIBC.getProjectDetails(currentProject).projectName} removed from your watch list.`)
                 }
+                changeProject(0)
             }
 
             function showProjectMap(projectCode, container){
@@ -13045,19 +13096,33 @@
             }
             let index = 0;
             function changeProject(change){
-                let list = JSON.parse(localStorage.getItem('watchList'));
+                let list = JSON.parse(localStorage.getItem('watchList')),
+                    listButtons = document.querySelectorAll('.watch-list-button');
                 index += change;
                 index = Math.min(Math.max(index,0), list.length-1);
-                if(index === 0){
+                if(list.length === 0){
                     disableBtn('prev_proj')
-                }
-                else    
-                    enableBtn('prev_proj')
-                if(index+1 === list.length){
                     disableBtn('next_proj')
+                    listButtons.forEach((btn) => {
+                        btn.classList.add('hide')
+                    })
                 }
-                else    
-                    enableBtn('next_proj')
+                else{
+                    listButtons.forEach((btn) => {
+                        btn.classList.remove('hide')
+                    })
+                    if(index === 0){
+                        disableBtn('prev_proj')
+                    }
+                    else{    
+                        enableBtn('prev_proj')
+                    }
+                    if(index+1 === list.length){
+                        disableBtn('next_proj')
+                    }
+                    else    
+                        enableBtn('next_proj')
+                }
                 dashboardProject = list[index]
                 showProjectMap(dashboardProject, 'status_map')
             }
@@ -13185,6 +13250,11 @@
                     if(event.target.closest('.intern-card'))
                         showInternInfo(event.target.closest('.intern-card'))
                 })
+                document.getElementById('status_map').addEventListener('click', (e) => {
+                        if(e.target.closest('.apply-btn')){
+                            requestForTask(e.target.closest('.apply-btn'))
+                        }
+                    })
                 let projectList = document.getElementById('project_list');
                 projectList.addEventListener('click', (event) => {
                     if(event.target.closest('.project-card')){
@@ -13233,6 +13303,7 @@
 
                 let newPList = [],x;
                 if(Object.keys(iList).includes(myFloID) && !floGlobals.subAdmins.includes(myFloID)){
+                    typeOfUser = 'intern';
                     document.querySelectorAll('.intern-option').forEach((option) => {
                         option.classList.remove('hide-completely')
                     })
@@ -13281,30 +13352,34 @@
                     })
                     document.getElementById('status_map_container').classList.remove('hide-completely')
                     document.getElementById('project_list_container').firstElementChild.children[1].textContent = 'Projects'
-                    document.getElementById('status_map').addEventListener('click', (e) => {
-                        if(e.target.closest('.apply-btn')){
-                            requestForTask(e.target.closest('.apply-btn'))
-                        }
-                    })
                 }
 
                 // admin view
                 if(floGlobals.subAdmins.includes(myFloID)){
+                    typeOfUser = 'admin'
                     let requestsContainer = document.getElementById('requests_container');
                     RIBC.getTaskApplications().forEach((app) => {
-                        console.log(app.floID, !RIBC.getAssignedInterns(app.projectCode, app.branch, app.task))
-                        if(!RIBC.getAssignedInterns(app.projectCode, app.branch, app.task))
-                            frag.appendChild(render.requestCard(app.floID, app.projectCode, app.branch, app.task))
+                        try{
+                            if(!Array.isArray(RIBC.getAssignedInterns(app.projectCode, app.branch, app.task)) && typeof RIBC.getTaskDetails(app.projectCode, app.branch, app.task) !== 'undefined')
+                                frag.appendChild(render.requestCard(app.floID, app.projectCode, app.branch, app.task))
+                        }
+                        catch(error){
+                            console.error(error)
+                        }
                     })
                     requestsContainer.appendChild(frag)
                     if(requestsContainer.children.length === 0)
                         requestsContainer.innerHTML = '<h4 class="padding">Nothing to see here.</h4>'
                     requestsContainer.addEventListener('click' ,(e) => {
                         if(e.target.closest('.accept-app')){
-                            let btn = e.target.closest('.accept-app');
+                            let btn = e.target.closest('.accept-app'),
+                                parent = e.target.closest('.request-card');
                             if(RIBC.manage.assignInternToTask(btn.dataset.floId, btn.dataset.projectCode, btn.dataset.branch, btn.dataset.taskNo)){
                                 showMessage('', 'Intern assinged.')
-                                e.target.closest('.request-card').remove()
+                                parent.classList.add('slide-left')
+                                setTimeout(() => {
+                                    parent.remove()
+                                }, 600)
                                 if(requestsContainer.children.length === 0)
                                     requestsContainer.innerHTML = '<h4 class="padding">Nothing to see here.</h4>'
                             }
@@ -13313,9 +13388,13 @@
                             }
                         }
                         if(e.target.closest('.reject-app')){
-                            e.target.closest('.request-card').remove()
+                            let parent = e.target.closest('.request-card');
+                            parent.classList.add('slide-left')
+                            setTimeout(() => {
+                                parent.remove()
+                            }, 400)
                             if(requestsContainer.children.length === 0)
-                                    requestsContainer.innerHTML = '<h4 class="padding">Nothing to see here.</h4>'
+                                requestsContainer.innerHTML = '<h4 class="padding">Nothing to see here.</h4>'
                         }
                     })
 
@@ -13412,14 +13491,14 @@
 
                 document.getElementById('post_update_btn').addEventListener('click',() => {
                     let topic = document.getElementById('update_topic').value.trim(),
-                        description = document.getElementById('update_description').value.trim();
+                        description = document.getElementById('update_description').value.trim(),
+                        parent = document.getElementById('update_container');
                         if(Object.keys(iList).includes(myFloID))
                             topic.value = RIBC.getTaskDetails(currentTaskObj.project, currentTaskObj.pBranch, currentTaskObj.task).taskTitle;
                         if(topic !== '' && description !== ''){
                             RIBC.postInternUpdate({topic: topic,description: description})
                             .then((result) => {
-                                let parent = document.getElementById('update_container');
-                                parent.prepend(render.updateCard(getInternDetails(myFloID)[0].split(':')[1], topic, description))
+                                updateFeed(parent, 8)
                                 showMessage('', 'Update posted')
                                 hidePopup('post_update')
                             })
@@ -13435,16 +13514,19 @@
                 document.getElementById('update_panel_btn').addEventListener('click', showUpdatePanel)
                 
                 let projectExplorer = document.getElementById('project_explorer');
-                if(Object.keys(iList).includes(myFloID)  && !floGlobals.subAdmins.includes(myFloID))
+                projectExplorer.children[1].children[1].innerHTML = ``;
+                projectExplorer.children[1].children[3].innerHTML = ``;
+                if(Object.keys(iList).includes(myFloID)  && !floGlobals.subAdmins.includes(myFloID)){
                     for(i = 0; i < newPList.length; i++){
                         frag.appendChild(render.projectCard(RIBC.getProjectDetails(newPList[i]).projectName, newPList[i]))
                     }
-                else
-                    for(i = 0; i < pList.length; i++){
-                        frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
-                    }
-                projectExplorer.children[1].innerHTML = ``;
-                projectExplorer.children[1].appendChild(frag)
+                    projectExplorer.children[1].children[1].appendChild(frag)
+                    pList = pList.filter(val => !newPList.includes(val));
+                }
+                for(i = 0; i < pList.length; i++){
+                    frag.appendChild(render.projectCard(RIBC.getProjectDetails(pList[i]).projectName, pList[i]))
+                }
+                projectExplorer.children[1].children[3].appendChild(frag)
 
                 let allProjects = projectExplorer.children[1].querySelectorAll('.project-card');
                 projectExplorer.children[1].addEventListener('click', (event) => {
@@ -13486,6 +13568,8 @@
                         appState.offsprings = 'explorer';
                         appState.type = 'innerPage';
                         showPage('', 'project_explorer', 'explorer', 'innerPage')
+                        if(window.innerWidth < 640)
+                            showListCont('left')
                         if(lastState !== appState.page)
                             history.pushState(appState, null, null)
                         lastState = appState.page;
@@ -13563,8 +13647,10 @@
                         lastState = appState.page;
                     }
                 }) 
-                let greetings = getInternDetails(myFloID)[0] !== undefined ? `Hi, ${getInternDetails(myFloID)[0].split(':')[1]}.` : 'Hi, there!'
-                document.getElementById('username').textContent = greetings;  
+                let greetings = getInternDetails(myFloID)[0] !== undefined ? `Hi, ${getInternDetails(myFloID)[0].split(':')[1]}.<br><p>${myFloID}</p>` : `Hi, there! <br><p>${myFloID}</p>`
+                document.getElementById('username').innerHTML = greetings;  
+
+                console.log(typeOfUser)
             }
             // functions that run when page loads
         </script>

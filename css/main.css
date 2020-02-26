@@ -5,7 +5,7 @@
 }
 
 :root {
-  --accent-color: #e62b1e;
+  --accent-color: #FF4E4E;
   --background:   34, 34, 34;
   --foreground: #2a2a2a;
   --rgb-bw: 255, 255, 255;
@@ -943,8 +943,8 @@ button[disabled] {
   right: 2rem;
   min-width: 24rem;
   background: var(--foreground);
-  -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
-          box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.24), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.16), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
+          box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.16), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
   border-radius: 0.2rem;
 }
 
@@ -2012,6 +2012,9 @@ p {
   }
   #top_nav {
     padding: 1rem 2vw;
+  }
+  #settings_page {
+    padding: 1rem 2rem;
   }
   .logo {
     -webkit-box-pack: left;
