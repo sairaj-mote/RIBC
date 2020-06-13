@@ -907,7 +907,8 @@ button[disabled] {
   position: absolute;
   z-index: 2;
   margin: 1rem;
-  right: 2rem;
+  right: 0;
+  top: 2rem;
   min-width: 24rem;
   background: rgba(var(--foreground), 1);
   -webkit-box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.16), -0.1rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12);
@@ -916,7 +917,8 @@ button[disabled] {
 }
 
 #intern_updates .container-header {
-  padding-right: 0;
+  padding: 0;
+  padding-left: 1.5rem;
   border-bottom: 1px solid rgba(var(--text), 0.1);
 }
 
@@ -944,7 +946,7 @@ button[disabled] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-height: 80vh;
+  max-height: 60vh;
   overflow-y: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -965,7 +967,7 @@ button[disabled] {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 }
 
 .update h4, .update h5 {
@@ -1014,8 +1016,8 @@ button[disabled] {
   font-weight: 500;
 }
 
-.container-header .icon {
-  margin-right: 1rem;
+#top_nav .icon, .container-header .icon {
+  margin-right: 0.8rem;
 }
 
 .back-arrow,
@@ -1138,8 +1140,8 @@ button[disabled] {
 }
 
 p {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   color: rgba(var(--text), 0.8);
 }
 
@@ -1317,7 +1319,8 @@ p {
 }
 
 #projects_container, #interns_container {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-right: 1px solid rgba(var(--text), 0.2);
 }
 
 #bottom_nav {
@@ -1563,12 +1566,11 @@ p {
 }
 
 #status_map_container #status_map h2 {
-  margin: 0.4rem 0;
+  margin: 0.4rem 0 0.8rem 0;
   text-transform: capitalize;
 }
 
 #status_map_container #status_map .circle {
-  background: var(--background);
   border: 2px solid rgba(var(--text), 0.6);
 }
 
@@ -1743,8 +1745,9 @@ p {
     margin: 1rem;
   }
   #dashboard {
-    -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr;
+    gap: 6vw;
+    -ms-grid-columns: 1fr 20rem;
+        grid-template-columns: 1fr 20rem;
   }
   #dashboard #status_map_container {
     -ms-flex-item-align: start;
@@ -1797,8 +1800,9 @@ p {
     margin-bottom: 2rem;
   }
   #admin_panel {
-    -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
+    gap: 6vw;
+    -ms-grid-columns: 20rem 1fr;
+        grid-template-columns: 20rem 1fr;
         grid-template-areas: 'header header' '. edit';
   }
   #admin_panel header {

@@ -73,8 +73,9 @@
             <svg class="icon" viewBox="0 0 64 64">
                 <title>notification bell</title>
                 <path
-                    d="M52.26,37.36h0V21.21h0A20.76,20.76,0,0,0,32,.46,20.76,20.76,0,0,0,11.77,21.21h0V37.36h0a6.23,6.23,0,0,1-3.81,5.75A4,4,0,0,0,5.5,46.77v2a1.88,1.88,0,0,0,1.79,2.11H56.71a1.79,1.79,0,0,0,1.79-1.79V46.77a4,4,0,0,0-2.43-3.66A6.23,6.23,0,0,1,52.26,37.36Z" />
-                <path d="M32,63.46a7.26,7.26,0,0,0,7.26-7.26H24.74A7.26,7.26,0,0,0,32,63.46Z" />
+                    d="M50.62,29.12V19.54h0A19.08,19.08,0,0,0,32,.47,19.08,19.08,0,0,0,13.4,19.54h0V34.4h0a5.72,5.72,0,0,1-3.5,5.28,3.5,3.5,0,0,0-2.23,3.2v3.93a1.72,1.72,0,0,0,1.64,1.94H54.72a1.63,1.63,0,0,0,1.64-1.64V43c0-.14,0-.29,0-.43a3.47,3.47,0,0,0-3.5-2.93H24.37" />
+                <path
+                    d="M32,63.47a6.66,6.66,0,0,0,6.48-5.08A1.3,1.3,0,0,0,37.2,56.8H26.8a1.3,1.3,0,0,0-1.28,1.59A6.66,6.66,0,0,0,32,63.47Z" />
             </svg>
             Feed
         </button>
@@ -203,8 +204,9 @@
                 <svg class="icon" viewBox="0 0 64 64">
                     <title>notification bell</title>
                     <path
-                        d="M52.26,37.36h0V21.21h0A20.76,20.76,0,0,0,32,.46,20.76,20.76,0,0,0,11.77,21.21h0V37.36h0a6.23,6.23,0,0,1-3.81,5.75A4,4,0,0,0,5.5,46.77v2a1.88,1.88,0,0,0,1.79,2.11H56.71a1.79,1.79,0,0,0,1.79-1.79V46.77a4,4,0,0,0-2.43-3.66A6.23,6.23,0,0,1,52.26,37.36Z" />
-                    <path d="M32,63.46a7.26,7.26,0,0,0,7.26-7.26H24.74A7.26,7.26,0,0,0,32,63.46Z" />
+                        d="M50.62,29.12V19.54h0A19.08,19.08,0,0,0,32,.47,19.08,19.08,0,0,0,13.4,19.54h0V34.4h0a5.72,5.72,0,0,1-3.5,5.28,3.5,3.5,0,0,0-2.23,3.2v3.93a1.72,1.72,0,0,0,1.64,1.94H54.72a1.63,1.63,0,0,0,1.64-1.64V43c0-.14,0-.29,0-.43a3.47,3.47,0,0,0-3.5-2.93H24.37" />
+                    <path
+                        d="M32,63.47a6.66,6.66,0,0,0,6.48-5.08A1.3,1.3,0,0,0,37.2,56.8H26.8a1.3,1.3,0,0,0-1.28,1.59A6.66,6.66,0,0,0,32,63.47Z" />
                 </svg>
             </button>
             <div class="dropdown-content hide" id="updates">
@@ -250,16 +252,16 @@
         <div id="status_map_container" class="container-card">
             <div class="watching">
                 <h4>Projects you are watching</h4>
-                <button id="prev_proj" onclick="changeProject(-1)" class="watch-list-button" title="show next project"
+                <button id="prev_proj" onclick="changeProject(-1)" class="watch-list-button" title="show previous project"
                     disabled>
-                    <svg viewBox="0 0 40.24 74.83">
-                        <polyline points="38.83,1.41 2.83,37.41 38.83,73.41 " />
+                    <svg class="icon" viewBox="0 0 64 64">
+                        <polyline points="48.01 0.35 16.35 32 48.01 63.65" />
                     </svg>
                 </button>
                 <button id="next_proj" onclick="changeProject(1)" class="watch-list-button"
-                    title="show previous project">
-                    <svg viewBox="0 0 40.24 74.83">
-                        <polyline points="1.41,73.41 37.41,37.41 1.41,1.41 " />
+                    title="show next project">
+                    <svg class="icon" viewBox="0 0 64 64">
+                        <polyline points="15.99 0.35 47.65 32 15.99 63.65" />
                     </svg>
                 </button>
             </div>
@@ -561,16 +563,17 @@
                 <h4>Points</h4>
                 <button class="hover admin-options hide-completely" title="increase intern score"
                     onclick="changeScore(1, this.parentNode)">
-                    <svg viewBox="0 0 72 72">
-                        <line x1="36" y1="0" x2="36" y2="72" />
-                        <line x1="0" y1="36" x2="72" y2="36" />
+                    <svg class="icon" viewBox="0 0 64 64">
+                        <title>add</title>
+                        <line x1="32" x2="32" y2="64" />
+                        <line x1="64" y1="32" y2="32" />
                     </svg>
                 </button>
                 <button class="hover admin-options hide-completely" title="decrease intern score"
                     onclick="changeScore(-1, this.parentNode)">
-                    <svg viewBox="0 0 73 73">
-                        <line x1="0.5" y1="36.5" x2="72.5" y2="36.5" />
-                        <rect x="0.5" y="0.5" width="72" height="72" />
+                    <svg class="icon" viewBox="0 0 64 64">
+                        <title>subtract</title>
+                        <line y1="32" x2="64" y2="32" />
                     </svg>
                 </button>
             </div>
@@ -10841,13 +10844,6 @@
             let container = document.getElementById('updates'),
                 updateContainer = document.getElementById('update_container');
             updateFeed(updateContainer, 8)
-            this.classList.add('update-mi')
-            this.addEventListener('animationend', () => {
-                this.classList.remove('update-mi')
-            })
-            this.addEventListener('webkitAnimationEnd', () => {
-                this.classList.remove('update-mi')
-            })
             container.classList.toggle('hide')
             let y = document.addEventListener("mousedown", function (event) {
                 if (event.target.closest('#intern_updates')) return;
